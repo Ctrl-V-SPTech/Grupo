@@ -56,8 +56,10 @@ nav ul li a {
 }
 
 .banner {
-    background: url(imagens_uvas/foto_banner.jpeg) no-repeat center/cover;
-    height: 250px;
+    background: url(imagens_uvas/uva_bandeija.png);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
 }
 
 .sobre {
@@ -121,30 +123,26 @@ nav ul li a {
 
 .cards {
     flex: 1;
-    background: white;
+    background: #4a772f;
     padding: 20px;
-    border-radius: 15px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     text-align: center;
 }
 
 .card img {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
 }
 
 .card h3 {
-    color: #4a772f;
+    color: #000000;
     margin-bottom: 10px;
 }
 
-.footer {
+footer {
     background-color: #4b1c6b;
     color: #fff;
     text-align: center;
     padding: 40px 20px;
 }
 
-footer h2 {
-    font-weight: normal;
-}
