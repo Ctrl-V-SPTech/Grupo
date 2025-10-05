@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;;
+}
+
+header {
+    background: #4b1c6b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+header .logo{
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+header .logo img {
+    height: 35px;
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-btn {
+    background: #fff;
+    color: #4b1c6b;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cadastro-btn {
+    background: #fff;
+    color: #4b1c6b;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.banner {
+    background: url(imagens_uvas/foto_banner.jpeg) no-repeat center/cover;
+    height: 250px;
+}
+
+.sobre {
+    background: #4a772f;
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+}
+
+.sobre h2 {
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.servicos-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 40px;
+    gap: 30px;
+}
+
+.servicos-intro .texto {
+    flex: 2;
+}
+
+.servicos-intro h2 {
+    color: #4a772f;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.servicos-intro .icone {
+    text-align: center;
+    flex: 1;
+}
+
+.servicos-intro .icone img {
+    max-width: 100px;
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background: #a4d37c;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    background: whitesmoke;
+}
+
+.cards {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+}
+
+.card h3 {
+    color: #4a772f;
+    margin-bottom: 10px;
+}
+
+.footer {
+    background-color: #4b1c6b;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+footer h2 {
+    font-weight: normal;
+}
