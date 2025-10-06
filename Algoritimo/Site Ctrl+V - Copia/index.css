@@ -5,54 +5,46 @@ body {
 }
 
 header {
-    background: #4b1c6b;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    height: 120px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #4b1c6b;
+
 }
 
-header .logo{
+.logo img {
     display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 1.4em;
-}
-
-header .logo img {
-    height: 35px;
-    margin-right: 10px;
+    height: 200px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
-}
+    gap: 50px;
+    align-items: center;
+    }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .login-btn {
     background: #fff;
     color: #4b1c6b;
     padding: 6px 16px;
+    width: 200px;
     border-radius: 20px;
     text-decoration: none;
+    text-align: center;
     font-weight: bold;
-}
-
-.cadastro-btn {
-    background: #fff;
-    color: #4b1c6b;
-    padding: 6px 16px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
+    font-size: 30px;
 }
 
 .banner {
@@ -145,4 +137,56 @@ footer {
     text-align: center;
     padding: 40px 20px;
 }
+
+body{
+    margin:0;
+    font-family: sans-serif;
+}
+
+/* HEADER INICIO */
+
+.header{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    padding: 30px 0;
+    background-color: #7b4b94;
+    background-size: 500px;
+}
+
+.navbar{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    width: 500px;
+    justify-self: end;
+
+}
+
+.header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+}
+
+.agora a{
+    color: white;
+    font-weight: bold;
+}
+
+.titulo{
+    background-image: url"1.png";
+}
+
+/* HEADER FIM*/
+
+
+
 

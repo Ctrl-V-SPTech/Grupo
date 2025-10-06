@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;;
+}
+
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #4b1c6b;
+
+}
+
+.logo img {
+    display: flex;
+    height: 200px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    }
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.login-btn {
+    background: #fff;
+    color: #4b1c6b;
+    padding: 6px 16px;
+    width: 200px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* Cadastro */
+
+.formulario-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+}
+
+.card-form {
+  background-color: #4b1c6b;
+  align-items: center;
+  padding: 30px;
+  border-radius: 20px;
+  width: 1400px;
+  height: 500px;
+  color: white;
+}
+
+.card-form h2 {
+  margin-bottom: 20px;
+  font-size: 1;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.linha {
+  display: flex;
+}
+
+.linha .campo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 200px;
+}
+
+.linha4 {
+  display: flex;
+}
+
+.linha4 .campo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 200px;
+  padding-bottom: 50px;
+}
+
+.estado {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.campo label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.campo input {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.endereco {
+  flex: 2; 
+}
+
+button {
+   display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: end;
+    width: 250px;
+    height: 60px;
+    border-radius: 5px;
+    border-color: #a3c86e;
+    border-style: solid;
+    background-color: #a3c86e;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+.botao:hover {
+  background-color: #32b9cd;
+  color: white;
+}
