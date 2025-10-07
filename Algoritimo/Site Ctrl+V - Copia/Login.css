@@ -32,19 +32,19 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .login-btn {
     background: #fff;
     color: #4b1c6b;
     padding: 6px 16px;
-    width: 200px;
+    width: 150px;
     border-radius: 20px;
     text-decoration: none;
     text-align: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
 }
 /* LOGIN INICIO*/
 
@@ -53,6 +53,8 @@ nav ul li a {
     background-color: #f2f4f5;
     background-size: cover;
     height: 740px;
+    background-image: url(./imagens_uvas/back.png);
+
 }
 
 .login .container{

@@ -32,14 +32,148 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .login-btn {
     background: #fff;
     color: #4b1c6b;
     padding: 6px 16px;
-    width: 200px;
+    width: 150px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.banner {
+    background: url(imagens_uvas/uva_bandeija.png);
+    background-size: cover;
+    background-position: center;
+    height: 750px;
+}
+
+
+.container1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 700px;
+    background: #4a772f;
+    justify-content: space-evenly;
+}
+
+.container1 span {
+    color: #fff;
+    font-weight: bold;
+    font-size: 80px;
+    padding-left: 60px;
+}
+
+.container1 .texto {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 60px;
+    font-size: 50px;
+    gap: 30px;
+    color: #fff;
+    text-align: justify;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 700px;
+    background: #fff;
+    justify-content: space-evenly;
+}
+
+.container2 span {
+    color: #4a772f;
+    font-weight: bold;
+    font-size: 80px;
+    padding-left: 60px;
+}
+
+.container2 .texto {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 40px;
+    font-size: 50px;
+    gap: 30px;
+    text-align: justify;
+}
+
+.container3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 700px;
+    background: #4b1c6b;
+    justify-content: space-evenly;
+}
+
+.container3 .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    margin-bottom: 50px;
+    background-color: #fff;
+    border-radius: 30px;
+    width: 420px;
+    height: 420px;
+    align-items: center;
+}
+
+.card span {
+    color: #4b1c6b;
+    font-weight: bold;
+    font-size: 40px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.card .texto_card {
+    font-size: 25px;
+    text-align: justify;
+    padding: 10px;
+}
+.card .dash_img {
+    display: flex;
+    width: 90px;
+    height: 90px;
+}
+
+.card .alertas_img {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding-top: 10px;
+}
+
+.card .calc_img {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding-top: 10px;
+}
+
+.ir-btn {
+    background: #fff;
+    color: #4b1c6b;
+    margin-top: 40px;
+    width: 100px;
     border-radius: 20px;
     text-decoration: none;
     text-align: center;
@@ -47,92 +181,8 @@ nav ul li a {
     font-size: 30px;
 }
 
-.banner {
-    background: url(imagens_uvas/uva_bandeija.png);
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-}
-
-.sobre {
-    background: #4a772f;
-    color: #fff;
-    padding: 40px;
-    text-align: center;
-}
-
-.sobre h2 {
-    font-size: 2em;
-    margin-top: 20px;
-}
-
-.servicos-intro {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-    padding: 40px;
-    gap: 30px;
-}
-
-.servicos-intro .texto {
-    flex: 2;
-}
-
-.servicos-intro h2 {
-    color: #4a772f;
-    font-size: 2em;
-    margin-bottom: 15px;
-}
-
-.servicos-intro .icone {
-    text-align: center;
-    flex: 1;
-}
-
-.servicos-intro .icone img {
-    max-width: 100px;
-    margin-bottom: 15px;
-}
-
-.btn {
-    display: inline-block;
-    background: #a4d37c;
-    color: #000;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 20px;
-    font-weight: bold;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 40px;
-    background: whitesmoke;
-}
-
-.cards {
-    flex: 1;
-    background: #4a772f;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    text-align: center;
-}
-
-.card img {
-    width: 80px;
-    height: 80px;
-}
-
-.card h3 {
-    color: #000000;
-    margin-bottom: 10px;
-}
-
 footer {
-    background-color: #4b1c6b;
+    background-color: #4a772f;
     color: #fff;
     text-align: center;
     padding: 40px 20px;
