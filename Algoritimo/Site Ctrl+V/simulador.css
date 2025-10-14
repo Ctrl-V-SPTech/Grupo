@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+}
+
+header {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: #4b1c6b;
+}
+
+.logo img {
+  display: flex;
+  height: 200px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+nav ul a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.login-btn {
+  background: #fff;
+  color: #4b1c6b;
+  padding: 6px 16px;
+  width: 150px;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#ContatoH:hover {
+  transform: scale(1.1);
+}
+
+#DashboradsH:hover {
+  transform: scale(1.1);
+}
+
+#SimuladorFinanceiroH:hover {
+  transform: scale(1.1);
+}
+
+#Login:hover {
+  transform: scale(1.1);
+}
+
+/*INICIO SIMULADOR */
+
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.box {
+  width: 100%;
+}
+
+.box h2 {
+  margin: 10px;
+}
+
+.box select {
+  margin: 10px;
+  background-color: #291339;
+  color: white;
+  border-color: transparent;
+}
+
+.box label {
+  margin: 10px;
+}
+.box input {
+  margin: 10px;
+  background-color: #291339;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 5px;
+  color: white;
+}
+
+.box button {
+  margin: 10px;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 5px;
+  
+}
+
+
+.r {
+  margin: 10px;
+}
+
+canvas {
+  margin: 10px 10px 0 10px;
+  background-color: black;
+}
