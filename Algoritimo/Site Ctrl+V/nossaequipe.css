@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;;
+}
+
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: #4b1c6b;
+
+}
+
+.logo img {
+    display: flex;
+    height: 200px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    }
+
+nav ul a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.login-btn {
+    background: #fff;
+    color: #4b1c6b;
+    padding: 6px 16px;
+    width: 150px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#ContatoH:hover {
+  transform: scale(1.1);
+}
+
+#DashboradsH:hover {
+  transform: scale(1.1);
+}
+
+#SimuladorFinanceiroH:hover {
+  transform: scale(1.1);
+}
+
+#Login:hover {
+  transform: scale(1.1);
+}
+
+/* nossa equipe */
+
+.container3 {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+    column-gap: 200px; /* 🔹 espaço entre colunas */
+  row-gap: 20px;        /* 🔹 sem espaço vertical, se quiser pode ajustar */
+  background-image: url(./imagens_uvas/back.png);
+  background-size: cover;
+  padding: 20px;
+}
+
+
+.card {
+  width: 350px;
+  height: 350px;
+  border-radius: 25px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: #fff;
+}
+
+.card .texto_card {
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 50px 0 20px;
+  background-color: #4a772f;
+  background-size: auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+
+
