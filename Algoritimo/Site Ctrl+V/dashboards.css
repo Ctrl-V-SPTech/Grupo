@@ -1,50 +1,51 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
 }
 
 header {
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 120px;
-    padding-left: 40px;
-    padding-right: 40px;
-    background-color: #4b1c6b;
-
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: #4b1c6b;
 }
 
 .logo img {
-    display: flex;
-    height: 200px;
+  display: flex;
+  height: 200px;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 50px;
-    align-items: center;
-    }
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
 
 nav ul a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .login-btn {
-    background: #fff;
-    color: #4b1c6b;
-    padding: 6px 16px;
-    width: 150px;
-    border-radius: 20px;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
+  background: #fff;
+  color: #4b1c6b;
+  padding: 6px 16px;
+  width: 150px;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 #ContatoH:hover {
@@ -61,4 +62,157 @@ nav ul a {
 
 #Login:hover {
   transform: scale(1.1);
+}
+
+
+/* INICIO DA DASH */
+
+.containerpai {
+    display: flex;
+    justify-content: space-between;
+}
+
+.melhortemp {
+  background-color: #a3d47c; 
+  border: 2px solid #6da55f;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 420px;
+  height: 120px;
+  margin: 30px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.melhortemp .metricas {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+
+.fasesrisco {
+  background-color: #a3d47c; 
+  border: 2px solid #6da55f;
+  border-radius: 10px;
+  align-content: center;
+  width: 460px;
+  height: 300px;
+  margin: 30px;
+}
+
+
+.fasesrisco h2 {
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+ 
+}
+
+.fases {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #a3d47c;
+  font-weight: 800;
+  border-radius: 8px;
+  width: 250px;
+  height: 200px;
+  padding-left: 10px;
+  margin: 30px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: transparent;
+  border: none;
+  width: 400px;
+  margin: 30px;
+  gap: 20px;
+}
+
+.cardtemp,
+.cardumi {
+  background-color: #a3d47c;
+  border: 2px solid #6da55f;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #000;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 180px;
+  height: 180px;
+}
+
+.cards .metricas {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding-top: 60px;
+    padding-left: 120px;
+}
+
+
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 40px;
+}
+
+
+.ideal-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #a3d47c;
+  color: #000;
+  width: 900px;
+  height: 200px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.ideal-info h2 {
+  text-align: center;
+  margin-bottom: 10px;
+ 
+}
+
+.fases2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: #000;
+  padding: 15px 20px;
+  border-radius: 8px;
+
+}
+
+.fases2 div {
+  text-align: center;
+  color: green;
+
+}
+
+canvas {
+    margin: 0 10px 0 10px;
+    border: 1px solid black;
+    background-color: white;
 }

@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
-
-    <title>Dashboards</title>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="stylesheet" href="dashboards.css" />
     <link rel="icon" href="../public/assets/icon/Logo.png" />
-  </head>
-
-  <body>
-<header>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
   <div class="logo">
     <a href="index.html">
         <img src="imagens_uvas/1.png" class="logo-header" />
@@ -27,3 +24,180 @@
     </ul>
   </nav>
 </header>
+
+
+    <div class="containerpai">
+    <div class="container1">
+        <div class="melhortemp">
+            Melhor temperatura e umidade 
+            <h2>Sensor 1 (indoor)</h2>
+            <img class="metricas" src="./imagens_uvas/temperature.png" alt="">
+        </div>
+        <div class="fasesrisco">
+            <h2>Fases que mais geram doenças</h2>
+            <div class="fases">
+            1. Floração <br>
+            2. Frutificação <br>
+            3. Maturação <br>
+            4. Crescimento dos bagos <br>
+        </div>
+        </div>
+
+       <div class="cards">
+  <div class="cardtemp">
+    Temperatura ideal na floração
+    <img class="metricas" src="./imagens_uvas/temperature.png" alt="">
+  </div>
+
+  <div class="cardumi">
+    Umidade ideal na floração
+    <img class="metricas" src="./imagens_uvas/humidity.png" alt="">
+  </div>
+</div>
+
+
+    </div>
+
+  <div class="container2">
+  <div class="ideal-info">
+    <h2>Temperatura e umidade ideal para cultivo da Uva Thompson Seedless</h2> <br>
+    <div class="fases2">
+      <div><strong>Dormência</strong><br>5°C - 15°C<br>50-70%</div>
+      <div><strong>Brotação</strong><br>15°C - 25°C<br>60-80%</div>
+      <div><strong>Floração</strong><br>18°C - 25°C<br>50-70%</div>
+      <div><strong>Crescimento dos Bagos</strong><br>20°C - 25°C<br>60-80%</div>
+      <div><strong>Maturação</strong><br>20°C - 30°C<br>40-60%</div>
+      <div><strong>Colheita</strong><br>10°C - 20°C<br>80-90%</div>
+    </div>
+  </div>
+
+  <div class="chart temp-chart">
+    <canvas id="tempChart" width="300" height="300"></canvas>
+  </div>
+
+  <div class="chart umi-chart">
+    <canvas id="umiChart" width="300" height="300"></canvas>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
+
+<script>
+  const ctx = document.getElementById("tempChart");
+  const ctx2 = document.getElementById("umiChart");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: [
+        "Dormência",
+        "Brotação",
+        "Floração e vingamento",
+        "Crescimento dos bagos",
+        "Maturação",
+        "Colheita e pós-colheita"
+      ],
+      datasets: [
+        {
+          label: "Sensor A (Outdoor)",
+          data: [20, 22, 24, 32, 34, 20],
+          borderWidth: 1,
+          borderColor: "purple",
+          backgroundColor: "purple"
+        },
+        {
+          label: "Sensor B (Indoor)",
+          data: [12, 20, 21, 23, 25, 15],
+          borderWidth: 1,
+          borderColor: "#6da55f",
+          backgroundColor: "#6da55f"
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: [
+            "Temperatura ideal para Produção de Uvas Thompson Seedless",
+            "por período: Sensor A (Outdoor) e Sensor B (Indoor)"
+          ],
+          font: {
+            size: 18
+          },
+          color: "black"
+        },
+        legend: {
+          labels: {
+            color: "black"
+          }
+        }
+      }
+    }
+  });
+
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: [
+        "Dormência",
+        "Brotação",
+        "Floração e vingamento",
+        "Crescimento dos bagos",
+        "Maturação",
+        "Colheita e pós-colheita"
+      ],
+      datasets: [
+        {
+          label: "Sensor A (Outdoor)",
+          data: [90, 92, 99, 80, 81, 88],
+          borderWidth: 1,
+          borderColor: "purple",
+          backgroundColor: "purple"
+        },
+        {
+          label: "Sensor B (Indoor)",
+          data: [59, 65, 62, 70, 56, 83],
+          borderWidth: 1,
+          borderColor: "#6da55f",
+          backgroundColor: "#6da55f"
+        }
+      ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: [
+            "Umidade ideal para Produção de Uvas Thompson Seedless",
+            "por período: Sensor A (Outdoor) e Sensor B (Indoor)"
+          ],
+          font: {
+            size: 18
+          },
+          color: "black"
+        },
+        legend: {
+          labels: {
+            color: "black"
+          }
+        }
+      }
+    }
+  });
+</script>
