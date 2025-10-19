@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashindividual.css" />
+  <link rel="icon" href="../public/assets/icon/Logo.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="imagens_uvas/1.png" class="logo-header" /></a>
+    </div>
+    <nav>
+      <ul>
+        <a href="cadastro.html" id="ContatoH">Quero ser cliente</a>
+        <a href="dashboards.html" id="DashboardsH">Dashboards</a>
+        <a href="simulador.html" id="SimuladorFinanceiroH">Simulador Financeiro</a>
+        <a href="login.html" class="login-btn" id="Login">Login</a>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="containerpai">
+    <div class="container1">
+      <h2>Sensor X - Estufa Y</h2>
+
+      <div class="sensor-card">
+        <div class="header">
+          <div class="legend">
+            <div class="item"><span class="dot ideal"></span> Ideal</div>
+            <div class="item"><span class="dot moderado"></span> Moderado</div>
+            <div class="item"><span class="dot critico"></span> Crítico</div>
+          </div>
+          <h3>Temperatura e umidade em tempo real:</h3>
+        </div>
+
+        <div class="values">
+          <div class="temp">24°C</div>
+          <div class="umi">65%</div>
+        </div>
+      </div>
+
+      <div class="monitoring-Chart">
+        <canvas id="monitoringChart" width="650" height="400"></canvas>
+      </div>
+    </div>
+
+    <div class="container2">
+      <div class="cards">
+        <div class="kpi">
+          <div class="kpi-header">
+            <span>Métrica ideal</span>
+            <div class="icons">
+              <div><img class="metricas" src="./imagens_uvas/temperature.png" alt=""> Temp</div>
+              <div><img class="metricas" src="./imagens_uvas/humidity.png" alt=""> Umi</div>
+            </div>
+          </div>
+          <div class="kpi-row"><span>min.</span><span>20°C</span><span>60%</span></div>
+          <div class="kpi-row"><span>máx.</span><span>30°C</span><span>70%</span></div>
+        </div>
+
+        <div class="kpi">
+          <div class="kpi-header"><span>Média (últimas 24h)</span></div>
+          <div class="kpi-row"><span> <img class="metricas" src="./imagens_uvas/temperature.png" alt="">Temp</span><span>22°C</span></div>
+          <div class="kpi-row"><span><img class="metricas" src="./imagens_uvas/humidity.png" alt="">Umi</span><span>63%</span></div>
+        </div>
+      </div>
+
+      <div class="historico">
+        <div class="historico-header">Histórico de alertas</div>
+        <div class="historico-row title">
+          <span>Data e Hora</span>
+          <span>Mensagem</span>
+          <span>Status</span>
+          <span>Tempo em alerta</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 16:42</span>
+          <span>Temperatura acima do ideal (31°C)</span>
+          <span>Crítico</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-footer">Ver todos</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById("monitoringChart")
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00'],
+        datasets: [
+          {
+            label: 'Temperatura',
+            data: [30, 29, 28, 25, 22, 23],
+            borderWidth: 1,
+            borderColor: 'purple',
+            backgroundColor: 'purple'
+          },
+          {
+            label: 'Umidade',
+            data: [80, 82, 80, 85, 80, 83],
+            borderWidth: 1,
+            borderColor: '#6da55f',
+            backgroundColor: '#6da55f'
+          }
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: ["SENSOR X - ESTUFA Y"],
+            font: { size: 18 },
+            color: "black"
+          },
+          legend: {
+            labels: { color: "black" }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
