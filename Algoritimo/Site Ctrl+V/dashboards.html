@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>Document</title>
     <link rel="stylesheet" href="dashboards.css" />
     <link rel="icon" href="../public/assets/icon/Logo.png" />
@@ -71,12 +71,14 @@
     </div>
   </div>
 
+  <div class="charts">
   <div class="chart temp-chart">
-    <canvas id="tempChart" width="300" height="300"></canvas>
+    <canvas id="tempChart" width="550" height="400"></canvas>
   </div>
 
   <div class="chart umi-chart">
-    <canvas id="umiChart" width="300" height="300"></canvas>
+    <canvas id="umiChart" width="550" height="400"></canvas>
+  </div>
   </div>
 </div>
 
@@ -93,12 +95,12 @@
     type: "bar",
     data: {
       labels: [
-        "Dormência",
+         "Dormência",
         "Brotação",
-        "Floração e vingamento",
-        "Crescimento dos bagos",
+        ["Floração", "e vingamento"],
+        ["Crescimento", "dos bagos"],
         "Maturação",
-        "Colheita e pós-colheita"
+        ["Colheita", "e pós-colheita"]
       ],
       datasets: [
         {
@@ -151,10 +153,10 @@
       labels: [
         "Dormência",
         "Brotação",
-        "Floração e vingamento",
-        "Crescimento dos bagos",
+        ["Floração", "e vingamento"],
+        ["Crescimento", "dos bagos"],
         "Maturação",
-        "Colheita e pós-colheita"
+        ["Colheita", "e pós-colheita"]
       ],
       datasets: [
         {
