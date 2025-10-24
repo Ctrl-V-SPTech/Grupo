@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #fff;
-  background: linear-gradient(90deg, #291339 0%, #ffffff 100%);
+  background: #ffffff;
 }
 
 header {
@@ -11,7 +11,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 120px;
+  height: 80px;
   padding: 0 40px;
   background-color: #4b1c6b;
 }
