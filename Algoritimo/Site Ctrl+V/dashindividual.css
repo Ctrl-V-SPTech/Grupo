@@ -1,10 +1,19 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: white;
+}
+
 header {
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  padding: 0 40px;
+  height: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
   background-color: #4b1c6b;
 }
 
@@ -48,17 +57,22 @@ nav a:hover {
 
 .container1 {
   width: 50%;
+  margin-left: 10px;
 
 }
+
+  h2 {
+    color: black;
+  }
 .container2 {
-  width: 50%;
+  width: 49%;
   margin-top: 57px;
 }
 
 .sensor-card {
   border: 3px solid green;
   background-color: #d5edc2;
-  width: 720px;
+  width: 700px;
   height: 157px;
   margin: 30px;
   color: #111;
@@ -170,6 +184,7 @@ h3 {
   margin: 0 30px;
   border: 3px solid green;
   background-color: #d5edc2;
+    font-family: Arial, sans-serif;
   color: black;
   width: 700px;
   display: flex;
