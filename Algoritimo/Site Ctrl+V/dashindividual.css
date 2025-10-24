@@ -1,17 +1,9 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #fff;
-  background: #ffffff;
-}
-
 header {
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 60px;
   padding: 0 40px;
   background-color: #4b1c6b;
 }
@@ -54,11 +46,20 @@ nav a:hover {
   justify-content: space-between;
 }
 
+.container1 {
+  width: 50%;
+
+}
+.container2 {
+  width: 50%;
+  margin-top: 57px;
+}
+
 .sensor-card {
   border: 3px solid green;
   background-color: #d5edc2;
-  width: 600px;
-  height: 160px;
+  width: 720px;
+  height: 157px;
   margin: 30px;
   color: #111;
 }
@@ -93,7 +94,7 @@ nav a:hover {
 
 h3 {
   text-align: center;
-  font-weight: 900;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -117,8 +118,8 @@ h3 {
 .umi { background-color: #a6a923; }
 
 .metricas {
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
 }
 
 .cards {
@@ -135,12 +136,12 @@ h3 {
   border: 3px solid green;
   background-color: #d5edc2;
   color: black;
-  width: 300px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
-  height: 200px;
+  height: 150px;
 }
 
 .kpi-header {
@@ -160,9 +161,9 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
+  font-weight: 900;
   color: #111;
-  margin-top: 10px;
+  margin-bottom: 2px;
 }
 
 .historico {
@@ -170,7 +171,7 @@ h3 {
   border: 3px solid green;
   background-color: #d5edc2;
   color: black;
-  width: 500px;
+  width: 700px;
   display: flex;
   flex-direction: column;
 }
@@ -210,6 +211,7 @@ h3 {
 .charts {
   display: flex;
   justify-content: space-between;
+  padding-left: 20px;
 }
 
 canvas {
@@ -217,3 +219,5 @@ canvas {
   background-color: white;
   border: 3px solid green;
 }
+
+
