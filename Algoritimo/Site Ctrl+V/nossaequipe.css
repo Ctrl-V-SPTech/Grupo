@@ -47,18 +47,9 @@ nav ul a {
     font-size: 20px;
 }
 
-#ContatoH:hover {
-  transform: scale(1.1);
-}
-
-#DashboradsH:hover {
-  transform: scale(1.1);
-}
-
-#SimuladorFinanceiroH:hover {
-  transform: scale(1.1);
-}
-
+#ContatoH:hover,
+#DashboardsH:hover,
+#SimuladorFinanceiroH:hover,
 #Login:hover {
   transform: scale(1.1);
 }
@@ -69,17 +60,18 @@ nav ul a {
   display: flex;
   flex-wrap: wrap; 
   justify-content: center;
-    column-gap: 200px; /* 🔹 espaço entre colunas */
-  row-gap: 20px;        /* 🔹 sem espaço vertical, se quiser pode ajustar */
+  column-gap: 180px;
   background-image: url(./imagens_uvas/back.png);
   background-size: cover;
-  padding: 20px;
+  height: 570px;
+  padding-top: 40px;
 }
 
 
-.card {
-  width: 350px;
-  height: 350px;
+.container3 .card {
+  display: flex;
+  width: 250px;
+  height: 250px;
   border-radius: 25px;
   background-size: cover;
   background-position: center;
@@ -89,7 +81,7 @@ nav ul a {
   background-color: #fff;
 }
 
-.card .texto_card {
+.container3 .card .texto_card {
   color: #fff;
   text-align: center;
   font-size: 22px;

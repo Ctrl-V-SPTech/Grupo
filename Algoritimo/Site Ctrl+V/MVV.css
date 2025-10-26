@@ -47,18 +47,9 @@ nav ul a {
     font-size: 20px;
 }
 
-#ContatoH:hover {
-  transform: scale(1.1);
-}
-
-#DashboradsH:hover {
-  transform: scale(1.1);
-}
-
-#SimuladorFinanceiroH:hover {
-  transform: scale(1.1);
-}
-
+#ContatoH:hover,
+#DashboardsH:hover,
+#SimuladorFinanceiroH:hover,
 #Login:hover {
   transform: scale(1.1);
 }
@@ -80,7 +71,7 @@ span {
     align-self: center;
     flex-direction: column;
     padding: 45px;
-    font-size: 35px;
+    font-size: 25px;
     color: black;
     text-align: justify;
 }

@@ -47,18 +47,9 @@ nav ul a {
     font-size: 20px;
 }
 
-#ContatoH:hover {
-  transform: scale(1.1);
-}
-
-#DashboradsH:hover {
-  transform: scale(1.1);
-}
-
-#SimuladorFinanceiroH:hover {
-  transform: scale(1.1);
-}
-
+#ContatoH:hover,
+#DashboardsH:hover,
+#SimuladorFinanceiroH:hover,
 #Login:hover {
   transform: scale(1.1);
 }
@@ -68,29 +59,27 @@ nav ul a {
     display: flex;
     background-color: #f2f4f5;
     background-size: cover;
-    height: 740px;
+    height: 610px;
     background-image: url(./imagens_uvas/back.png);
 
 }
 
 .login .container{
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    margin-left: 150px;
     height: 100%;
+    width: 100%;
     }
 
 .login .container .card_card_login{
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-left: 50px;
     padding:  20px 10px;
     background-color: #4b1c6b;
     border-radius: 30px;
     width: 380px;
-    scale: 1.25;
 }
 
 .formulario {
@@ -167,6 +156,15 @@ nav ul a {
     width: 120px;
     font-size: 30px;
 }
+
+input {
+    color: #4f6d3c;
+    font-size: 20px;
+    font-weight:bold;
+    font-size: 20px;
+    font-weight: bold;  
+}
+
 input::placeholder {
   color: #4f6d3c;
   font-size: 20px;
@@ -208,4 +206,8 @@ input::placeholder {
     font-size: 18px;
     align-items: center;
     text-decoration: none;
+}
+
+#entrar:hover {
+ background-color: #95bc5f;   
 }

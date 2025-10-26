@@ -42,15 +42,15 @@
                 <h2 class="Login-titulo">Login</h2>
                 <div class="formulario">
                     <div class="campo">
-                        <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Usuario">
+                        <i class="fa-solid fa-user" id="iconeUsuario"></i>
+                        <input type="text" placeholder="Usuario" id="user" onfocus="userSome()" onblur="userVolta()" >
                     </div>
                     <div class="campo2">
-                        <i class="fa-solid fa-lock"></i>
-                        <input id="senha_input" type="password" placeholder="Senha">
+                        <i class="fa-solid fa-lock" id="iconeSenha"></i>
+                        <input id="pass" type="password" placeholder="Senha" onfocus="senhaSome()" onblur="senhaVolta()" >
                     </div>
                 <h2 class="Esqueceu">Esqueceu a senha?</h2>
-                    <button class="botao">Entrar</button>
+                    <button onclick="entrar()" class="botao" id="entrar">Entrar</button>
                 <h2 class="Cadastro"><a href="cadastro.html">Não tem uma conta? Cadastre-se!</a></h2>
                 </div>
             </div>
@@ -60,3 +60,44 @@
 </body>
 
 </html>
+<script>
+    function userSome() { 
+        iconeUsuario.style.display = "none"; 
+        user.placeholder = ""; 
+    } 
+    
+    function userVolta() { 
+        if (user.value == "") {
+        iconeUsuario.style.display = "block"; 
+        }
+        user.placeholder = "Usuario"; 
+    }
+    
+    function senhaSome() { 
+        iconeSenha.style.display = "none"; 
+        pass.placeholder = ""; 
+    } 
+    
+    function senhaVolta() { 
+        if (pass.value == "") {
+        iconeSenha.style.display = "block"; 
+        }
+        pass.placeholder = "Senha"; 
+    }  
+
+    function entrar() {
+        var usuario = user.value.trim();
+        var senha = pass.value.trim();
+
+        if (usuario == "willywonka" && senha == "chocolate") {
+        window.location.href = "dashboards.html";
+        } else {
+        alert(`Usuario ou senha invalidos`)
+        user.value = ""
+        pass.value = ""
+        userVolta()
+        senhaVolta()
+        }
+    }
+
+</script>

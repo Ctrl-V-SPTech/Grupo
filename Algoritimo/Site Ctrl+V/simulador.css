@@ -48,22 +48,12 @@ nav ul a {
   font-size: 20px;
 }
 
-#ContatoH:hover {
-  transform: scale(1.1);
-}
-
-#DashboradsH:hover {
-  transform: scale(1.1);
-}
-
-#SimuladorFinanceiroH:hover {
-  transform: scale(1.1);
-}
-
+#ContatoH:hover,
+#DashboardsH:hover,
+#SimuladorFinanceiroH:hover,
 #Login:hover {
   transform: scale(1.1);
 }
-
 /*INICIO SIMULADOR */
 
 .boxes {
