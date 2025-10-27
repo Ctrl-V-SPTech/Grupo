@@ -147,7 +147,7 @@ nav ul a {
   justify-content: center; 
   align-items: center;
   width: 100%;
-  gap: 30px; /* espaçamento entre os gráficos */
+  gap: 30px;
   margin-top: 20px;
 }
 
