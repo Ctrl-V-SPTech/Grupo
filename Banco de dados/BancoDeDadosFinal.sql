@@ -1,9 +1,5 @@
 CREATE DATABASE CtrlV;
 
-
-DROP DATABASE CtrlV;
-
-
 USE CtrlV;
 
 CREATE TABLE Empresa (
