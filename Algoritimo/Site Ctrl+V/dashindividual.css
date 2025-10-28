@@ -1,25 +1,24 @@
-/* ====== GLOBAL ====== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #fff;
-  background-color: #ffffff;
+  background-color: #ecebeb;
 }
 
 h1 {
 color: #000;
 height: 20px;
 width: 400px;
-margin-left: 250px;
+margin-left: 300px;
 }
 /* ====== SIDEBAR ====== */
 .sidebar {
   height: 100%;
-  width: 200px;
+  width: 260px;
   position: fixed;
   top: 0;
-  background-color: #000;
+  background-color: #4b1c6b;
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
@@ -47,8 +46,8 @@ margin-left: 250px;
     "chart sensor kpi"
     "ideal ideal fases"
     "qtd historico historico";
-  gap: 40px;
-  margin-left: 220px; /* space for sidebar */
+  gap: 30px;
+  margin-left: 280px; 
   padding: 20px;
 }
 
@@ -60,12 +59,12 @@ margin-left: 250px;
 .monitoring-Chart { grid-area: chart; }
 .historico        { grid-area: historico; }
 
-/* ====== SENSOR CARD ====== */
+/* ====== SENSOR ====== */
 .sensor-card {
-  border: 3px solid gray;
-  background-color: gray;
+  border: 3px solid rgb(0, 0, 0);
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #ffffff;
   border-radius: 10px;
-  color: #111;
   padding: 8px 16px;
   padding-top: 45px;
   justify-content: center;
@@ -86,7 +85,7 @@ margin-left: 250px;
 .legend .item {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  
   gap: 6px;
 }
 
@@ -101,7 +100,6 @@ margin-left: 250px;
 
 .values {
   display: flex;
-  border-top: 3px solid gray;
   height: 80px;
 }
 
@@ -111,9 +109,9 @@ margin-left: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
   font-size: 1.7rem;
   color: #111;
+  border: 1px solid #000000 ;
 }
 
 .temp { background-color: #3db83d; }
@@ -125,11 +123,11 @@ margin-left: 250px;
   margin-right: 8px;
 }
 
-/* ====== KPI CARD ====== */
+/* ====== MÉDIA 24H ====== */
 .kpi {
   border: 3px solid #9d9d9d;
-  background-color: #9d9d9d;
-  color: #111;
+   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #ffffff;
   border-radius: 10px;
   padding: 10px;
   display: flex;
@@ -140,7 +138,7 @@ margin-left: 250px;
 
 .kpi-header {
   text-align: center;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .kpi-row {
@@ -153,16 +151,17 @@ margin-left: 250px;
 /* ====== HISTÓRICO ====== */
 .historico {
   border: 3px solid gray;
-  background-color: gray;
-  color: #111;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #000000;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
 }
 
 .historico-header {
-  font-weight: 800;
+
   text-align: center;
+  color: white;
   padding: 10px;
   border-bottom: 3px solid black;
 }
@@ -187,23 +186,22 @@ margin-left: 250px;
   text-align: center;
   font-weight: bold;
   padding: 8px;
-  border-top: 3px solid green;
+  color: white;
   cursor: pointer;
 }
 
 /* ====== FASES DE RISCO ====== */
 .fasesrisco {
   border: 3px solid #9d9d9d;
-  background-color: #9d9d9d;
+   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #ffffff;
   border-radius: 10px;
-  color: #000;
   padding: 10px;
   width: 250px;
 }
 
 .fasesrisco h2 {
   text-align: center;
-  font-weight: bold;
   margin-bottom: 10px;
 }
 
@@ -213,7 +211,6 @@ margin-left: 250px;
   align-items: center;
   background-color: #fff;
   color: #000;
-  font-weight: 800;
   border-radius: 8px;
   padding: 10px;
 }
@@ -223,9 +220,8 @@ margin-left: 250px;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  background-color: #6e6e6e;
-  color: #000;
-  font-weight: 800;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #ffffff;
   border-radius: 8px;
   padding: 10px;
 }
@@ -233,8 +229,8 @@ margin-left: 250px;
 /* ====== IDEAL INFO ====== */
 .ideal-info {
   border: 3px solid #9d9d9d;
-  background-color: #9d9d9d;
-  color: #000;
+   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #ffffff;
   border-radius: 10px;
   padding: 10px;
   display: flex;
@@ -246,6 +242,7 @@ margin-left: 250px;
 .ideal-info h2 {
   text-align: center;
   margin-bottom: 10px;
+  font-weight: 300;
 }
 
 .fases2 {
