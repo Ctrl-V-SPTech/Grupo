@@ -1,92 +1,86 @@
+/* ====== GLOBAL ====== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: #fff;
-  background-color: white;
+  background-color: #ffffff;
 }
 
-header {
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  padding-left: 40px;
-  padding-right: 40px;
-  background-color: #4b1c6b;
+h1 {
+color: #000;
+height: 20px;
+width: 400px;
+margin-left: 250px;
+}
+/* ====== SIDEBAR ====== */
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  background-color: #000;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
 }
 
-.logo img {
-  height: 200px;
-}
-
-nav ul {
-  display: flex;
-  gap: 50px;
-  align-items: center;
-  list-style: none;
-}
-
-nav ul a {
-  color: #fff;
+.sidebar a {
+  display: block;
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
+  color: #fff;
+  transition: 0.3s;
 }
 
-.login-btn {
-  background: #fff;
-  color: #4b1c6b;
-  padding: 6px 16px;
-  width: 150px;
-  border-radius: 20px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
+.sidebar a:hover {
+  color: #f1f1f1;
 }
 
-nav a:hover {
-  transform: scale(1.1);
+/* ====== DASHBOARD GRID LAYOUT ====== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "chart sensor kpi"
+    "ideal ideal fases"
+    "qtd historico historico";
+  gap: 40px;
+  margin-left: 220px; /* space for sidebar */
+  padding: 20px;
 }
 
-.containerpai {
-  display: flex;
-  justify-content: space-between;
-}
+.qtdalertas       { grid-area: qtd; }
+.fasesrisco       { grid-area: fases; }
+.ideal-info       { grid-area: ideal; }
+.sensor-card      { grid-area: sensor; }
+.kpi              { grid-area: kpi; }
+.monitoring-Chart { grid-area: chart; }
+.historico        { grid-area: historico; }
 
-.container1 {
-  width: 50%;
-  margin-left: 10px;
-
-}
-
-  h2 {
-    color: black;
-  }
-.container2 {
-  width: 49%;
-  margin-top: 57px;
-}
-
+/* ====== SENSOR CARD ====== */
 .sensor-card {
-  border: 3px solid green;
-  background-color: #d5edc2;
-  width: 700px;
-  height: 157px;
-  margin: 30px;
+  border: 3px solid gray;
+  background-color: gray;
+  border-radius: 10px;
   color: #111;
+  padding: 8px 16px;
+  padding-top: 45px;
+  justify-content: center;
 }
 
 .header {
-  padding: 8px 16px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .legend {
   display: flex;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .legend .item {
@@ -101,92 +95,67 @@ nav a:hover {
   height: 20px;
   border-radius: 50%;
 }
-
 .dot.ideal { background-color: #2db100; }
 .dot.moderado { background-color: #b0b523; }
 .dot.critico { background-color: #b42929; }
 
-h3 {
-  text-align: center;
-  font-weight: 700;
-  margin: 0;
-}
-
 .values {
   display: flex;
+  border-top: 3px solid gray;
   height: 80px;
-  border-top: 3px solid green;
 }
 
-.temp, .umi {
+.temp,
+.umi {
   flex: 1;
-  text-align: center;
-  font-weight: 600;
-  font-size: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: #111;
 }
 
 .temp { background-color: #3db83d; }
 .umi { background-color: #a6a923; }
 
 .metricas {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
 }
 
-.cards {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: transparent;
-  width: 700px;
-  margin: 30px;
-  gap: 20px;
-}
-
+/* ====== KPI CARD ====== */
 .kpi {
-  border: 3px solid green;
-  background-color: #d5edc2;
-  color: black;
-  width: 800px;
+  border: 3px solid #9d9d9d;
+  background-color: #9d9d9d;
+  color: #111;
+  border-radius: 10px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
-  height: 150px;
+  width: 300px;
 }
 
 .kpi-header {
   text-align: center;
   font-weight: 800;
-  color: #111;
-}
-
-.kpi-header .icons {
-  display: flex;
-  justify-content: space-around;
-  font-weight: 600;
-  margin-top: 5px;
 }
 
 .kpi-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-weight: 900;
-  color: #111;
-  margin-bottom: 2px;
+  justify-content: space-between;
+  font-weight: 700;
 }
 
+/* ====== HISTÓRICO ====== */
 .historico {
-  margin: 0 30px;
-  border: 3px solid green;
-  background-color: #d5edc2;
-    font-family: Arial, sans-serif;
-  color: black;
-  width: 700px;
+  border: 3px solid gray;
+  background-color: gray;
+  color: #111;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -195,7 +164,7 @@ h3 {
   font-weight: 800;
   text-align: center;
   padding: 10px;
-  border-bottom: 3px solid green;
+  border-bottom: 3px solid black;
 }
 
 .historico-row {
@@ -203,11 +172,10 @@ h3 {
   grid-template-columns: 1fr 2fr 1fr 1fr;
   padding: 8px;
   font-weight: 600;
-  color: #111;
 }
 
 .historico-row.title {
-  background-color: #c2e2a7;
+  background-color: #a5a5a5;
   font-weight: 700;
 }
 
@@ -223,16 +191,83 @@ h3 {
   cursor: pointer;
 }
 
-.charts {
+/* ====== FASES DE RISCO ====== */
+.fasesrisco {
+  border: 3px solid #9d9d9d;
+  background-color: #9d9d9d;
+  border-radius: 10px;
+  color: #000;
+  padding: 10px;
+  width: 250px;
+}
+
+.fasesrisco h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.fases {
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 10px;
 }
 
+.qtdalertas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: #6e6e6e;
+  color: #000;
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* ====== IDEAL INFO ====== */
+.ideal-info {
+  border: 3px solid #9d9d9d;
+  background-color: #9d9d9d;
+  color: #000;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.ideal-info h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.fases2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  font-weight: 700;
+  padding: 10px;
+}
+
+.fases2 div {
+  text-align: center;
+}
+
+/* ====== CHART ====== */
 canvas {
-  margin: 0 10px;
-  background-color: white;
-  border: 3px solid green;
+  background-color: #fff;
+  border: 3px solid #000;
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
 }
-
-

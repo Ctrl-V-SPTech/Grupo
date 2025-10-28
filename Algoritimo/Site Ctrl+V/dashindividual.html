@@ -1,144 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=0.8" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="dashindividual.css" />
-  <link rel="icon" href="../public/assets/icon/Logo.png" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <a href="index.html"><img src="imagens_uvas/1.png" class="logo-header" /></a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashindividual.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+   
+    <div id="sidebar" class="sidebar">
+      <a href="dashboardsestufa.html">Dashboard Geral</a>
+      <a href="dashboards.html">Dashboard Geral</a>
+      <a href="dashindividual.html">Dashboard detalhada</a>
     </div>
-    <nav>
-      <ul>
-        <a href="" id="Login">willywonka</a>
-      </ul>
-    </nav>
-  </header>
 
-  <div class="containerpai">
-    <div class="container1">
-      <h2>Sensor X - Estufa Y</h2>
-
-      <div class="sensor-card">
-        <div class="header">
-          <div class="legend">
-            <div class="item"><span class="dot ideal"></span> Ideal</div>
-            <div class="item"><span class="dot moderado"></span> Moderado</div>
-            <div class="item"><span class="dot critico"></span> Crítico</div>
+    <div id="main">
+     <h1>Dashboard</h1>
+     <h1>Sensor 19 - Zona Oeste </h1>
+      <div class="dashboard-grid">
+      
+        <div class="fasesrisco">
+          <h2>Período Atual</h2>
+          <div class="fases">
+            Floração
           </div>
-          <h3>Temperatura e umidade em tempo real:</h3>
         </div>
 
-        <div class="values">
-        <div class="temp"><img class="metricas" src="./imagens_uvas/temperature.png" alt="">24°C</div>
-        <div class="umi"> <img class="metricas" src="./imagens_uvas/humidity.png" alt="">65%</div>
+        <div class="ideal-info">
+          <h2>Temp./Umi. ideal para cultivo da Uva Thompson Seedless</h2>
+          <br />
+          <div class="fases2">
+            <div><b>Dormência</b><br />5°C - 15°C<br />50-70%</div>
+            <div><b>Brotação</b><br />15°C - 25°C<br />60-80%</div>
+            <div><b>Floração</b><br />18°C - 25°C<br />50-70%</div>
+            <div><b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%</div>
+            <div><b>Maturação</b><br />20°C - 30°C<br />40-60%</div>
+            <div><b>Colheita</b><br />10°C - 20°C<br />80-90%</div>
+          </div>
         </div>
-      </div>
 
-      <div class="monitoring-Chart">
-        <canvas id="monitoringChart" width="350" height="400"></canvas>
-      </div>
-    </div>
+        <div class="sensor-card">
+          <div class="header">
+            <div class="legend">
+              <div class="item"><span class="dot ideal"></span> Ideal</div>
+              <div class="item"><span class="dot moderado"></span> Moderado</div>
+              <div class="item"><span class="dot critico"></span> Crítico</div>
+            </div>
+            <h3>Temperatura e umidade em tempo real:</h3>
+          </div>
 
-    <div class="container2">
-      <div class="cards">
+          <div class="values">
+            <div class="temp">
+              <img class="metricas" src="./imagens_uvas/temperature.png" alt="" />24°C
+            </div>
+            <div class="umi">
+              <img class="metricas" src="./imagens_uvas/humidity.png" alt="" />65%
+            </div>
+          </div>
+        </div>
 
         <div class="kpi">
           <div class="kpi-header"><span>Média (últimas 24h)</span></div>
-          <div class="kpi-row"><span> <img class="metricas" src="./imagens_uvas/temperature.png" alt="">Temp</span></div>
-          <div class="kpi-row"><span><img class="metricas" src="./imagens_uvas/humidity.png" alt="">Umi</span></div>
+          <div class="kpi-row">
+            <span>
+              <img class="metricas" src="./imagens_uvas/temperature.png" alt="" />Temp
+            </span>
+          </div>
+          <div class="kpi-row">
+            <span>
+              <img class="metricas" src="./imagens_uvas/humidity.png" alt="" />Umi
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div class="historico">
-        <div class="historico-header">Histórico de alertas</div>
-        <div class="historico-row title">
-          <span>Data e Hora</span>
-          <span>Mensagem</span>
-          <span>Status</span>
-          <span>Tempo em alerta</span>
+        <div class="monitoring-Chart">
+          <canvas id="monitoringChart" width="500" height="400"></canvas>
         </div>
-        <div class="historico-row dados">
-          <span>17/10/25 16:42</span>
-          <span>Temperatura acima do ideal (31°C)</span>
-          <span>Crítico</span>
-          <span>1h15min</span>
+
+        <div class="qtdalertas">
+          <div class="qtdalertas-header">Quantidade de alertas (últimos 7 dias)</div> <br>
+          <span>Total:15</span> <br>
+          <span>Moderado: 8</span> <br>
+          <span>Crítico 7</span> <br>
         </div>
-         <div class="historico-row dados">
-          <span>17/10/25 16:42</span>
-          <span>Temperatura acima do ideal (31°C)</span>
-          <span>Crítico</span>
-          <span>1h15min</span>
+
+        <div class="historico">
+          <div class="historico-header">Histórico de alertas</div>
+          <div class="historico-row title">
+            <span>Data e Hora</span>
+            <span>Mensagem</span>
+            <span>Status</span>
+            <span>Tempo em alerta</span>
+          </div>
+
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Temperatura acima do ideal (31°C)</span>
+            <span>Crítico</span>
+            <span>1h15min</span>
+          </div>
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Temperatura acima do ideal (31°C)</span>
+            <span>Crítico</span>
+            <span>1h15min</span>
+          </div>
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Temperatura acima do ideal (31°C)</span>
+            <span>Crítico</span>
+            <span>1h15min</span>
+          </div>
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Temperatura acima do ideal (31°C)</span>
+            <span>Crítico</span>
+            <span>1h15min</span>
+          </div>
+
+          <div class="historico-footer">Ver todos</div>
         </div>
-         <div class="historico-row dados">
-          <span>17/10/25 16:42</span>
-          <span>Temperatura acima do ideal (31°C)</span>
-          <span>Crítico</span>
-          <span>1h15min</span>
-        </div>
-         <div class="historico-row dados">
-          <span>17/10/25 16:42</span>
-          <span>Temperatura acima do ideal (31°C)</span>
-          <span>Crítico</span>
-          <span>1h15min</span>
-        </div>
-        
-        <div class="historico-footer">Ver todos</div>
       </div>
     </div>
-  </div>
 
-  <script>
-    const ctx = document.getElementById("monitoringChart")
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00'],
-        datasets: [
-          {
-            label: 'Temperatura',
-            data: [30, 29, 28, 25, 22, 23],
-            borderWidth: 1,
-            borderColor: 'purple',
-            backgroundColor: 'purple'
-          },
-          {
-            label: 'Umidade',
-            data: [80, 82, 80, 85, 80, 83],
-            borderWidth: 1,
-            borderColor: '#6da55f',
-            backgroundColor: '#6da55f'
-          }
-        ]
-      },
-      options: {
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+    <script>
+      const ctx = document.getElementById("monitoringChart");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00"],
+          datasets: [
+            {
+              label: "Temperatura",
+              data: [30, 29, 28, 25, 22, 23],
+              borderWidth: 1,
+              borderColor: "purple",
+              backgroundColor: "purple",
+            },
+            {
+              label: "Umidade",
+              data: [80, 82, 80, 85, 80, 83],
+              borderWidth: 1,
+              borderColor: "#6da55f",
+              backgroundColor: "#6da55f",
+            },
+          ],
         },
-        plugins: {
-          title: {
-            display: true,
-            text: ["SENSOR X - ESTUFA Y"],
-            font: { size: 18 },
-            color: "black"
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true },
           },
-          legend: {
-            labels: { color: "black" }
-          }
-        }
-      }
-    });
-  </script>
-</body>
+          plugins: {
+            title: {
+              display: true,
+              text: ["SENSOR X - ESTUFA Y"],
+              font: { size: 18 },
+              color: "black",
+            },
+            legend: { labels: { color: "black" } },
+          },
+        },
+      });
+    </script>
+  </body>
 </html>
-
-
-
