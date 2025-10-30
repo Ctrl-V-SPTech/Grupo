@@ -18,7 +18,7 @@ margin-left: 300px;
   width: 260px;
   position: fixed;
   top: 0;
-  background-color: #4b1c6b;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
@@ -46,9 +46,11 @@ margin-left: 300px;
     "chart sensor kpi"
     "ideal ideal fases"
     "qtd historico historico";
-  gap: 30px;
+  gap: 15px;
+  padding: 5px;
   margin-left: 280px; 
-  padding: 20px;
+  transform: scale(0.85);
+  height: 280px;
 }
 
 .qtdalertas       { grid-area: qtd; }
@@ -61,19 +63,16 @@ margin-left: 300px;
 
 /* ====== SENSOR ====== */
 .sensor-card {
-  border: 3px solid rgb(0, 0, 0);
   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   color: #ffffff;
-  border-radius: 10px;
+  border: 3px solid #000;
+  border-radius: 8px;
   padding: 8px 16px;
   padding-top: 45px;
   justify-content: center;
+  text-align: center;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 10px;
-}
 
 .legend {
   display: flex;
@@ -125,15 +124,15 @@ margin-left: 300px;
 
 /* ====== MÉDIA 24H ====== */
 .kpi {
-  border: 3px solid #9d9d9d;
    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   color: #ffffff;
-  border-radius: 10px;
+ border: 3px solid #000;
+  border-radius: 8px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 300px;
+  width: 250px;
 }
 
 .kpi-header {
@@ -150,12 +149,13 @@ margin-left: 300px;
 
 /* ====== HISTÓRICO ====== */
 .historico {
-  border: 3px solid gray;
   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   color: #000000;
-  border-radius: 10px;
+  border: 3px solid #000;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
+  width: 720px;
 }
 
 .historico-header {
@@ -192,10 +192,10 @@ margin-left: 300px;
 
 /* ====== FASES DE RISCO ====== */
 .fasesrisco {
-  border: 3px solid #9d9d9d;
    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   color: #ffffff;
-  border-radius: 10px;
+  border: 3px solid #000;
+  border-radius: 8px;
   padding: 10px;
   width: 250px;
 }
@@ -228,15 +228,15 @@ margin-left: 300px;
 
 /* ====== IDEAL INFO ====== */
 .ideal-info {
-  border: 3px solid #9d9d9d;
    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   color: #ffffff;
-  border-radius: 10px;
+  border: 3px solid #000;
+  border-radius: 8px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 800px;
+  width: 855px;
 }
 
 .ideal-info h2 {
@@ -251,6 +251,7 @@ margin-left: 300px;
   align-items: center;
   background-color: #fff;
   color: #000;
+  border: 3px solid #000;
   border-radius: 8px;
   font-weight: 700;
   padding: 10px;
@@ -265,6 +266,6 @@ canvas {
   background-color: #fff;
   border: 3px solid #000;
   border-radius: 8px;
-  width: 100%;
-  height: auto;
+  width: 600px;
+  height: 400px;
 }

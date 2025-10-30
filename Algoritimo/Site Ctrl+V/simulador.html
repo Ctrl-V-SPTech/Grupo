@@ -18,7 +18,6 @@
       <nav>
         <ul>
           <a href="cadastro.html" id="ContatoH">Quero ser cliente</a>
-          <a href="dashboards.html" id="DashboardsH">Dashboards</a>
           <a href="simulador.html" id="SimuladorFinanceiroH"
             >Simulador Financeiro</a
           >
@@ -34,15 +33,10 @@
             <label for="input_estufa">Tamanho da estufa (m<sup>2</sup>)</label> <br />
             <input type="text" id="input_estufa" placeholder="ex: 1000" /> <br />
             <br />
-            <label for="select_produtividade"
-              >Qual a sua produção por m<sup>2</sup></label
-            >
+            <label for="input_produtividade">
+              Produção total em kg </label>
             <br />
-            <select id="select_produtividade">
-              <option value="1.5">Baixa (1.5kg)</option>
-              <option value="2.0">Padrão (2.0kg)</option>
-              <option value="3.0">Alta (3.0kg)</option>
-            </select>
+            <input id="input_produtividade">
             <br />
             <br />
             <label for="select_poda">Mês que deseja realizar a colheita</label>
@@ -65,7 +59,7 @@
             <label for="select_simulacao">Escolha o cenário da simulação</label>
             <br />
             <select id="select_simulacao">
-              <option>Conservador</option>
+              <option>Com monitoramento</option>
               <option>Normal</option>
               <option>Pessimista</option>
             </select>
@@ -87,15 +81,15 @@
 <script>
   function calcular() {
     var estufa = Number(input_estufa.value);
-    var produtividade = Number(select_produtividade.value);
+    var quantidadeuva = Number(input_produtividade.value);
     var mes = select_poda.value;
     var cenario = select_simulacao.value;
-    var quantidadeuva = estufa * produtividade;
     var porcentagemperda = 0;
     var valornacional = 0;
     var valorexportacao = 0;
+    var mensagemvenda = 0;
 
-    if (cenario == "Conservador") {
+    if (cenario == "Com monitoramento") {
       porcentagemperda = 0.1;
     } else if (cenario == "Normal") {
       porcentagemperda = 0.2;
@@ -147,7 +141,7 @@
       porcentagemlucro =
         ((valornacional - valorexportacao) / valorexportacao) * 100;
 
-      div_resultado.innerHTML = `<p> No mês de ${mes} é mais lucrativo vender nacional, porque a uva é mais cara nacionalmente </p>
+      mensagemvenda = `<p> No mês de ${mes} é mais lucrativo vender nacional, porque a uva é mais cara nacionalmente </p>
        <p> Valor nacional: R$ ${valornacional} </p>
        <p> Valor exportação: R$ ${valorexportacao} </p> 
        <p> Porcentagem de lucro: ${porcentagemlucro.toFixed(2)}% </p>`;
@@ -156,7 +150,7 @@
       porcentagemlucro =
         ((valorexportacao - valornacional) / valornacional) * 100;
 
-      div_resultado.innerHTML = `<p> No mês de ${mes} é mais lucrativo exportar, porque a uva é mais cara internacionalmente </p>
+      mensagemvenda = `<p> No mês de ${mes} é mais lucrativo exportar, porque a uva é mais cara internacionalmente </p>
        <p> Valor nacional: R$ ${valornacional} </p> 
        <p> Valor exportação: R$ ${valorexportacao} </p>
        <p> Porcentagem de lucro: ${porcentagemlucro.toFixed(2)}% </p> `;
@@ -168,7 +162,7 @@
     var valorperdido = valortotal * porcentagemperda;
     var valorliquido = valortotal - valorperdido;
 
-    div_resultado.innerHTML += `
+    div_resultado.innerHTML = `
             <hr>
             <h3>Resultados:</h3>
             <p>Produto Total: <b>${quantidadeuva.toFixed(2)}</b> kg</p>
@@ -184,7 +178,7 @@
               2
             )}</b></p>
             <hr>
-        `;
+        ` + mensagemvenda;
   }
 
   const ctx = document.getElementById("myChart");

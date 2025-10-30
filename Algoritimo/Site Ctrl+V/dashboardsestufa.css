@@ -14,7 +14,7 @@ body {
   width: 260px;
   position: fixed;
   top: 0;
-  background-color: #4b1c6b;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
