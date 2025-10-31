@@ -6,6 +6,7 @@
   <title>Dashboard Estufa</title>
   <link rel="stylesheet" href="dashboardsestufa.css" />
   <link rel="icon" href="../public/assets/icon/Logo.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div id="sidebar" class="sidebar">
@@ -24,15 +25,15 @@
         <br/>
         <div class="statusVerde">
         <div class = "identificacaoStatusVerde"></div>
-        <div><b>Dentro dos Parâmetros</b></div>
+        <div><b>Ideal</b></div>
         </div>
         <div class="statusAmarelo">
         <div class = "identificacaoStatusAmarelo"></div>
-        <div><b>Desvio dos Parâmetros</b></div>
+        <div><b>Moderado</b></div>
         </div>
         <div class="statusVermelho">
         <div class = "identificacaoStatusVermelho"></div>
-        <div><b>Fora dos Parâmetros</b></div>
+        <div><b>Crítico</b></div>
         </div>
       </div>
     </div>
@@ -112,6 +113,140 @@
     </div>
   </div>
 
+  <!--Gráficos Temperatura e Umidade-->
+  <div class="container4">
+      <canvas class = "grafico_umidade" id="myChart"></canvas>
+      <canvas class="grafico_temperatura" id="myChartline"></canvas>
+  </div>
+
+  <!--Histórico de Alertas-->
+  <div class="container5">
+    
+    <div class="grafico">
+      <canvas class = "grafico_alertas" id="myChartdought"></canvas>
+    </div>
+    
+    <div class="historico">
+          <div class="historico-header">Histórico de alertas</div>
+          <div class="historico-row title">
+            <span>Data e Hora</span>
+            <span>Sensor</span>
+            <span>Status</span>
+            <span>Tempo em alerta</span>
+          </div>
+          
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Sensor 8</span>
+            <span>Moderado</span>
+            <span>1h15min</span>
+          </div>
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Sensor 11</span>
+            <span>Moderado</span>
+            <span>1h15min</span>
+          </div>
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Sensor 12</span>
+            <span>Moderado</span>
+            <span>1h15min</span>
+          </div>
+          <div class="historico-row dados">
+            <span>17/10/25 16:42</span>
+            <span>Sensor 14</span>
+            <span>Crítico</span>
+            <span>1h15min</span>
+          </div>
+    </div>
+
+  </div>
 
 </body>
 </html>
+
+<script>
+  const ctx = document.getElementById('myChart');
+  const ctxLine = document.getElementById('myChartline');
+  const ctxDought = document.getElementById('myChartdought');
+  
+  new Chart(ctxLine, {
+   type: 'bar',
+     data: {
+      labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14'],
+      datasets: [{
+        label: 'Umidade atual dos Sensores (S = Sensores)',
+        data: [50, 50, 51, 53, 56, 57, 58, 60, 61, 62, 64, 64, 65, 70],
+        borderWidth: 1,
+        borderColor: '#bddeaf',
+        backgroundColor: '#dbf2d1',
+      }
+    ]
+    },
+    options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true },
+          },
+    }
+  });
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14'],
+      datasets: [{
+        label: 'Temperatura atual dos Sensores (S = Sensores)',
+        data: [16, 16, 16, 17, 17, 17, 17, 16,17, 18, 19, 20, 19, 23],
+        borderWidth: 1,
+        borderColor: '#bddeaf',
+        backgroundColor: '#dbf2d1',
+      }
+    ]
+    },
+    options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true },
+          },
+    }
+  });
+
+  const DATA_COUNT = 5;
+  const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
+  new Chart(ctxDought, {
+    type: 'doughnut',
+    data: {
+  labels: [
+    'Zona Leste',
+    'Zona Central',
+    'Zona Oeste'
+  ],
+  datasets: [{
+    label: 'Quantidade de Alertas',
+    data: [10, 30, 100],
+    backgroundColor: [
+      '#bddeaf',
+      '#dbf2d1',
+      'rgb(248, 248, 248)'
+    ],
+    hoverOffset: 4
+  }]
+  },
+    options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Histórico de Alertas dos Sensores'
+      }
+    }
+  },
+});
+
+</script>
