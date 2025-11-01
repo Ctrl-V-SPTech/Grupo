@@ -29,7 +29,7 @@
         </div>
 
         <div class="ideal-info">
-          <h2>Temp./Umi. ideal para cultivo da Uva Thompson Seedless</h2>
+          <h2>Métricas ideais por fase do cultivo</h2>
           <div class="fases2">
             <div><b>Dormência</b><br />5°C - 15°C<br />50-70%</div>
             <div><b>Brotação</b><br />15°C - 25°C<br />60-80%</div>
@@ -60,29 +60,19 @@
           </div>
         </div>
 
-        <div class="kpi">
-          <div class="kpi-header"><span>Média (últimas 24h)</span></div>
-          <div class="kpi-row">
-            <span>
-              <img class="metricas" src="./imagens_uvas/temperature.png" alt="" />Temp
-            </span>
-          </div>
-          <div class="kpi-row">
-            <span>
-              <img class="metricas" src="./imagens_uvas/humidity.png" alt="" />Umi
-            </span>
-          </div>
-        </div>
-
         <div class="monitoring-Chart">
           <canvas id="monitoringChart" ></canvas>
         </div>
 
+        <div class="monitoring-Chart2">
+          <canvas id="monitoringChart2" ></canvas>
+        </div>
+
         <div class="qtdalertas">
-          <div class="qtdalertas-header">Quantidade de alertas (últimos 7 dias)</div> <br>
-          <span>Moderado: 8</span> <br>
-          <span>Crítico 7</span> <br>
-          <span>Total:15</span> <br>
+          <div class="qtdalertas-header">Quantidade e tempo alerta (últimos 7 dias)</div> 
+          <span class="qtdmoderado">Moderado: 8 <br> 3h36min</span> 
+          <span class="qtdcritico">Crítico 7 <br> 4h20min</span> 
+          <span class="qtdtotal">Total:15 <br> 7h56min</span> 
         </div>
 
         <div class="historico">
@@ -121,6 +111,7 @@
 
     <script>
       const ctx = document.getElementById("monitoringChart");
+      const ctx2 = document.getElementById("monitoringChart2");
       new Chart(ctx, {
         type: "line",
         data: {
@@ -133,12 +124,36 @@
               borderColor: "purple",
               backgroundColor: "purple",
             },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true },
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: ["Temperatura (C°)"],
+              font: { size: 18 },
+              color: "black",
+            },
+            legend: { labels: { color: "black" } },
+          },
+        },
+      });
+
+       new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00"],
+          datasets: [
             {
               label: "Umidade",
               data: [80, 82, 80, 85, 80, 83],
               borderWidth: 1,
-              borderColor: "#6da55f",
-              backgroundColor: "#6da55f",
+              borderColor: "blue",
+              backgroundColor: "blue",
             },
           ],
         },
@@ -150,7 +165,7 @@
           plugins: {
             title: {
               display: true,
-              text: ["SENSOR X - ESTUFA Y"],
+              text: ["Umidade (%)"],
               font: { size: 18 },
               color: "black",
             },

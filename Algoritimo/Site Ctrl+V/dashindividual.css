@@ -43,14 +43,14 @@ margin-left: 300px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-    "chart sensor kpi"
     "ideal ideal fases"
+    "chart chart2 sensor"
     "qtd historico historico";
   gap: 15px;
   padding: 5px;
   margin-left: 280px; 
   transform: scale(0.85);
-  height: 280px;
+  height: 300px;
 }
 
 .qtdalertas       { grid-area: qtd; }
@@ -59,6 +59,7 @@ margin-left: 300px;
 .sensor-card      { grid-area: sensor; }
 .kpi              { grid-area: kpi; }
 .monitoring-Chart { grid-area: chart; }
+.monitoring-Chart2 { grid-area: chart2; }
 .historico        { grid-area: historico; }
 
 /* ====== SENSOR ====== */
@@ -71,6 +72,7 @@ margin-left: 300px;
   padding-top: 45px;
   justify-content: center;
   text-align: center;
+  width: 340px;
 }
 
 
@@ -155,7 +157,7 @@ margin-left: 300px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  width: 720px;
+  width: 820px;
 }
 
 .historico-header {
@@ -197,7 +199,7 @@ margin-left: 300px;
   border: 3px solid #000;
   border-radius: 8px;
   padding: 10px;
-  width: 250px;
+  width: 350px;
 }
 
 .fasesrisco h2 {
@@ -217,13 +219,48 @@ margin-left: 300px;
 
 .qtdalertas {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
-  color: #ffffff;
   border-radius: 8px;
-  padding: 10px;
+  font-size: 20px;
+}
+
+.qtdalertas-header {
+   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+}
+
+.qtdmoderado {
+background-color: yellow;
+color: #000;
+text-align: center;
+width: 100%;
+border-radius: 8px;
+height: 100%;
+}
+
+.qtdcritico {
+background-color: red;
+color: #000;
+text-align: center;
+width: 100%;
+border-radius: 8px;
+height: 100%;
+}
+
+.qtdtotal {
+background-color: rgb(255, 255, 255);
+color: #ffffff;
+text-align: center;
+width: 100%;
+border-radius: 8px;
+height: 100%;
+background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
 }
 
 /* ====== IDEAL INFO ====== */
