@@ -1,0 +1,212 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: white;
+
+}
+
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+  height: 100%;
+  width: 260px;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+/* INICIO DA DASH */
+
+.containerpai {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    color: black;
+    transform: scale(0.75);
+    transform-origin: right;
+    gap: 30px;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.estufas{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.estufas .primeiraLinha,
+.estufas .segundaLinha{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.estufas .estufa1,
+.estufas .estufa2,
+.estufas .estufa3,
+.estufas .estufa4,
+.estufas .estufa5,
+.estufas .estufa6{
+  width: 450px;
+  height: 300px;
+  background-color:#3e1f69;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  text-decoration: none;
+}
+
+.estufas .tituloEstufa{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  padding: 0px 0px 0px 55px;
+}
+
+.estufas .tituloEstufa .img-estufa{
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+.estufas .metricasEstufa{
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.estufas .metricasEstufa .img-sensores,
+.estufas .metricasEstufa .img-alertas{
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.estufas .qtdSensores,
+.estufas .qtdAlertas{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background-color: white;
+  border-radius: 5px;
+  width: 180px;
+  height: 180px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.estufas .tituloSensores,
+.estufas .tituloAlertas{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  size: 25px;
+}
+
+.estufas .numeroSensores,
+.estufas .numeroAlertas{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  size: 25px;
+  background-color:#653fb1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+}
+
+.historico {
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  color: #000000;
+  border: 3px solid #000;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  height: 280px;
+  margin-left: 30px;
+}
+
+.historico-header {
+
+  text-align: center;
+  color: white;
+  padding: 10px;
+  border-bottom: 3px solid black;
+}
+
+.historico-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  padding: 8px;
+  font-weight: 600;
+  font-size: small;
+}
+
+.historico-row.title {
+  background-color: #a5a5a5;
+  font-weight: 700;
+}
+
+.historico-row.dados {
+  background-color: #fff;
+}
+
+.historico-footer {
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+
+#um:hover,
+#dois:hover,
+#tres:hover,
+#quatro:hover,
+#cinco:hover,
+#seis:hover {
+     outline: 2px solid #653fb1;
+}
+
+
