@@ -1,24 +1,21 @@
 CREATE DATABASE CtrlV;
 
-drop database CtrlV;
-
 USE CtrlV;
 
 CREATE TABLE Endereco (
 idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-logradouro VARCHAR(45),
-numero INT,
-bairro VARCHAR(20),
-cidade VARCHAR (25),
-estado CHAR(2),
-cep CHAR(9),
-complemento VARCHAR(20)
+logradouro varchar(45) NOT NULL,
+numero int NOT NULL,
+bairro varchar(20) NOT NULL,
+cidade varchar(20) NOT NULL,
+estado char(2) NOT NULL,
+cep char(9) NOT NULL
 );
 
 CREATE TABLE Empresa (
 idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
 nomeEmpresa VARCHAR(45),
-cnpj CHAR(18),
+cnpj CHAR(18) NOT NULL,
 fkEndereco INT,
 	CONSTRAINT fkEnderecoEmpresa
 		FOREIGN KEY (fkEndereco)
@@ -28,7 +25,7 @@ fkEndereco INT,
 CREATE TABLE Usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 nomeUsuario VARCHAR(30),
-email VARCHAR(45),
+email VARCHAR(45) NOT NULL,
 fkEmpresa INT,
 	CONSTRAINT fkResponsavelEmpresa
 		FOREIGN KEY (fkEmpresa)
@@ -41,7 +38,7 @@ fkUsuarioResponsavel INT,
 
 CREATE TABLE Estufa (
 idEstufa INT PRIMARY KEY AUTO_INCREMENT,
-nomeEstufa VARCHAR(30),
+nomeEstufa VARCHAR(30) NOT NULL,
 fkEstufaEmpresa INT,
 	CONSTRAINT fkEmpresaEstufa
 		FOREIGN KEY (fkEstufaEmpresa)
@@ -51,7 +48,7 @@ fkEstufaEmpresa INT,
 CREATE TABLE Sensor (
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
 nomeSensor VARCHAR(20),
-localizacaoSensor VARCHAR(25),
+localizacaoSensor VARCHAR(25) NOT NULL,
 	CONSTRAINT chklocalizacaoSensor
 		CHECK(localizacaoSensor IN ('Zona Leste', 'Zona Oeste', 'Zona Central')),
 fkEstufa INT,
@@ -64,7 +61,7 @@ CREATE TABLE Medida (
 idMedida INT AUTO_INCREMENT,
 medidaTemp DECIMAL (4,2),
 medidaUmid FLOAT,
-dataHora DATETIME,
+dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
 fkSensor INT,
 	CONSTRAINT fkMedidaSensor
 		FOREIGN KEY (fkSensor)
@@ -72,14 +69,12 @@ fkSensor INT,
 	PRIMARY KEY (idMedida, fkSensor)
 );
     
-INSERT Endereco (logradouro, numero, bairro, cidade, estado, cep, complemento) VALUES
-	('Rua Haddock Lobo', 2000, 'Cerqueira César', 'São Paulo', 'SP', '01414-010', NULL),
-    ('Unnamed Road', 52, 'Vila Arara-Azul', 'Petrolina', 'PE', '56300-992', 'Prédio Azul'),
-    ('Rua Alto aguas Verdes', 298, 'Águas verdes', 'Rio do Oeste', 'SC', '89180-000', NULL),
-    ('Av. Dr. Gastão Vidigal', 1597, 'Vila Leopoldina','São Paulo', 'SP', '05314-010', 'Espaço 02');
-    
-    select * from endereco;
-    
+INSERT Endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES
+	('Rua Haddock Lobo', 2000, 'Cerqueira César', 'São Paulo', 'SP', '01414-010'),
+    ('Unnamed Road', 52, 'Vila Arara-Azul', 'Petrolina', 'PE', '56300-992'),
+    ('Rua Alto aguas Verdes', 298, 'Águas verdes', 'Rio do Oeste', 'SC', '89180-000'),
+    ('Av. Dr. Gastão Vidigal', 1597, 'Vila Leopoldina','São Paulo', 'SP', '05314-010');
+        
 INSERT INTO Empresa (nomeEmpresa, cnpj, fkEndereco) VALUES
 	('Fabiano Uvas', '12.345.678/0001-90', 1),
 	('Cappellaro Fruits', '18.519.610/0001-61', 2),
@@ -108,12 +103,6 @@ INSERT INTO Sensor (localizacaoSensor, fkEstufa) VALUES
 	('Zona Central', 3),
 	('Zona Oeste', 4);
     
-INSERT INTO Medida (medidaTemp, medidaUmid, fkSensor) VALUES 
-	('16.00', '0.60', 1),
-	('25.00', '0.70', 2),
-	('5.00', '0.94', 3),
-	('34.00', '0.50', 4);
-    
 SELECT 
     e.nomeEmpresa AS 'Nome da Empresa',
     u.nomeUsuario AS 'Usuários da Empresa',
@@ -132,14 +121,14 @@ SELECT
         ELSE 'Dentro da Faixa Normal'
     END AS 'Status da Medida'
 FROM Empresa e
-JOIN Usuario r 
-    ON r.fkUsuarioResponsavel = u.idUsuario
-LEFT JOIN Usuario u
-	ON u.fkUsuarioResponsavel = u.idUsuario
+JOIN Usuario u 
+    ON u.fkEmpresa = e.idEmpresa
+LEFT JOIN Usuario r 
+    ON r.fkEmpresa = e.idEmpresa 
+   AND r.fkUsuarioResponsavel IS NULL
 JOIN Estufa es 
     ON es.fkEstufaEmpresa = e.idEmpresa
 JOIN Sensor s 
     ON s.fkEstufa = es.idEstufa
 JOIN Medida m 
     ON m.fkSensor = s.idSensor;
-    
