@@ -61,7 +61,7 @@ nav ul a {
   flex-wrap: wrap; 
   justify-content: center;
   column-gap: 180px;
-  background-image: url(./imagens_uvas/back.png);
+  background-image: url(../imagens_uvas/back.png);
   background-size: cover;
   height: 570px;
   padding-top: 40px;

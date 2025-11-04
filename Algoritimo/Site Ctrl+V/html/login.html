@@ -8,7 +8,7 @@
 
     <title>Ctrl+V | Login</title>
 
-    <link rel="stylesheet" href="styles/Login.css">
+    <link rel="stylesheet" href="../styles/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="icon" href="assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,7 +21,7 @@
 <header>
   <div class="logo">
     <a href="index.html">
-        <img src="imagens_uvas/1.png" class="logo-header" />
+        <img src="../imagens_uvas/1.png" class="logo-header" />
     </a>
   </div>
   <nav>
@@ -43,13 +43,13 @@
                 <!-- Campo de usuário -->
                 <div class="campo">
                     <label class="labelInput" for="user">Usuário</label>
-                    <input type="text" id="user" onfocus="userSome()" onblur="userVolta()">
+                    <input type="text" id="user" placeholder="Usuario" onfocus="userSome()" onblur="userVolta()">
                 </div>
 
                 <!-- Campo de senha -->
                 <div class="campo2">
                     <label class="labelInput" for="pass">Senha</label>
-                    <input type="password" id="pass" onfocus="senhaSome()" onblur="senhaVolta()">
+                    <input type="password" id="pass"  placeholder="Senha" onfocus="senhaSome()" onblur="senhaVolta()">
                 </div>
 
                 <!-- Texto auxiliar -->
@@ -91,7 +91,7 @@ function login(usuarioDigitado, senhaDigitada) {
         }
     }
     if (encontrado) {
-        window.location.href = "dashboardsestufa.html";
+        window.location.href = "dashboardgeral.html";
     } else {
         alert(`Usuario ou senha invalidos`)
         user.value = ""

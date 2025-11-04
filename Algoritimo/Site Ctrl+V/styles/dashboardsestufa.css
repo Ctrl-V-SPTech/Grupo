@@ -1,36 +1,44 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #fff;
-  background-color: white;
-
+/* ===== Reset e corpo ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ecebeb;
+    color: #fff;
 }
 
+/* ===== Header ===== */
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 40px;
+    background-color: #4b1c6b;
+}
 
-/* ====== SIDEBAR ====== */
+/* ===== Sidebar ===== */
 .sidebar {
-  height: 100%;
-  width: 260px;
-  position: fixed;
-  top: 0;
-  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
-  overflow-x: hidden;
-  padding-top: 60px;
-  transition: 0.5s;
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+    padding-top: 60px;
 }
 
 .sidebar a {
-  display: block;
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #fff;
-  transition: 0.3s;
+    display: block;
+    padding: 8px 8px 8px 32px;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+    color: #f1f1f1;
 }
 
 /* INICIO DA DASH */
