@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Usuário</title>
+    <link rel="stylesheet" href="styles/cadastrousuario.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  </head>
+  <body>
+   
+    <div id="sidebar" class="sidebar">
+      <a href="">Usuário</a><br><br><br>
+      <a href="dashboardsestufa.html">Dashboard Estufa</a>
+      <a href="dashindividual.html">Dashboard Sensor</a> <br><br><br><br>
+      <a href="index.html">Sair</a>
+    </div>
+
+<div id="main">
+  <div class="login">
+    <div class="container1">
+      <div class="card_card_login">
+        <h2 class="Login-titulo">Cadastrar Usuário</h2>
+        <div class="formulario">
+
+          <!-- Campo de usuário -->
+          <div class="campo">
+            <label class="labelInput" for="user_cadastro">Usuário</label>
+            <input type="text" id="user_cadastro"
+                   onfocus="userCadastroSome()" placeholder="Usuario" onblur="userCadastroVolta()">
+          </div>
+
+          <!-- Campo de senha -->
+          <div class="campo2">
+            <label class="labelInput" for="pass_cadastro">Senha</label>
+            <input type="password" id="pass_cadastro"
+                   onfocus="senhaCadastroSome()" placeholder="Senha" onblur="senhaCadastroVolta()" 
+                   oninput="validarSenha()">
+            <div id="textoValidacao"></div>
+          </div>
+
+          <!-- Botão de cadastro -->
+          <button onclick="cadastrarUsuario()" class="botao" id="entrar">Cadastrar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // === Variáveis globais de controle ===
+  var temMaiuscula = false;
+  var temMinuscula = false;
+  var temNumero = false;
+  var temSimbolo = false;
+  var tamanhoOk = false;
+
+  // === Efeitos visuais ===
+  function userCadastroSome() { 
+    iconeUsuario.style.display = "none"; 
+    user_cadastro.placeholder = ""; 
+  } 
+
+  function senhaCadastroSome() { 
+    iconeSenha.style.display = "none"; 
+    pass_cadastro.placeholder = ""; 
+  } 
+
+  function userCadastroVolta() { 
+    if (user_cadastro.value == "") {
+      iconeUsuario.style.display = "block"; 
+    }
+    user_cadastro.placeholder = "Usuário"; 
+  }
+
+  function senhaCadastroVolta() { 
+    if (pass_cadastro.value == "") {
+      iconeSenha.style.display = "block"; 
+    }
+    pass_cadastro.placeholder = "Senha"; 
+  }      
+
+  // === Validação dinâmica da senha ===
+  function validarSenha() {
+    var senhaCadastro = pass_cadastro.value;
+    var texto = "";
+    var faltando = [];
+
+    incluiMaiuscula(senhaCadastro);
+    incluiMinuscula(senhaCadastro);
+    incluiNumero(senhaCadastro);
+    incluiSimbolo(senhaCadastro);
+    tamanhoOk = senhaCadastro.length >= 8;
+
+    if (senhaCadastro == "") {
+      textoValidacao.textContent = "";
+    } else {
+      if (!tamanhoOk) faltando.push("mínimo 8 caracteres");
+      if (!temMaiuscula) faltando.push("uma letra maiúscula");
+      if (!temMinuscula) faltando.push("uma letra minúscula");
+      if (!temNumero) faltando.push("um número");
+      if (!temSimbolo) faltando.push("um símbolo");
+
+      if (faltando.length == 0) {
+        texto = "✅ Senha forte!";
+      } else {
+        texto = "Falta: " + faltando.join(", ");
+      }
+
+      textoValidacao.textContent = texto;
+    }
+  }
+
+  // === Funções auxiliares (sem return) ===
+  function incluiMaiuscula(senhaCadastro) {
+    var letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    temMaiuscula = false;
+    for (var i = 0; i < letras.length; i++) {
+      if (senhaCadastro.includes(letras[i])) {
+        temMaiuscula = true;
+      }
+    }
+  }
+
+  function incluiMinuscula(senhaCadastro) {
+    var letras = "abcdefghijklmnopqrstuvwxyz";
+    temMinuscula = false;
+    for (var i = 0; i < letras.length; i++) {
+      if (senhaCadastro.includes(letras[i])) {
+        temMinuscula = true;
+      }
+    }
+  }
+
+  function incluiNumero(senhaCadastro) {
+    var numeros = "0123456789";
+    temNumero = false;
+    for (var i = 0; i < numeros.length; i++) {
+      if (senhaCadastro.includes(numeros[i])) {
+        temNumero = true;
+      }
+    }
+  }
+
+  function incluiSimbolo(senhaCadastro) {
+    var simbolos = "!@#$%^&*()-_=+{}[]|:;,.<>?/";
+    temSimbolo = false;
+    for (var i = 0; i < simbolos.length; i++) {
+      if (senhaCadastro.includes(simbolos[i])) {
+        temSimbolo = true;
+      }
+    }
+  }
+
+  // === Cadastro de usuário (somente se senha for válida) ===
+  function cadastrarUsuario() {
+    var usuario = user_cadastro.value.trim();
+    var senha = pass_cadastro.value.trim();
+
+    validarSenha(); // atualiza os valores das variáveis globais
+
+    if (usuario == "" || senha == "") {
+      alert("Preencha todos os campos!");
+    } else if (temMaiuscula && temMinuscula && temNumero && temSimbolo && tamanhoOk) {
+      alert("✅ Usuário cadastrado com sucesso!");
+      user_cadastro.value = "";
+      pass_cadastro.value = "";
+      textoValidacao.textContent = "";
+      userCadastroVolta();
+      senhaCadastroVolta();
+    } else {
+      alert("❌ A senha ainda não atende todos os requisitos.");
+    }
+  }
+</script>
+</html>

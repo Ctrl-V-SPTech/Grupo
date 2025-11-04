@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="dashindividual.css" />
+    <link rel="stylesheet" href="styles/dashindividual.css" />
     <link rel="icon" href="../public/assets/icon/Logo.png" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -40,25 +40,30 @@
           </div>
         </div>
 
-        <div class="sensor-card">
-          <div class="header">
-            <div class="legend">
-              <div class="item"><span class="dot ideal"></span> Ideal</div>
-              <div class="item"><span class="dot moderado"></span> Moderado</div>
-              <div class="item"><span class="dot critico"></span> Crítico</div>
-            </div>
-            <h4>Temperatura e umidade em tempo real:</h4>
-          </div>
+<div class="sensor-card">
+  <div class="header">
+    <div class="legend">
+      <div class="item"><span class="dot ideal"></span> Ideal</div>
+      <div class="item"><span class="dot moderado" title="
+    O alerta moderado ativa numa margem de 1 a 3 graus de distancia da Temperatura ideal, 
+pra mais ou pra menos."></span> Moderado</div>
+      <div class="item"><span class="dot critico" title="
+    O alerta critico ativa a partir de 4 graus de distancia da Temperatura ideal, 
+pra mais ou pra menos."></span> Crítico</div>
+    </div>
+    <h4>Temperatura e umidade em tempo real:</h4>
+  </div>
 
-          <div class="values">
-            <div class="temp">
-              <img class="metricas" src="./imagens_uvas/temperature.png" alt="" />24°C
-            </div>
-            <div class="umi">
-              <img class="metricas" src="./imagens_uvas/humidity.png" alt="" />65%
-            </div>
-          </div>
-        </div>
+  <div class="values">
+    <div class="temp">
+      <img class="metricas" src="./imagens_uvas/temperature.png" alt="" />24°C
+    </div>
+    <div class="umi">
+      <img class="metricas" src="./imagens_uvas/humidity.png" alt="" />65%
+    </div>
+  </div>
+
+</div>
 
         <div class="monitoring-Chart">
           <canvas id="monitoringChart" ></canvas>

@@ -8,7 +8,7 @@
 
     <title>Ctrl+V | Login</title>
 
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="styles/Login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="icon" href="assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -34,69 +34,70 @@
 </header>
 
 
-    <div class="login">
-  
-        <div class="container">
-            <div class="card_card_login">
-                <h2 class="Login-titulo">Login</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <i class="fa-solid fa-user" id="iconeUsuario"></i>
-                        <input type="text" placeholder="Usuario" id="user" onfocus="userSome()" onblur="userVolta()" >
-                    </div>
-                    <div class="campo2">
-                        <i class="fa-solid fa-lock" id="iconeSenha"></i>
-                        <input id="pass" type="password" placeholder="Senha" onfocus="senhaSome()" onblur="senhaVolta()" >
-                    </div>
-                <h2 class="Esqueceu">Esqueceu a senha?</h2>
-                    <button onclick="entrar()" class="botao" id="entrar">Entrar</button>
-                <h2 class="Cadastro"><a href="cadastro.html">Não tem uma conta? Cadastre-se!</a></h2>
+<div class="login">
+    <div class="container1">
+        <div class="card_card_login">
+            <h2 class="Login-titulo">Login</h2>
+            <div class="formulario">
+                
+                <!-- Campo de usuário -->
+                <div class="campo">
+                    <label class="labelInput" for="user">Usuário</label>
+                    <input type="text" id="user" onfocus="userSome()" onblur="userVolta()">
                 </div>
+
+                <!-- Campo de senha -->
+                <div class="campo2">
+                    <label class="labelInput" for="pass">Senha</label>
+                    <input type="password" id="pass" onfocus="senhaSome()" onblur="senhaVolta()">
+                </div>
+
+                <!-- Texto auxiliar -->
+                <div class="textoAuxiliar">
+                    <h2 class="Esqueceu">Esqueceu a senha?</h2>
+                </div>
+
+                <!-- Botão de login -->
+                <button onclick="login()" class="botao" id="entrar">Entrar</button>
+
+                <!-- Link de cadastro -->
+                <h2 class="Cadastro">
+                    <a href="cadastro.html">Não tem uma conta? Cadastre-se!</a>
+                </h2>
+
             </div>
         </div>
     </div>
+</div>
+
 
 </body>
 
 </html>
 <script>
-    function userSome() { 
-        iconeUsuario.style.display = "none"; 
-        user.placeholder = ""; 
-    } 
+var usuarios = [
+    ["frizza", "Sap0fod@"],
+];
+
+function login(usuarioDigitado, senhaDigitada) {
+    var usuarioDigitado = user.value.trim();
+    var senhaDigitada = pass.value.trim();
     
-    function userVolta() { 
-        if (user.value == "") {
-        iconeUsuario.style.display = "block"; 
+    var encontrado = false;
+
+    for (var i = 0; i < usuarios.length; i++) {
+        if (usuarios[i][0] == usuarioDigitado && usuarios[i][1] == senhaDigitada) {
+            encontrado = true;
         }
-        user.placeholder = "Usuario"; 
     }
-    
-    function senhaSome() { 
-        iconeSenha.style.display = "none"; 
-        pass.placeholder = ""; 
-    } 
-    
-    function senhaVolta() { 
-        if (pass.value == "") {
-        iconeSenha.style.display = "block"; 
-        }
-        pass.placeholder = "Senha"; 
-    }  
-
-    function entrar() {
-        var usuario = user.value.trim();
-        var senha = pass.value.trim();
-
-        if (usuario == "willywonka" && senha == "chocolate") {
+    if (encontrado) {
         window.location.href = "dashboardsestufa.html";
-        } else {
+    } else {
         alert(`Usuario ou senha invalidos`)
         user.value = ""
         pass.value = ""
-        userVolta()
-        senhaVolta()
-        }
     }
+
+}
 
 </script>

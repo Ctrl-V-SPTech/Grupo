@@ -1,0 +1,176 @@
+/* ===== Reset e corpo ===== */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ecebeb;
+    color: #fff;
+}
+
+/* ===== Header ===== */
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 40px;
+    background-color: #4b1c6b;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+    padding-top: 60px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 8px 8px 8px 32px;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* ===== Main container ===== */
+#main {
+    margin-left: 260px; /* espaço da sidebar */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* inicia abaixo do header */
+    padding-top: 50px; /* espaço abaixo do header */
+}
+
+/* ===== Login / Cadastro Card ===== */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card_card_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4b1c6b;
+    border-radius: 30px;
+    padding: 20px 30px;
+    width: 380px; /* mesma largura do login */
+    height: 450px; /* fixa a altura */
+}
+
+.Login-titulo {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 40px;
+}
+
+/* ===== Formulario ===== */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.campo2 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    /* define altura mínima para o campo de senha + mensagem */
+    min-height: 100px; /* ajuste conforme necessário */
+}
+
+/* Labels acima do input */
+.labelInput {
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid white;
+    font-size: 16px;
+    color: #4f6d3c;
+}
+
+/* Botão centralizado */
+.botao {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid #a3c86e;
+    background-color: #a3c86e;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    margin-top: 20px; /* mantém distância do campo de senha */
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: #95bc5f;
+}
+
+/* Texto auxiliar / link */
+.textoAuxiliar {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.Esqueceu {
+    font-size: 14px;
+    color: white;
+    margin: 0;
+}
+
+.Cadastro {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.Cadastro a {
+    color: white;
+    text-decoration: none;
+}
+
+.Cadastro a:hover {
+    text-decoration: underline;
+}
+
+/* Validação de senha */
+#textoValidacao {
+    color: white;
+    font-size: 14px;
+    height: 20px; /* altura fixa */
+    margin-top: 5px;
+    text-align: center;
+}

@@ -94,6 +94,7 @@ margin-left: 300px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .dot.ideal { background-color: #2db100; }
 .dot.moderado { background-color: #b0b523; }
@@ -305,4 +306,26 @@ canvas {
   border-radius: 8px;
   width: 600px;
   height: 400px;
+}
+
+.info-box {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente no card */
+  align-items: center;     /* alinha verticalmente texto e ícone */
+  gap: 8px;                /* espaço entre texto e ícone */
+  width: 100%;
+  margin-top: 50px;
+}
+
+.info-icon {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #a3c86e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
 }

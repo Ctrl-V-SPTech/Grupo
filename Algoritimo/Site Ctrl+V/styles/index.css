@@ -58,7 +58,7 @@ nav ul a {
 
 .banner {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(imagens_uvas/uva_bandeija.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../imagens_uvas/uva_bandeija.png);
     background-size: cover;
     background-position: center;
     height: 650px;
