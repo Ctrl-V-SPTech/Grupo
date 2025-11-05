@@ -24,23 +24,24 @@
         <h2 class="Login-titulo">Cadastrar Usuário</h2>
         <div class="formulario">
 
-          <!-- Campo de usuário -->
           <div class="campo">
             <label class="labelInput" for="user_cadastro">Usuário</label>
-            <input type="text" id="user_cadastro"
-                   onfocus="userCadastroSome()" placeholder="Usuario" onblur="userCadastroVolta()">
+            <div class="input-container">
+            <input type="text" id="user_cadastro" placeholder="Usuario">
+          </div>
           </div>
 
-          <!-- Campo de senha -->
-          <div class="campo2">
-            <label class="labelInput" for="pass_cadastro">Senha</label>
-            <input type="password" id="pass_cadastro"
-                   onfocus="senhaCadastroSome()" placeholder="Senha" onblur="senhaCadastroVolta()" 
-                   oninput="validarSenha()">
-            <div id="textoValidacao"></div>
-          </div>
+<div class="campo2">
+  <label class="labelInput" for="pass_cadastro">Senha</label>
 
-          <!-- Botão de cadastro -->
+  <div class="input-container">
+    <input type="password" id="pass_cadastro"  placeholder="Senha" oninput="validarSenha()">
+    <img id="olhosenha" src="../imagens_uvas/olhofechado.svg" onclick="mostrarsenhaCadastro()" alt="mostrar senha">
+  </div>
+
+  <div id="textoValidacao"></div>
+</div>
+
           <button onclick="cadastrarUsuario()" class="botao" id="entrar">Cadastrar</button>
 
         </div>
@@ -49,39 +50,27 @@
   </div>
 </div>
 <script>
-  // === Variáveis globais de controle ===
+
+    function mostrarsenhaCadastro() {
+        var senha = pass_cadastro
+        var olho = olhosenha
+        if (senha.type == 'password') {
+            senha.type = 'text'
+            olho.src = '../imagens_uvas/olhofechado.svg'
+        } else {
+            senha.type == 'text'
+            senha.type = 'password'
+            olho.src = '../imagens_uvas/olhoaberto.svg'
+        }
+    }
+
   var temMaiuscula = false;
   var temMinuscula = false;
   var temNumero = false;
   var temSimbolo = false;
-  var tamanhoOk = false;
+  var tamanhoOk = false;     
 
-  // === Efeitos visuais ===
-  function userCadastroSome() { 
-    iconeUsuario.style.display = "none"; 
-    user_cadastro.placeholder = ""; 
-  } 
 
-  function senhaCadastroSome() { 
-    iconeSenha.style.display = "none"; 
-    pass_cadastro.placeholder = ""; 
-  } 
-
-  function userCadastroVolta() { 
-    if (user_cadastro.value == "") {
-      iconeUsuario.style.display = "block"; 
-    }
-    user_cadastro.placeholder = "Usuário"; 
-  }
-
-  function senhaCadastroVolta() { 
-    if (pass_cadastro.value == "") {
-      iconeSenha.style.display = "block"; 
-    }
-    pass_cadastro.placeholder = "Senha"; 
-  }      
-
-  // === Validação dinâmica da senha ===
   function validarSenha() {
     var senhaCadastro = pass_cadastro.value;
     var texto = "";
@@ -105,14 +94,13 @@
       if (faltando.length == 0) {
         texto = "✅ Senha forte!";
       } else {
-        texto = "Falta: " + faltando.join(", ");
+        texto = `Falta: ${faltando}`;
       }
 
       textoValidacao.textContent = texto;
     }
   }
 
-  // === Funções auxiliares (sem return) ===
   function incluiMaiuscula(senhaCadastro) {
     var letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     temMaiuscula = false;
@@ -153,12 +141,10 @@
     }
   }
 
-  // === Cadastro de usuário (somente se senha for válida) ===
+
   function cadastrarUsuario() {
     var usuario = user_cadastro.value.trim();
     var senha = pass_cadastro.value.trim();
-
-    validarSenha(); // atualiza os valores das variáveis globais
 
     if (usuario == "" || senha == "") {
       alert("Preencha todos os campos!");

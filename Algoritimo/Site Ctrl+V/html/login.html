@@ -40,18 +40,23 @@
             <h2 class="Login-titulo">Login</h2>
             <div class="formulario">
                 
-                <!-- Campo de usuário -->
-                <div class="campo">
-                    <label class="labelInput" for="user">Usuário</label>
-                    <input type="text" id="user" placeholder="Usuario" onfocus="userSome()" onblur="userVolta()">
-                </div>
+          <div class="campo">
+            <label class="labelInput" for="user">Usuário</label>
+            <div class="input-container">
+            <input type="text" id="user" placeholder="Usuario">
+          </div>
+          </div>
 
-                <!-- Campo de senha -->
-                <div class="campo2">
-                    <label class="labelInput" for="pass">Senha</label>
-                    <img id="olhosenha" src="../imagens_uvas/olhofechado.png" onmouseup="mostrarsenha()" onmousedown="ocultar()">
-                    <input type="password" id="pass"  placeholder="Senha" onfocus="senhaSome()" onblur="senhaVolta()">
-                </div>
+<div class="campo2">
+  <label class="labelInput" for="pass_cadastro">Senha</label>
+
+  <div class="input-container">
+    <input type="password" id="pass"  placeholder="Senha" oninput="validarSenha()">
+    <img id="olhosenha" src="../imagens_uvas/olhofechado.svg" onclick="mostrarsenha()">
+  </div>
+
+  <div id="textoValidacao"></div>
+</div>
 
                 <!-- Texto auxiliar -->
                 <div class="textoAuxiliar">
@@ -81,11 +86,11 @@
         var olho = olhosenha
         if (senha.type == 'password') {
             senha.type = 'text'
-            olho.src = '../imagens_uvas/olhofechado.png'
+            olho.src = '../imagens_uvas/olhofechado.svg'
         } else {
             senha.type == 'text'
             senha.type = 'password'
-            olho.src = '../imagens_uvas/olhoaberto.png'
+            olho.src = '../imagens_uvas/olhoaberto.svg'
         }
     }
 

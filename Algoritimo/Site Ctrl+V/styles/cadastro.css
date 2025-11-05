@@ -115,8 +115,8 @@ button {
   width: 250px;
   height: 60px;
   border-radius: 5px;
-  border: solid 2px #a3c86e;
-  background-color: #a3c86e;
+  border: 1px solid linear-gradient(90deg, #264e0e 0%, #70b048 100%);
+  background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
   font-weight: bold;
   font-size: 20px;
   color: white;
