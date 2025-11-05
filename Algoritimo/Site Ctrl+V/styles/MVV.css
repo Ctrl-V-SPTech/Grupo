@@ -56,6 +56,25 @@ nav ul a {
 
 /* mvv */
 
+.missao,
+.visao,
+.valores{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 20px 20px 20px;
+    align-items: center;
+    gap: 30px;
+}
+
+.img-missao,
+.img-visao,
+.img-valores{
+    display: flex;
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+}
+
 span {
     display: flex;
     color: #4b1c6b;
