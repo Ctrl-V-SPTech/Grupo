@@ -23,20 +23,26 @@
       
         <div class="fasesrisco">
           <h2>Período Atual</h2>
-          <div class="fases">
-            Floração
-          </div>
+          <select class="fases" id="fases" onchange="mudarFases()">
+            <option selected disabled value="#">Selecione uma opção</option>
+                    <option value="dormencia">Dormência</option>
+                    <option value="brotacao">Brotação</option>
+                    <option value="floracao">Floração</option>
+                    <option value="crescimento">Cresc. dos bagos</option>
+                    <option value="maturacao">Maturação</option>
+                    <option value="colheita">Colheita</option>
+          </select>
         </div>
 
         <div class="ideal-info">
           <h2>Métricas ideais por fase do cultivo</h2>
-          <div class="fases2">
-            <div><b>Dormência</b><br />5°C - 15°C<br />50-70%</div>
-            <div><b>Brotação</b><br />15°C - 25°C<br />60-80%</div>
-            <div><b>Floração</b><br />18°C - 25°C<br />50-70%</div>
-            <div><b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%</div>
-            <div><b>Maturação</b><br />20°C - 30°C<br />40-60%</div>
-            <div><b>Colheita</b><br />10°C - 20°C<br />80-90%</div>
+          <div class="fases2" id="fases2">
+            <div id="dormencia"><b>Dormência</b><br />5°C - 15°C<br />50-70%</div>
+            <div id="brotacao"><b>Brotação</b><br />15°C - 25°C<br />60-80%</div>
+            <div id="floracao"><b>Floração</b><br />18°C - 25°C<br />50-70%</div>
+            <div id="crescimento"><b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%</div>
+            <div id="maturacao"><b>Maturação</b><br />20°C - 30°C<br />40-60%</div>
+            <div id="colheita"><b>Colheita</b><br />10°C - 20°C<br />80-90%</div>
           </div>
         </div>
 
@@ -55,10 +61,10 @@ pra mais ou pra menos."></span> Crítico</div>
   </div>
 
   <div class="values">
-    <div class="temp">
+    <div class="temp" id="temp">
       <img class="metricas" src="../imagens_uvas/temperature.png" alt="" />24°C
     </div>
-    <div class="umi">
+    <div class="umi" id="umi">
       <img class="metricas" src="../imagens_uvas/humidity.png" alt="" />65%
     </div>
   </div>
@@ -178,6 +184,48 @@ pra mais ou pra menos."></span> Crítico</div>
           },
         },
       });
+
+      
+  function mudarFases() {
+  var fase = fases.value;
+  var fasesIds = ["maturacao", "dormencia", "brotacao", "floracao", "crescimento", "colheita"];
+
+  for (var i = 0; i < fasesIds.length; i++) {
+    var fasesCor = document.getElementById(fasesIds[i]); 
+    fasesCor.style.color = "grey";
+  }
+
+  var selecionada = document.getElementById(fase);
+  if (selecionada) {
+    selecionada.style.color = "green";
+  }
+
+  if (fase == "dormencia") {
+    temp.style.backgroundColor = "red";
+    umi.style.backgroundColor = "green";
+  } else if (fase == "brotacao") {
+    temp.style.backgroundColor = "green";
+    umi.style.backgroundColor = "green";
+  } else if (fase == "floracao") {
+    temp.style.backgroundColor = "green";
+    umi.style.backgroundColor = "green";
+  } else if (fase == "crescimento") {
+    temp.style.backgroundColor = "green";
+    umi.style.backgroundColor = "green";
+  }  else if (fase == "maturacao") {
+    temp.style.backgroundColor = "green";
+    umi.style.backgroundColor = "red";
+  } else if (fase == "colheita") {
+    temp.style.backgroundColor = "red";
+    umi.style.backgroundColor = "red";
+  }
+
+
+
+}
+
+
+
     </script>
   </body>
 </html>
