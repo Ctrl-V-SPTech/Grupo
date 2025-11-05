@@ -1,10 +1,8 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;;
 }
-
-/* HEADER */
 
 header {
     color: #fff;
@@ -14,7 +12,7 @@ header {
     height: 80px;
     padding-left: 40px;
     padding-right: 40px;
-    background-color: #4b1c6b;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
 }
 
 .logo img {
@@ -27,7 +25,7 @@ nav ul {
     display: flex;
     gap: 50px;
     align-items: center;
-}
+    }
 
 nav ul a {
     color: #fff;
@@ -52,7 +50,7 @@ nav ul a {
 #DashboardsH:hover,
 #SimuladorFinanceiroH:hover,
 #Login:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* FORMULÁRIO */
@@ -65,7 +63,7 @@ nav ul a {
 }
 
 .card-form {
-  background-color: #4b1c6b;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   padding: 30px;
   border-radius: 20px;
   width: 1000px;

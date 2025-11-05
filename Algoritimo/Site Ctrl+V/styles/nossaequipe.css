@@ -12,8 +12,7 @@ header {
     height: 80px;
     padding-left: 40px;
     padding-right: 40px;
-    background-color: #4b1c6b;
-
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
 }
 
 .logo img {
@@ -54,6 +53,7 @@ nav ul a {
   transform: scale(1.1);
 }
 
+
 /* nossa equipe */
 
 .container3 {
@@ -87,7 +87,7 @@ nav ul a {
   font-size: 22px;
   font-weight: bold;
   padding: 50px 0 20px;
-  background-color: #4a772f;
+  background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
   background-size: auto;
   padding: 10px 20px;
   border-radius: 10px;

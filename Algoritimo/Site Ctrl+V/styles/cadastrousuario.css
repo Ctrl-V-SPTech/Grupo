@@ -69,7 +69,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #4b1c6b;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
     border-radius: 30px;
     padding: 20px 30px;
     width: 380px; /* mesma largura do login */
@@ -126,8 +126,8 @@ input {
     width: 100%;
     height: 60px;
     border-radius: 5px;
-    border: 1px solid #a3c86e;
-    background-color: #a3c86e;
+    border: 1px solid linear-gradient(90deg, #264e0e 0%, #70b048 100%);
+    background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
     font-weight: bold;
     font-size: 20px;
     color: white;
