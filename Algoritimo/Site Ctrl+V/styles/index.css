@@ -12,8 +12,7 @@ header {
     height: 80px;
     padding-left: 40px;
     padding-right: 40px;
-    background-color: #4b1c6b;
-
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
 }
 
 .logo img {
@@ -86,7 +85,7 @@ nav ul a {
     flex-direction: row;
     align-items: center;
     height: 550px;
-    background: linear-gradient(to bottom, #4a772f, #9ccc65);
+    background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
 }
 
 .container1 span {
@@ -109,23 +108,63 @@ nav ul a {
     text-align: justify;
 }
 
+
 .container2 {
+  position: relative;
+  height:550px; 
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container2 img {
+  max-width: 150%;  
+  max-height: 150%;  
+  transition: opacity 1s ease-in-out, transform 0.3s ease;
+  opacity: 1;
+  transform: scale(0.9);
+}
+
+.container2 button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#anterior {
+  left: 20px;
+}
+
+#proximo {
+  right: 20px;
+}
+
+.container3 {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 550px;
-    background: linear-gradient(to bottom, #ffffff, #f1f6f5);
+    background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
 }
 
-.container2 span {
-    color: #4a772f;
+.container3 span {
+    color: #fff;
     font-weight: bold;
     font-size: 80px;
     padding-left: 60px;
 }
 
-.container2 .texto {
+.container3 .texto {
     display: flex;
+    color: #fff;
     align-self: center;
     flex-direction: column;
     padding-top: 20px;
@@ -136,16 +175,16 @@ nav ul a {
     text-align: justify;
 }
 
-.container3 {
+.container4 {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 550px;
     justify-content: space-evenly;
-    background: linear-gradient(to bottom, #4b1c6b, #794f99);
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
 }
 
-.container3 .card {
+.container4 .card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -194,16 +233,16 @@ nav ul a {
 }
 
 
-.container4 {
+.container5 {
     display: flex;
     flex-direction: row;
     align-items: center;
     height: 550px;
     justify-content: space-evenly;
-    background: linear-gradient(to bottom, #4a772f, #9ccc65);
+    background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
 }
 
-.container4 .card {
+.container5 .card {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -216,7 +255,7 @@ nav ul a {
     text-decoration: none;
 }
 
-.container4 .card:hover {
+.container5 .card:hover {
     transform: translateY(-15px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }

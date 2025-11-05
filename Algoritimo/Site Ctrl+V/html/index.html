@@ -49,6 +49,16 @@
   </div>
 
 <div class="container2" id="container2">
+   <img id="imagem" src="../imagens_uvas/Diagrama de Negócio/1.png" alt="imagem1" />
+        <button id="anterior" onclick="anterior()">&#10094;</button>
+        <button id="proximo" onclick="proximo()">&#10095;</button>
+    </div>
+  </div>
+</section>
+  </div>
+  
+
+<div class="container3" id="container3">
 <section class="servicos-intro">
      <span>Nossos Serviços</span><br>
     <div class="texto">
@@ -63,7 +73,7 @@
 </section>
   </div>
 
-  <div class="container3" id="container3">
+  <div class="container4" id="container4">
   <div class="card">
     <img class="dash_img" src="../imagens_uvas/dash.png" alt="">
      <span>Dashboards</span>
@@ -103,7 +113,7 @@
   </div>
   </div>
 
-    <div class="container4" id="container4">
+    <div class="container5" id="container5">
   <div>
   <a href="MVV.html" class="card">
     <img class="dash_img" src="../imagens_uvas/dash.png" alt="">
@@ -145,3 +155,32 @@
 </body>
 
 </html>
+<script>
+      var imagens = [
+        "../imagens_uvas/Diagrama de Negócio/1.png",
+        "../imagens_uvas/Diagrama de Negócio/2.png",
+
+      ];
+      var imagemAtual = 0;
+
+      function mostrarImagem() {
+        imagem.style.opacity = 0;
+        setTimeout(() => {
+          imagem.src = imagens[imagemAtual];
+          imagem.style.opacity = 1;
+        }, 500);
+      }
+
+      function proximo() {
+        imagemAtual++;
+        if (imagemAtual >= imagens.length) imagemAtual = 0;
+        mostrarImagem();
+      }
+
+      function anterior() {
+        imagemAtual--;
+        if (imagemAtual < 0) imagemAtual = imagens.length - 1;
+        mostrarImagem();
+      }
+
+</script>
