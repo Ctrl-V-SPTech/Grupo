@@ -49,6 +49,7 @@
                 <!-- Campo de senha -->
                 <div class="campo2">
                     <label class="labelInput" for="pass">Senha</label>
+                    <img id="olhosenha" src="../imagens_uvas/olhofechado.png" onmouseup="mostrarsenha()" onmousedown="ocultar()">
                     <input type="password" id="pass"  placeholder="Senha" onfocus="senhaSome()" onblur="senhaVolta()">
                 </div>
 
@@ -75,6 +76,19 @@
 
 </html>
 <script>
+    function mostrarsenha() {
+        var senha = pass 
+        var olho = olhosenha
+        if (senha.type == 'password') {
+            senha.type = 'text'
+            olho.src = '../imagens_uvas/olhofechado.png'
+        } else {
+            senha.type == 'text'
+            senha.type = 'password'
+            olho.src = '../imagens_uvas/olhoaberto.png'
+        }
+    }
+
 var usuarios = [
     ["frizza", "Sap0fod@"],
 ];

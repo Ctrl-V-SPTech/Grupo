@@ -105,6 +105,14 @@ nav ul a {
     margin-bottom: 20px;
 }
 
+
+#olhosenha {
+    width: 25px;
+    height: 25px;
+    margin-left: 50px;
+    position: absolute;
+}
+
 /* Labels acima do input */
 .labelInput {
     font-size: 14px;
