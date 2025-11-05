@@ -169,6 +169,7 @@
   const ctx = document.getElementById('myChart');
   const ctxLine = document.getElementById('myChartline');
   const ctxDought = document.getElementById('myChartdought');
+  Chart.defaults.font.weight = 650;
   
   new Chart(ctxLine, {
    type: 'bar',
@@ -179,7 +180,7 @@
         data: [50, 50, 51, 53, 56, 57, 58, 60, 61, 62, 64, 64, 65, 70],
         borderWidth: 1,
         borderColor: '#bddeaf',
-        backgroundColor: '#dbf2d1',
+        backgroundColor: 'blue',
       }
     ]
     },
@@ -200,7 +201,7 @@
         data: [16, 16, 16, 17, 17, 17, 17, 16,17, 18, 19, 20, 19, 23],
         borderWidth: 1,
         borderColor: '#bddeaf',
-        backgroundColor: '#dbf2d1',
+        backgroundColor: 'purple',
       }
     ]
     },
