@@ -85,6 +85,7 @@ body, html {
   height: 20px;
   border-radius: 50%;
   cursor: pointer;
+  font-size: 20px;
 }
 .dot.ideal { background-color: #2db100; }
 .dot.moderado { background-color: #b0b523; }
@@ -102,7 +103,7 @@ body, html {
   align-items: center;
   justify-content: center;
   font-size: 1.7rem;
-  color: #111;
+  color: #fff;
   border: 1px solid #000000 ;
 }
 
@@ -125,7 +126,7 @@ body, html {
   flex-direction: column;
   justify-content: space-between;
   width: 250px;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .kpi-header {
@@ -151,7 +152,7 @@ body, html {
   flex-direction: column;
   width: 820px;
   height: 220px; 
-  font-size: 16px;
+  font-size: 20px;
   overflow: hidden;
 }
 
@@ -188,6 +189,7 @@ body, html {
 
 .historico-row.dados {
   background-color: #fff;
+  font-size: 18px;
 }
 
 .historico-footer {
@@ -225,6 +227,7 @@ body, html {
   border-radius: 8px;
   padding: 10px;
   width: 100%;
+  font-size: 22px;
 }
 
 
@@ -236,7 +239,7 @@ body, html {
   border: 3px solid #000;
   background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
   color: #ffffff;
-  font-size: 18px;
+  font-size: 22px;
   width: 430px;
   height: 98%;
   overflow: hidden;
@@ -259,7 +262,7 @@ body, html {
   text-align: center;
   align-items: center;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 22px;
   border-top: 1px solid #000;
 }
 
@@ -270,7 +273,7 @@ body, html {
 
 .qtdcritico {
   background-color: red;
-  color: #000;
+  color: #fff;
 }
 
 .qtdtotal {
@@ -299,7 +302,7 @@ body, html {
   flex-direction: column;
   justify-content: space-between;
   width: 855px;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .ideal-info h2 {
@@ -341,7 +344,7 @@ canvas {
   gap: 8px;
   width: 100%;
   margin-top: 50px;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .info-icon {
@@ -354,5 +357,5 @@ canvas {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 22px;
 }

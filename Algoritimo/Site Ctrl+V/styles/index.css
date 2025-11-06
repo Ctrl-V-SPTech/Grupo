@@ -81,7 +81,7 @@ nav ul a {
 
 
 .banner .texto {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: normal;
   line-height: 1.5;
   max-width: 1400px;
@@ -106,7 +106,7 @@ nav ul a {
 
 .container-ctrlv .texto {
   max-width: 1200px;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.5;
   text-align: justify;
 }
@@ -167,9 +167,9 @@ nav ul a {
 }
 
 .container-servicos .texto-servicos {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.5;
-  max-width: 800px;
+  max-width: 1200px;
   margin-bottom: 50px;
 }
 
@@ -202,9 +202,9 @@ nav ul a {
 }
 
 .container-sobre .texto-sobre {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.5;
-  max-width: 800px;
+  max-width: 1200px;
   margin-bottom: 50px;
 }
 
@@ -247,7 +247,7 @@ nav ul a {
 }
 
 .card span {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
   display: block;
