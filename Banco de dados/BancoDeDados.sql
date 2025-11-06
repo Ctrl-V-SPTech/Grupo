@@ -138,8 +138,8 @@ SELECT
     m.medidaTemp AS 'Medida da Temperatura',
     m.medidaUmid AS 'Medida da Umidade',
     m.dataHora AS 'Data e Hora da Medida',
-    IFNULL(a.statusTemp, 'Ok') AS 'Status de Temperatura',
-    IFNULL(a.statusUmid, 'Ok') AS 'Status de Umidade',
+    IFNULL(a.AlertaTemp, 'Ok') AS 'Status de Temperatura',
+    IFNULL(a.AlertaUmid, 'Ok') AS 'Status de Umidade',
     DATE_FORMAT(SEC_TO_TIME(TIMESTAMPDIFF(SECOND, a.dtHrInicialAlerta, a.dtHrFinalAlerta)), '%H:%i') AS 'Tempo em Alerta',
     CASE 
 		WHEN es.periodoDesenvolvimento = 'Brotação' AND m.medidaTemp < 15 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para a Brotação!'
