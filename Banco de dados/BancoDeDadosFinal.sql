@@ -40,6 +40,9 @@ fkUsuarioResponsavel INT,
 CREATE TABLE Estufa (
 idEstufa INT PRIMARY KEY AUTO_INCREMENT,
 nomeEstufa VARCHAR(30),
+periodoDesenvolvimento VARCHAR(15),
+	CONSTRAINT chkPeriodo
+		CHECK (periodoDesenvolvimento IN('Brotação', 'Floração', 'Crescimento', 'Maturação', 'Colheita', 'Dormência')),
 fkEstufaEmpresa INT,
 	CONSTRAINT fkEmpresaEstufa
 		FOREIGN KEY (fkEstufaEmpresa)
@@ -69,6 +72,23 @@ fkSensor INT,
 			REFERENCES Sensor(idSensor),
 	PRIMARY KEY (idMedida, fkSensor)
 );
+
+CREATE TABLE Alerta (
+idAlerta INT AUTO_INCREMENT,
+AlertaTemp VARCHAR(10),
+	CONSTRAINT chkStatusTemp
+    CHECK(statusTemp IN('CRÍTICO', 'MODERADO')),
+AlertaUmid VARCHAR(10),
+    CONSTRAINT chkStatusUmid
+    CHECK(statusUmid IN('CRÍTICO', 'MODERADO')),
+dtHrInicialAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
+dtHrFinalAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
+fkSensorMedida INT,
+	CONSTRAINT fkMSensorMedida
+		FOREIGN KEY (fkSensorMedida)
+			REFERENCES Sensor(idSensor),
+            PRIMARY KEY (idAlerta, fkSensorMedida)
+);
     
 INSERT Endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES
 	('Rua Haddock Lobo', 2000, 'Cerqueira César', 'São Paulo', 'SP', '01414-010'),
@@ -92,20 +112,31 @@ INSERT INTO Usuario (nomeUsuario, email, senhaUsuario, fkEmpresa, fkUsuarioRespo
     ('Larissa Araujo', 'larissaArjo@gmail.com', 'urubu500',3, 2),
     ('Bianca Azevedo', 'bianca.zevedo@gmail.com', 'urubu600',4, 1);
     
-INSERT INTO Estufa (nomeEstufa, fkEstufaEmpresa) VALUES 
-	('Estufa Central', 1),
-	('Estufa Sul', 2),
-	('Estufa Oeste', 3),
-	('Estufa Leste', 4);
+INSERT INTO Estufa (nomeEstufa, periodoDesenvolvimento,fkEstufaEmpresa) VALUES 
+	('Estufa Central', 'Brotação', 1),
+	('Estufa Sul', 'Floração', 2),
+	('Estufa Oeste', 'Maturação', 3),
+	('Estufa Leste', 'Dormência', 4);
     
 INSERT INTO Sensor (localizacaoSensor, fkEstufa) VALUES
 	('Zona Central', 1),
 	('Zona Leste', 2),
 	('Zona Central', 3),
 	('Zona Oeste', 4);
+    
+INSERT INTO Medida (medidaTemp, medidaUmid, fkSensor) VALUES
+    (22.5, 0.75, 1), 
+    (28.2, 0.82, 2),
+    (17.9, 0.55, 3); 
+  
+INSERT INTO Alerta (alertaTemp, alertaUmid, dtHrInicialAlerta, dtHrFinalAlerta, fkSensorMedida) VALUES
+    ('CRÍTICO', NULL, '2025-11-06 08:00:00', '2025-11-06 9:30:00', 1),
+    (NULL, 'CRÍTICO', '2025-11-06 09:15:00', '2025-11-06 10:45:00', 2),
+    ('MODERADO', NULL, '2025-11-06 07:00:00', '2025-11-06 08:10:00', 3);
 
-    SELECT 
-    e.nomeEmpresa AS 'Nome da Empresa',
+
+SELECT 
+	e.nomeEmpresa AS 'Nome da Empresa',
 	r.nomeUsuario AS 'UsuárioAdm',  
     u.nomeUsuario AS 'Usuário',
     CONCAT('Email: ', r.email) AS 'Contato do Responsável',
@@ -114,11 +145,22 @@ INSERT INTO Sensor (localizacaoSensor, fkEstufa) VALUES
     m.medidaTemp AS 'Medida da Temperatura',
     m.medidaUmid AS 'Medida da Umidade',
     m.dataHora AS 'Data e Hora da Medida',
+    IFNULL(a.statusTemp, 'Ok') AS 'Status de Temperatura',
+    IFNULL(a.statusUmid, 'Ok') AS 'Status de Umidade',
+    DATE_FORMAT(SEC_TO_TIME(TIMESTAMPDIFF(SECOND, a.dtHrInicialAlerta, a.dtHrFinalAlerta)), '%H:%i') AS 'Tempo em Alerta',
     CASE 
-        WHEN m.medidaTemp < 15 THEN 'Temperatura Abaixo da Faixa!'
-        WHEN m.medidaTemp > 30 THEN 'Temperatura Acima da Faixa!'
-        WHEN m.medidaUmid < 0.50 THEN 'Umidade Abaixo da Faixa!'
-        WHEN m.medidaUmid > 0.95 THEN 'Umidade Acima da Faixa!'
+		WHEN es.periodoDesenvolvimento = 'Brotação' AND m.medidaTemp < 15 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para a Brotação!'
+        WHEN es.periodoDesenvolvimento = 'Crescimento' AND m.medidaTemp < 20 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para o Crescimento dos Bagos!'
+        WHEN es.periodoDesenvolvimento = 'Dormência' AND m.medidaTemp < 5 OR m.medidaTemp > 15 THEN 'Temperatura Fora do ideal para o periodo de Dormência!'
+        WHEN es.periodoDesenvolvimento = 'Floração' AND m.medidaTemp < 18 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para a Floração!'
+        WHEN es.periodoDesenvolvimento = 'Maturação' AND m.medidaTemp < 20 OR m.medidaTemp > 30 THEN 'Temperatura Fora do ideal para a Maturação!'
+        WHEN es.periodoDesenvolvimento = 'Colheita' AND m.medidaTemp < 10 OR m.medidaTemp > 20 THEN 'Temperatura Fora do ideal para a Colheita!'
+        WHEN es.periodoDesenvolvimento = 'Brotação' AND m.medidaUmid < 0.60 OR m.medidaUmid > 0.80 THEN 'Umidade Fora do ideal para a Brotação!'
+        WHEN es.periodoDesenvolvimento = 'Crescimento' AND m.medidaUmid < 0.60 OR m.medidaUmid > 0.80 THEN 'Umidade Fora do ideal para o Crescimento dos Bagos!'
+        WHEN es.periodoDesenvolvimento = 'Dormência' AND m.medidaUmid < 0.50 OR m.medidaUmid > 0.70 THEN 'Umidade Fora do ideal para a Dormência!'
+        WHEN es.periodoDesenvolvimento = 'Floração' AND m.medidaUmid < 0.50 OR m.medidaUmid > 0.70 THEN 'Umidade Fora do ideal para a Floração!'
+        WHEN es.periodoDesenvolvimento = 'Maturação' AND m.medidaUmid < 0.40 OR m.medidaUmid > 0.60 THEN 'Umidade Fora do ideal para a Maturação!'
+        WHEN es.periodoDesenvolvimento = 'Colheita' AND m.medidaUmid < 0.80 OR m.medidaUmid > 0.90 THEN 'Umidade Fora do ideal para a Colheita!'
         ELSE 'Dentro da Faixa Normal'
     END AS 'Status da Medida'
 FROM Empresa e
@@ -131,4 +173,7 @@ JOIN Estufa es
 JOIN Sensor s 
     ON s.fkEstufa = es.idEstufa
 JOIN Medida m 
-    ON m.fkSensor = s.idSensor;
+    ON m.fkSensor = s.idSensor
+LEFT JOIN Alerta a
+	ON a.fkSensorMedida = s.idSensor;
+    
