@@ -1,121 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Ctrl+V | Login</title>
 
-    <link rel="stylesheet" href="../styles/Login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <link rel="icon" href="assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
+    <link rel="stylesheet" href="../styles/Login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="icon" href="assets/icon/favicon2.ico" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </head>
 
-<body>
+  <body>
 
-    <!--Header-->
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="../imagens_uvas/1.png" class="logo-header" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <a href="cadastro.html" id="ContatoH">Quero ser cliente</a>
+          <a href="simulador.html" id="SimuladorFinanceiroH"
+            >Simulador Financeiro</a
+          >
+          <a href="login.html" class="login-btn" id="Login">Login</a>
+        </ul>
+      </nav>
+    </header>
 
-<header>
-  <div class="logo">
-    <a href="index.html">
-        <img src="../imagens_uvas/1.png" class="logo-header" />
-    </a>
-  </div>
-  <nav>
-    <ul>
-      <a href="cadastro.html" id="ContatoH">Quero ser cliente</a>
-      <a href="simulador.html" id="SimuladorFinanceiroH">Simulador Financeiro</a>
-     <a href="login.html" class="login-btn" id="Login">Login</a>
-    </ul>
-  </nav>
-</header>
-
-
-<div class="login">
-    <div class="container1">
+    <div class="login">
+      <div class="container1">
         <div class="card_card_login">
-            <h2 class="Login-titulo">Login</h2>
-            <div class="formulario">
-
-          <div class="campo">
-            <label class="labelInput" for="user">Usuário</label>
-            <div class="input-container">
-            <input type="text" id="user" placeholder="Usuario">
-          </div>
-          </div>
-
-<div class="campo2">
-  <label class="labelInput" for="pass_cadastro">Senha</label>
-
-  <div class="input-container">
-    <input type="password" id="pass"  placeholder="Senha" oninput="validarSenha()">
-    <img id="olhosenha" src="../imagens_uvas/olhofechado.svg" onclick="mostrarsenha()">
-  </div>
-
-  <div id="textoValidacao"></div>
-</div>
-
-                <div class="textoAuxiliar">
-                    <h2 class="Esqueceu">Esqueceu a senha?</h2>
-                </div>
-
-
-                <button onclick="login()" class="botao" id="entrar">Entrar</button>
-
-
-                <h2 class="Cadastro">
-                    <a href="cadastro.html">Não tem uma conta? Cadastre-se!</a>
-                </h2>
-
+          <h2 class="Login-titulo">Login</h2>
+          <div class="formulario">
+            <div class="campo">
+              <label class="labelInput" for="user">Usuário</label>
+              <div class="input-container">
+                <input type="text" id="user" placeholder="Usuario" />
+              </div>
             </div>
+
+            <div class="campo2">
+              <label class="labelInput" for="pass_cadastro">Senha</label>
+
+              <div class="input-container">
+                <input
+                  type="password"
+                  id="pass"
+                  placeholder="Senha"
+                  oninput="validarSenha()"
+                />
+                <img
+                  id="olhosenha"
+                  src="../imagens_uvas/olhofechado.svg"
+                  onclick="mostrarsenha()"
+                />
+              </div>
+
+              <div id="textoValidacao"></div>
+            </div>
+
+            <div class="textoAuxiliar">
+              <h2 class="Esqueceu">Esqueceu a senha?</h2>
+            </div>
+
+            <button onclick="login()" class="botao" id="entrar">Entrar</button>
+
+            <h2 class="Cadastro">
+              <a href="cadastro.html">Não tem uma conta? Cadastre-se!</a>
+            </h2>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-
-</body>
-
+  </body>
 </html>
 <script>
-    function mostrarsenha() {
-        var senha = pass 
-        var olho = olhosenha
-        if (senha.type == 'password') {
-            senha.type = 'text'
-            olho.src = '../imagens_uvas/olhofechado.svg'
-        } else {
-            senha.type == 'text'
-            senha.type = 'password'
-            olho.src = '../imagens_uvas/olhoaberto.svg'
-        }
+  function mostrarsenha() {
+    var senha = pass;
+    var olho = olhosenha;
+    if (senha.type == "password") {
+      senha.type = "text";
+      olho.src = "../imagens_uvas/olhofechado.svg";
+    } else {
+      senha.type == "text";
+      senha.type = "password";
+      olho.src = "../imagens_uvas/olhoaberto.svg";
     }
+  }
 
-var usuarios = [
-    ["frizza", "Sap0fod@"],
-];
+  var usuarios = [["frizza", "Sap0fod@"]];
 
-function login(usuarioDigitado, senhaDigitada) {
+  function login(usuarioDigitado, senhaDigitada) {
     var usuarioDigitado = user.value.trim();
     var senhaDigitada = pass.value.trim();
-    
+
     var encontrado = false;
 
     for (var i = 0; i < usuarios.length; i++) {
-        if (usuarios[i][0] == usuarioDigitado && usuarios[i][1] == senhaDigitada) {
-            encontrado = true;
-        }
+      if (
+        usuarios[i][0] == usuarioDigitado &&
+        usuarios[i][1] == senhaDigitada
+      ) {
+        encontrado = true;
+      }
     }
     if (encontrado) {
-        window.location.href = "dashboardgeral.html";
+      window.location.href = "dashboardgeral.html";
     } else {
-        alert(`Usuario ou senha invalidos`)
-        user.value = ""
-        pass.value = ""
+      alert(`Usuario ou senha invalidos`);
+      user.value = "";
+      pass.value = "";
     }
-
-}
-
+  }
 </script>

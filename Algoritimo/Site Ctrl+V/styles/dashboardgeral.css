@@ -1,4 +1,4 @@
-/* ===== Reset e corpo ===== */
+
 body, html {
     margin: 0;
     padding: 0;
@@ -8,7 +8,6 @@ body, html {
     color: #fff;
 }
 
-/* ===== Header ===== */
 header {
     color: #fff;
     display: flex;
@@ -19,7 +18,6 @@ header {
     background-color: #4b1c6b;
 }
 
-/* ===== Sidebar ===== */
 .sidebar {
     height: 100%;
     width: 260px;
@@ -40,7 +38,7 @@ header {
 .sidebar a:hover {
     color: #f1f1f1;
 }
-/* INICIO DA DASH */
+
 
 .containerpai {
     display: flex;

@@ -1,154 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Estufa</title>
-  <link rel="stylesheet" href="../styles/dashboardgeral.css" />
-  <link rel="icon" href="../public/assets/icon/Logo.png" />
-</head>
-<body>
-  <div id="sidebar" class="sidebar">
-      <a href="">Usuário</a><br><br><br>
-      <a href="dashboardgeral.html">Estufas</a><br>
-      <a href="cadastrousuario.html">Cadastrar Usuario</a><br><br><br><br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Estufa</title>
+    <link rel="stylesheet" href="../styles/dashboardgeral.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <a href="">Usuário</a><br /><br /><br />
+      <a href="dashboardgeral.html">Estufas</a><br />
+      <a href="cadastrousuario.html">Cadastrar Usuario</a
+      ><br /><br /><br /><br />
       <a href="index.html">Sair</a>
     </div>
 
-  <div class="containerpai">
-    <div class="titulo">Bem vindo,</div>
-    <div class="estufas">
-    <div class="primeiraLinha">
-      <div class ="estufa1" id="um">
-      <a href="dashboardsestufa.html" class="estufa1">
-        <div class="tituloEstufa">
-          <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-          <div class="idEstufa">Estufa 1</div>
-        </div>
-        <div class="metricasEstufa">
-          <div class="qtdSensores">
-            <div class="tituloSensores"><b>Quantidade de Sensores</b></div>
-            <img src="../imagens_uvas/sensores.png" class ="img-sensores">
-            <div class="numeroSensores"><b>14</b></div>
+    <div class="containerpai">
+      <div class="titulo">Bem vindo,</div>
+      <div class="estufas">
+        <div class="primeiraLinha">
+          <div class="estufa1" id="um">
+            <a href="dashboardsestufa.html" class="estufa1">
+              <div class="tituloEstufa">
+                <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+                <div class="idEstufa">Estufa 1</div>
+              </div>
+              <div class="metricasEstufa">
+                <div class="qtdSensores">
+                  <div class="tituloSensores">
+                    <b>Quantidade de Sensores</b>
+                  </div>
+                  <img
+                    src="../imagens_uvas/sensores.png"
+                    class="img-sensores"
+                  />
+                  <div class="numeroSensores"><b>14</b></div>
+                </div>
+                <div class="qtdAlertas">
+                  <div class="tituloAlertas">
+                    <b>Alertas<br />Críticos</b>
+                  </div>
+                  <img src="../imagens_uvas/alerta.png" class="img-alertas" />
+                  <div class="numeroAlertas"><b>0</b></div>
+                </div>
+              </div>
+            </a>
           </div>
-          <div class = "qtdAlertas">
-            <div class="tituloAlertas"><b>Alertas<br/>Críticos</b></div>
-            <img src="../imagens_uvas/alerta.png" class ="img-alertas">
-            <div class="numeroAlertas"><b>0</b></div>
-          </div>
-        </div>
-      </a>
-      </div>
 
-      <div class ="estufa2" id="dois">
-      <a href="dashboardsestufa.html" class="estufa2">
-        <div class="tituloEstufa">
-          <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-          <div class="idEstufa">Estufa 2</div>
-        </div>
-        <div class="metricasEstufa">
-          <div class="qtdSensores">
-            <div class="tituloSensores"><b>Quantidade de Sensores</b></div>
-            <img src="../imagens_uvas/sensores.png" class ="img-sensores">
-            <div class="numeroSensores"><b>10</b></div>
+          <div class="estufa2" id="dois">
+            <a href="dashboardsestufa.html" class="estufa2">
+              <div class="tituloEstufa">
+                <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+                <div class="idEstufa">Estufa 2</div>
+              </div>
+              <div class="metricasEstufa">
+                <div class="qtdSensores">
+                  <div class="tituloSensores">
+                    <b>Quantidade de Sensores</b>
+                  </div>
+                  <img
+                    src="../imagens_uvas/sensores.png"
+                    class="img-sensores"
+                  />
+                  <div class="numeroSensores"><b>10</b></div>
+                </div>
+                <div class="qtdAlertasCritico">
+                  <div class="tituloAlertas">
+                    <b>Alertas<br />Críticos</b>
+                  </div>
+                  <img src="../imagens_uvas/alerta.png" class="img-alertas" />
+                  <div class="numeroAlertas"><b>2</b></div>
+                </div>
+              </div>
+            </a>
           </div>
-          <div class = "qtdAlertasCritico">
-            <div class="tituloAlertas"><b>Alertas<br/>Críticos</b></div>
-            <img src="../imagens_uvas/alerta.png" class ="img-alertas">
-            <div class="numeroAlertas"><b>2</b></div>
-          </div>
-        </div>
-      </a>
-      </div>
 
-      <div class ="estufa3" id="tres">
-      <a href="dashboardsestufa.html" class="estufa3">
-        <div class="tituloEstufa">
-          <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-          <div class="idEstufa">Estufa 3</div>
-        </div>
-        <div class="metricasEstufa">
-          <div class="qtdSensores">
-            <div class="tituloSensores"><b>Quantidade de Sensores</b></div>
-            <img src="../imagens_uvas/sensores.png" class ="img-sensores">
-            <div class="numeroSensores"><b>14</b></div>
+          <div class="estufa3" id="tres">
+            <a href="dashboardsestufa.html" class="estufa3">
+              <div class="tituloEstufa">
+                <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+                <div class="idEstufa">Estufa 3</div>
+              </div>
+              <div class="metricasEstufa">
+                <div class="qtdSensores">
+                  <div class="tituloSensores">
+                    <b>Quantidade de Sensores</b>
+                  </div>
+                  <img
+                    src="../imagens_uvas/sensores.png"
+                    class="img-sensores"
+                  />
+                  <div class="numeroSensores"><b>14</b></div>
+                </div>
+                <div class="qtdAlertasCritico">
+                  <div class="tituloAlertas">
+                    <b>Alertas<br />Críticos</b>
+                  </div>
+                  <img src="../imagens_uvas/alerta.png" class="img-alertas" />
+                  <div class="numeroAlertas"><b>1</b></div>
+                </div>
+              </div>
+            </a>
           </div>
-          <div class = "qtdAlertasCritico">
-            <div class="tituloAlertas"><b>Alertas<br/>Críticos</b></div>
-            <img src="../imagens_uvas/alerta.png" class ="img-alertas">
-            <div class="numeroAlertas"><b>1</b></div>
+        </div>
+
+        <div class="segundaLinha">
+          <div class="estufa4" id="quatro">
+            <a href="dashboardsestufa.html" class="estufa4">
+              <div class="tituloEstufa">
+                <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+                <div class="idEstufa">Estufa 4</div>
+              </div>
+              <div class="metricasEstufa">
+                <div class="qtdSensores">
+                  <div class="tituloSensores">
+                    <b>Quantidade de Sensores</b>
+                  </div>
+                  <img
+                    src="../imagens_uvas/sensores.png"
+                    class="img-sensores"
+                  />
+                  <div class="numeroSensores"><b>14</b></div>
+                </div>
+                <div class="qtdAlertas">
+                  <div class="tituloAlertas">
+                    <b>Alertas<br />Críticos</b>
+                  </div>
+                  <img src="../imagens_uvas/alerta.png" class="img-alertas" />
+                  <div class="numeroAlertas"><b>0</b></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="estufa5" id="cinco">
+            <a href="dashboardsestufa.html" class="estufa5">
+              <div class="tituloEstufa">
+                <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+                <div class="idEstufa">Estufa 5</div>
+              </div>
+              <div class="metricasEstufa">
+                <div class="qtdSensores">
+                  <div class="tituloSensores">
+                    <b>Quantidade de Sensores</b>
+                  </div>
+                  <img
+                    src="../imagens_uvas/sensores.png"
+                    class="img-sensores"
+                  />
+                  <div class="numeroSensores"><b>14</b></div>
+                </div>
+                <div class="qtdAlertasCritico">
+                  <div class="tituloAlertas">
+                    <b>Alertas<br />Críticos</b>
+                  </div>
+                  <img src="../imagens_uvas/alerta.png" class="img-alertas" />
+                  <div class="numeroAlertas"><b>1</b></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="estufa6" id="seis">
+            <a href="dashboardsestufa.html" class="estufa6">
+              <div class="tituloEstufa">
+                <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+                <div class="idEstufa">Estufa 6</div>
+              </div>
+              <div class="metricasEstufa">
+                <div class="qtdSensores">
+                  <div class="tituloSensores">
+                    <b>Quantidade de Sensores</b>
+                  </div>
+                  <img
+                    src="../imagens_uvas/sensores.png"
+                    class="img-sensores"
+                  />
+                  <div class="numeroSensores"><b>14</b></div>
+                </div>
+                <div class="qtdAlertas">
+                  <div class="tituloAlertas">
+                    <b>Alertas<br />Críticos</b>
+                  </div>
+                  <img src="../imagens_uvas/alerta.png" class="img-alertas" />
+                  <div class="numeroAlertas"><b>0</b></div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
-      </a>
       </div>
     </div>
-
-    <div class="segundaLinha">
-      <div class ="estufa4" id="quatro">
-      <a href="dashboardsestufa.html" class="estufa4">
-        <div class="tituloEstufa">
-          <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-          <div class="idEstufa">Estufa 4</div>
-        </div>
-        <div class="metricasEstufa">
-          <div class="qtdSensores">
-            <div class="tituloSensores"><b>Quantidade de Sensores</b></div>
-            <img src="../imagens_uvas/sensores.png" class ="img-sensores">
-            <div class="numeroSensores"><b>14</b></div>
-          </div>
-          <div class = "qtdAlertas">
-            <div class="tituloAlertas"><b>Alertas<br/>Críticos</b></div>
-            <img src="../imagens_uvas/alerta.png" class ="img-alertas">
-            <div class="numeroAlertas"><b>0</b></div>
-          </div>
-        </div>
-      </a>
-      </div>
-
-      <div class ="estufa5" id="cinco">
-      <a href="dashboardsestufa.html" class="estufa5">
-        <div class="tituloEstufa">
-          <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-          <div class="idEstufa">Estufa 5</div>
-        </div>
-        <div class="metricasEstufa">
-          <div class="qtdSensores">
-            <div class="tituloSensores"><b>Quantidade de Sensores</b></div>
-            <img src="../imagens_uvas/sensores.png" class ="img-sensores">
-            <div class="numeroSensores"><b>14</b></div>
-          </div>
-          <div class = "qtdAlertasCritico">
-            <div class="tituloAlertas"><b>Alertas<br/>Críticos</b></div>
-            <img src="../imagens_uvas/alerta.png" class ="img-alertas">
-            <div class="numeroAlertas"><b>1</b></div>
-          </div>
-        </div>
-      </a>
-      </div>
-
-      <div class ="estufa6" id="seis">
-      <a href="dashboardsestufa.html" class="estufa6">
-        <div class="tituloEstufa">
-          <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-          <div class="idEstufa">Estufa 6</div>
-        </div>
-        <div class="metricasEstufa">
-          <div class="qtdSensores">
-            <div class="tituloSensores"><b>Quantidade de Sensores</b></div>
-            <img src="../imagens_uvas/sensores.png" class ="img-sensores">
-            <div class="numeroSensores"><b>14</b></div>
-          </div>
-          <div class = "qtdAlertas">
-            <div class="tituloAlertas"><b>Alertas<br/>Críticos</b></div>
-            <img src="../imagens_uvas/alerta.png" class ="img-alertas">
-            <div class="numeroAlertas"><b>0</b></div>
-          </div>
-        </div>
-      </a>
-      </div>
-    </div>
-    </div>
-  </div>
-
-</body>
+  </body>
 </html>

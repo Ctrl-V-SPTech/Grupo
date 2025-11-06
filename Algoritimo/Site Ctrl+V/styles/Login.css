@@ -4,7 +4,6 @@ body {
   line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
 header {
   color: #fff;
   display: flex;
@@ -54,7 +53,6 @@ nav ul a {
   transform: scale(1.1);
 }
 
-/* ===== LOGIN ===== */
 .login {
   display: flex;
   justify-content: center;
@@ -70,7 +68,6 @@ nav ul a {
   width: 100%;
 }
 
-/* ===== CARD ===== */
 .card_card_login {
   display: flex;
   flex-direction: column;
@@ -84,20 +81,19 @@ nav ul a {
   line-height: 1.5;
 }
 
-/* ===== TÍTULO ===== */
+
 .Login-titulo {
-  font-size: 40px; /* mesmo padrão dos títulos das outras seções */
+  font-size: 40px; 
   font-weight: bold;
   margin-bottom: 40px;
   text-align: center;
 }
 
-/* ===== FORMULÁRIO ===== */
 .formulario {
   display: flex;
   flex-direction: column;
   width: 100%;
-  font-size: 20px; /* mesmo padrão de texto */
+  font-size: 20px; 
 }
 
 .campo,
@@ -107,7 +103,7 @@ nav ul a {
   margin-bottom: 20px;
 }
 
-/* ===== INPUTS ===== */
+
 .input-container {
   position: relative;
   width: 100%;
@@ -116,7 +112,7 @@ nav ul a {
 }
 
 .labelInput {
-  font-size: 18px; /* mesmo tamanho das labels das outras páginas */
+  font-size: 18px;
   color: white;
   font-weight: bold;
   margin-bottom: 6px;
@@ -127,12 +123,11 @@ input {
   height: 50px;
   border-radius: 8px;
   border: 1px solid white;
-  font-size: 18px; /* consistente com os outros campos */
+  font-size: 18px;
   color: #4f6d3c;
   padding-right: 45px;
 }
 
-/* ===== ÍCONE DE OLHO ===== */
 #olhosenha {
   width: 25px;
   height: 25px;
@@ -147,7 +142,7 @@ input {
   opacity: 1;
 }
 
-/* ===== BOTÃO ===== */
+
 .botao {
   width: 100%;
   height: 60px;
@@ -155,7 +150,7 @@ input {
   border: 1px solid linear-gradient(90deg, #264e0e 0%, #70b048 100%);
   background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
   font-weight: bold;
-  font-size: 20px; /* padrão igual aos botões das outras seções */
+  font-size: 20px;
   color: white;
   margin-top: 20px;
   cursor: pointer;
@@ -167,7 +162,7 @@ input {
   transform: scale(1.03);
 }
 
-/* ===== TEXTOS AUXILIARES ===== */
+
 .textoAuxiliar {
   text-align: right;
   margin-bottom: 20px;
@@ -180,7 +175,7 @@ input {
 }
 
 .Cadastro {
-  font-size: 18px; /* mesmo padrão de corpo de texto */
+  font-size: 18px; 
   text-align: center;
   margin-top: 20px;
 }

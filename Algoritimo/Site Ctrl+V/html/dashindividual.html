@@ -9,116 +9,176 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-   
-  <div id="sidebar" class="sidebar">
-      <a href="">Usuário</a><br><br><br>
-      <a href="dashboardgeral.html">Estufas</a><br>
-      <a href="cadastrousuario.html">Cadastrar Usuario</a><br><br><br><br>
+    <div id="sidebar" class="sidebar">
+      <a href="">Usuário</a><br /><br /><br />
+      <a href="dashboardgeral.html">Estufas</a><br />
+      <a href="cadastrousuario.html">Cadastrar Usuario</a
+      ><br /><br /><br /><br />
       <a href="index.html">Sair</a>
     </div>
 
     <div id="main">
-     
       <div class="dashboard-grid">
-      
         <div class="fasesrisco">
           <h2>Período Atual</h2>
           <select class="fases" id="fases" onchange="mudarFases()">
             <option selected disabled value="#">Selecione uma opção</option>
-                    <option value="dormencia">Dormência</option>
-                    <option value="brotacao">Brotação</option>
-                    <option value="floracao">Floração</option>
-                    <option value="crescimento">Cresc. dos bagos</option>
-                    <option value="maturacao">Maturação</option>
-                    <option value="colheita">Colheita</option>
+            <option value="dormencia">Dormência</option>
+            <option value="brotacao">Brotação</option>
+            <option value="floracao">Floração</option>
+            <option value="crescimento">Cresc. dos bagos</option>
+            <option value="maturacao">Maturação</option>
+            <option value="colheita">Colheita</option>
           </select>
         </div>
 
         <div class="ideal-info">
           <h2>Métricas ideais por fase do cultivo</h2>
           <div class="fases2" id="fases2">
-            <div id="dormencia"><b>Dormência</b><br />5°C - 15°C<br />50-70%</div>
-            <div id="brotacao"><b>Brotação</b><br />15°C - 25°C<br />60-80%</div>
-            <div id="floracao"><b>Floração</b><br />18°C - 25°C<br />50-70%</div>
-            <div id="crescimento"><b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%</div>
-            <div id="maturacao"><b>Maturação</b><br />20°C - 30°C<br />40-60%</div>
-            <div id="colheita"><b>Colheita</b><br />10°C - 20°C<br />80-90%</div>
+            <div id="dormencia">
+              <b>Dormência</b><br />5°C - 15°C<br />50-70%
+            </div>
+            <div id="brotacao">
+              <b>Brotação</b><br />15°C - 25°C<br />60-80%
+            </div>
+            <div id="floracao">
+              <b>Floração</b><br />18°C - 25°C<br />50-70%
+            </div>
+            <div id="crescimento">
+              <b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%
+            </div>
+            <div id="maturacao">
+              <b>Maturação</b><br />20°C - 30°C<br />40-60%
+            </div>
+            <div id="colheita">
+              <b>Colheita</b><br />10°C - 20°C<br />80-90%
+            </div>
           </div>
         </div>
 
-<div class="sensor-card">
-  <div class="header">
-    <div class="legend">
-      <div class="item"><span class="dot ideal"></span> Ideal</div>
-      <div class="item"><span class="dot moderado" title="
+        <div class="sensor-card">
+          <div class="header">
+            <div class="legend">
+              <div class="item"><span class="dot ideal"></span> Ideal</div>
+              <div class="item">
+                <span
+                  class="dot moderado"
+                  title="
     O alerta moderado ativa numa margem de 1 a 3 graus de distancia da Temperatura ideal, 
-pra mais ou pra menos."></span> Moderado</div>
-      <div class="item"><span class="dot critico" title="
+pra mais ou pra menos."
+                ></span>
+                Moderado
+              </div>
+              <div class="item">
+                <span
+                  class="dot critico"
+                  title="
     O alerta critico ativa a partir de 4 graus de distancia da Temperatura ideal, 
-pra mais ou pra menos."></span> Crítico</div>
-    </div>
-    <h4>Temperatura e umidade em tempo real:</h4>
-  </div>
+pra mais ou pra menos."
+                ></span>
+                Crítico
+              </div>
+            </div>
+            <h4>Temperatura e umidade em tempo real:</h4>
+          </div>
 
-  <div class="values">
-    <div class="temp" id="temp">
-      <img class="metricas" src="../imagens_uvas/temperature.png" alt="" />24°C
-    </div>
-    <div class="umi" id="umi">
-      <img class="metricas" src="../imagens_uvas/humidity.png" alt="" />65%
-    </div>
-  </div>
-
-</div>
+          <div class="values">
+            <div class="temp" id="temp">
+              <img
+                class="metricas"
+                src="../imagens_uvas/temperature.png"
+                alt=""
+              />24°C
+            </div>
+            <div class="umi" id="umi">
+              <img
+                class="metricas"
+                src="../imagens_uvas/humidity.png"
+                alt=""
+              />65%
+            </div>
+          </div>
+        </div>
 
         <div class="monitoring-Chart">
-          <canvas id="monitoringChart" ></canvas>
+          <canvas id="monitoringChart"></canvas>
         </div>
 
         <div class="monitoring-Chart2">
-          <canvas id="monitoringChart2" ></canvas>
+          <canvas id="monitoringChart2"></canvas>
         </div>
 
         <div class="qtdalertas">
-          <div class="qtdalertas-header">Quantidade e tempo alerta (últimos 7 dias)</div> 
-          <span class="qtdmoderado">Moderado: 8 <br> 3h36min</span> 
-          <span class="qtdcritico">Crítico 7 <br> 4h20min</span> 
-          <span class="qtdtotal">Total:15 <br> 7h56min</span> 
+          <div class="qtdalertas-header">
+            Quantidade e tempo alerta (últimos 7 dias)
+          </div>
+          <span class="qtdmoderado"
+            >Moderado: 8 <br />
+            3h36min</span
+          >
+          <span class="qtdcritico"
+            >Crítico 7 <br />
+            4h20min</span
+          >
+          <span class="qtdtotal"
+            >Total:15 <br />
+            7h56min</span
+          >
         </div>
 
-        <div class="historico">
-          <div class="historico-header">Histórico de alertas</div>
-          <div class="historico-row title">
-            <span>Data e Hora</span>
-            <span>Mensagem</span>
-            <span>Status</span>
-            <span>Tempo em alerta</span>
-          </div>
+<div class="historico">
+  <div class="historico-header">Histórico de alertas</div>
 
-          <div class="historico-row dados">
-            <span>17/10/25 16:42</span>
-            <span>Temperatura acima do ideal (31°C)</span>
-            <span>Crítico</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 16:42</span>
-            <span>Temperatura acima do ideal (31°C)</span>
-            <span>Crítico</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 16:42</span>
-            <span>Temperatura acima do ideal (31°C)</span>
-            <span>Crítico</span>
-            <span>1h15min</span>
-          </div>
-        
-
-          <div class="historico-footer">Ver todos</div>
-        </div>
-      </div>
+  <div class="historico-body">
+    <div class="historico-row title">
+      <span>Data e Hora</span>
+      <span>Mensagem</span>
+      <span>Status</span>
+      <span>Tempo em alerta</span>
     </div>
+
+    <div class="historico-row dados">
+      <span>17/10/25 08:00</span>
+      <span>Temperatura acima do ideal (31°C)</span>
+      <span>Moderado</span>
+      <span>1h00min</span>
+    </div>
+    <div class="historico-row dados">
+      <span>17/10/25 13:00</span>
+      <span>Temperatura acima do ideal (24°C)</span>
+      <span>Critico</span>
+      <span>1h00min</span>
+    </div>
+            <div class="historico-row dados">
+      <span>17/10/25 13:00</span>
+      <span>Umidade abaixo do ideal (65°C)</span>
+      <span>Crítico</span>
+      <span>1h15min</span>
+    </div>
+    <div class="historico-row dados">
+      <span>17/10/25 12:00</span>
+      <span>Temperatura acima do ideal (26°C)</span>
+      <span>Critico</span>
+      <span>1h00min</span>
+    </div>
+        <div class="historico-row dados">
+      <span>17/10/25 12:00</span>
+      <span>Umidade abaixo do ideal (66°C)</span>
+      <span>Crítico</span>
+      <span>1h15min</span>
+    </div>
+        <div class="historico-row dados">
+      <span>17/10/25 11:00</span>
+      <span>Temperatura acima do ideal (24°C)</span>
+      <span>Crítico</span>
+      <span>1h15min</span>
+    </div>
+
+
+  </div>
+
+  <div class="historico-footer"></div>
+</div>
 
     <script>
       const ctx = document.getElementById("monitoringChart");
@@ -130,7 +190,7 @@ pra mais ou pra menos."></span> Crítico</div>
           datasets: [
             {
               label: "Temperatura",
-              data: [30, 29, 28, 25, 22, 23],
+              data: [22, 22, 24, 24, 26, 24],
               borderWidth: 1,
               borderColor: "purple",
               backgroundColor: "purple",
@@ -154,14 +214,14 @@ pra mais ou pra menos."></span> Crítico</div>
         },
       });
 
-       new Chart(ctx2, {
+      new Chart(ctx2, {
         type: "line",
         data: {
           labels: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00"],
           datasets: [
             {
               label: "Umidade",
-              data: [80, 82, 80, 85, 80, 83],
+              data: [62, 64, 62, 64, 66, 65],
               borderWidth: 1,
               borderColor: "blue",
               backgroundColor: "blue",
@@ -185,47 +245,49 @@ pra mais ou pra menos."></span> Crítico</div>
         },
       });
 
-      
-  function mudarFases() {
-  var fase = fases.value;
-  var fasesIds = ["maturacao", "dormencia", "brotacao", "floracao", "crescimento", "colheita"];
+      function mudarFases() {
+        var fase = fases.value;
+        var fasesIds = [
+          "maturacao",
+          "dormencia",
+          "brotacao",
+          "floracao",
+          "crescimento",
+          "colheita",
+        ];
 
-  for (var i = 0; i < fasesIds.length; i++) {
-    var fasesCor = document.getElementById(fasesIds[i]); 
-    fasesCor.style.color = "grey";
-  }
+        for (var i = 0; i < fasesIds.length; i++) {
+          var fasesCor = document.getElementById(fasesIds[i]);
+          fasesCor.style.color = "grey";
+        }
 
-  var selecionada = document.getElementById(fase);
-  if (selecionada) {
-    selecionada.style.color = "green";
-  }
+        var selecionada = document.getElementById(fase);
+        if (selecionada) {
+          selecionada.style.color = "green";
+        }
 
-  if (fase == "dormencia") {
-    temp.style.backgroundColor = "red";
-    umi.style.backgroundColor = "green";
-  } else if (fase == "brotacao") {
-    temp.style.backgroundColor = "green";
-    umi.style.backgroundColor = "green";
-  } else if (fase == "floracao") {
-    temp.style.backgroundColor = "green";
-    umi.style.backgroundColor = "green";
-  } else if (fase == "crescimento") {
-    temp.style.backgroundColor = "green";
-    umi.style.backgroundColor = "green";
-  }  else if (fase == "maturacao") {
-    temp.style.backgroundColor = "green";
-    umi.style.backgroundColor = "red";
-  } else if (fase == "colheita") {
-    temp.style.backgroundColor = "red";
-    umi.style.backgroundColor = "red";
-  }
-
-
-
-}
-
-
-
+        if (fase == "dormencia") {
+          temp.style.backgroundColor = "red";
+          umi.style.backgroundColor = "green";
+          temp.style.backgroundColor = "red";
+          umi.style.backgroundColor = "green";
+        } else if (fase == "brotacao") {
+          temp.style.backgroundColor = "green";
+          umi.style.backgroundColor = "green";
+        } else if (fase == "floracao") {
+          temp.style.backgroundColor = "green";
+          umi.style.backgroundColor = "green";
+        } else if (fase == "crescimento") {
+          temp.style.backgroundColor = "green";
+          umi.style.backgroundColor = "green";
+        } else if (fase == "maturacao") {
+          temp.style.backgroundColor = "green";
+          umi.style.backgroundColor = "red";
+        } else if (fase == "colheita") {
+          temp.style.backgroundColor = "red";
+          umi.style.backgroundColor = "red";
+        }
+      }
     </script>
   </body>
 </html>

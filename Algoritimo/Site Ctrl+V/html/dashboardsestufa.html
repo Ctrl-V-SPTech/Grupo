@@ -1,276 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Estufa</title>
-  <link rel="stylesheet" href="../styles/dashboardsestufa.css" />
-  <link rel="icon" href="../public/assets/icon/Logo.png" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <div id="sidebar" class="sidebar">
-      <a href="">Usuário</a><br><br><br>
-      <a href="dashboardgeral.html">Estufas</a><br>
-      <a href="cadastrousuario.html">Cadastrar Usuario</a><br><br><br><br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Estufa</title>
+    <link rel="stylesheet" href="../styles/dashboardsestufa.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="sidebar" class="sidebar">
+      <a href="">Usuário</a><br /><br /><br />
+      <a href="dashboardgeral.html">Estufas</a><br />
+      <a href="cadastrousuario.html">Cadastrar Usuario</a
+      ><br /><br /><br /><br />
       <a href="index.html">Sair</a>
     </div>
-  <div class="containerpai">
-    <div class="mapaEstufa">
-    <div class="mapaEstufaContent">
-    <div class="container1">
-      <img src="../imagens_uvas/estufa.png" class ="img-estufa">
-      <div class="titulo">Sensores dentro da Estufa</div>
-      <div class ="status">
-        <div class="statusTitulo">Status dos Alarmes</div>
-        <br/>
-        <div class="statusVerde">
-        <div class = "identificacaoStatusVerde"></div>
-        <div><b>Ideal</b></div>
+    <div class="containerpai">
+      <div class="mapaEstufa">
+        <div class="mapaEstufaContent">
+          <div class="container1">
+            <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+            <div class="titulo">Sensores dentro da Estufa</div>
+            <div class="status">
+              <div class="statusTitulo">Status dos Alarmes</div>
+              <br />
+              <div class="statusVerde">
+                <div class="identificacaoStatusVerde"></div>
+                <div><b>Ideal</b></div>
+              </div>
+              <div class="statusAmarelo">
+                <div class="identificacaoStatusAmarelo"></div>
+                <div><b>Moderado</b></div>
+              </div>
+              <div class="statusVermelho">
+                <div class="identificacaoStatusVermelho"></div>
+                <div><b>Crítico</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container2">
+            <!-- ZONA LESTE -->
+            <div class="zonaLeste">
+              <div class="sensoresZonas">
+                <div class="primeiraLinha1">
+                  <a href="dashindividual.html" class="sensorVerde" id="um"
+                    ><b>Sensor<br />1</b></a
+                  >
+                  <a href="dashindividual.html" class="sensorVerde" id="dois"
+                    ><b>Sensor<br />2</b></a
+                  >
+                </div>
+                <br />
+                <div class="segundaLinha1">
+                  <a href="dashindividual.html" class="sensorVerde" id="tres"
+                    ><b>Sensor<br />3</b></a
+                  >
+                </div>
+                <br />
+                <div class="terceiraLinha1">
+                  <a href="dashindividual.html" class="sensorVerde" id="quatro"
+                    ><b>Sensor<br />4</b></a
+                  >
+                  <a href="dashindividual.html" class="sensorVerde" id="cinco"
+                    ><b>Sensor<br />5</b></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- ZONA CENTRAL -->
+            <div class="zonaCentral">
+              <div class="sensoresZonas">
+                <div class="primeiraLinha2">
+                  <a href="dashindividual.html" class="sensorVerde" id="seis"
+                    ><b>Sensor<br />6</b></a
+                  >
+                </div>
+                <br />
+                <div class="segundaLinha2">
+                  <a href="dashindividual.html" class="sensorVerde" id="sete"
+                    ><b>Sensor<br />7</b></a
+                  >
+                  <a href="dashindividual.html" class="sensorAmarelo" id="oito"
+                    ><b>Sensor<br />8</b></a
+                  >
+                </div>
+                <br />
+                <div class="terceiraLinha2">
+                  <a href="dashindividual.html" class="sensorVerde" id="nove"
+                    ><b>Sensor<br />9</b></a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- ZONA OESTE -->
+            <div class="zonaOeste">
+              <div class="sensoresZonas">
+                <div class="primeiraLinha1">
+                  <a href="dashindividual.html" class="sensorVerde" id="dez"
+                    ><b>Sensor<br />10</b></a
+                  >
+                  <a href="dashindividual.html" class="sensorAmarelo" id="onze"
+                    ><b>Sensor<br />11</b></a
+                  >
+                </div>
+                <br />
+                <div class="segundaLinha1">
+                  <a href="dashindividual.html" class="sensorAmarelo" id="doze"
+                    ><b>Sensor<br />12</b></a
+                  >
+                </div>
+                <br />
+                <div class="terceiraLinha1">
+                  <a href="dashindividual.html" class="sensorVerde" id="treze"
+                    ><b>Sensor<br />13</b></a
+                  >
+                  <a
+                    href="dashindividual.html"
+                    class="sensorVermelho"
+                    id="quatorze"
+                    ><b>Sensor<br />14</b></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container3">
+            <div class="zonaLeste">
+              <div class="identificacaoZonaLeste"></div>
+              <div><b>Zona Leste</b></div>
+            </div>
+
+            <div class="zonaCentral">
+              <div class="identificacaoZonaCentral"></div>
+              <div><b>Zona Central</b></div>
+            </div>
+
+            <div class="zonaOeste">
+              <div class="identificacaoZonaOeste"></div>
+              <div><b>Zona Oeste</b></div>
+            </div>
+          </div>
         </div>
-        <div class="statusAmarelo">
-        <div class = "identificacaoStatusAmarelo"></div>
-        <div><b>Moderado</b></div>
-        </div>
-        <div class="statusVermelho">
-        <div class = "identificacaoStatusVermelho"></div>
-        <div><b>Crítico</b></div>
-        </div>
       </div>
     </div>
 
-    <div class ="container2">
-  <!-- ZONA LESTE -->
-      <div class="zonaLeste">
-        <div class="sensoresZonas">
-      <div class="primeiraLinha1">
-        <a href="dashindividual.html" class="sensorVerde" id="um"><b>Sensor<br>1</b></a>
-        <a href="dashindividual.html" class="sensorVerde" id="dois"><b>Sensor<br>2</b></a>
-      </div>
-      <br/>
-      <div class="segundaLinha1">
-        <a href="dashindividual.html" class="sensorVerde" id="tres"><b>Sensor<br>3</b></a>
-      </div>
-      <br/>
-      <div class="terceiraLinha1">
-        <a href="dashindividual.html" class="sensorVerde" id="quatro"><b>Sensor<br>4</b></a>
-        <a href="dashindividual.html" class="sensorVerde" id="cinco"><b>Sensor<br>5</b></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ZONA CENTRAL -->
-  <div class="zonaCentral">
-    <div class="sensoresZonas">
-      <div class="primeiraLinha2">
-        <a href="dashindividual.html" class="sensorVerde" id="seis"><b>Sensor<br>6</b></a>
-      </div>
-      <br/>
-      <div class="segundaLinha2">
-        <a href="dashindividual.html" class="sensorVerde" id="sete"><b>Sensor<br>7</b></a>
-        <a href="dashindividual.html" class="sensorAmarelo" id="oito"><b>Sensor<br>8</b></a>
-      </div>
-      <br/>
-      <div class="terceiraLinha2">
-        <a href="dashindividual.html" class="sensorVerde" id="nove"><b>Sensor<br>9</b></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ZONA OESTE -->
-  <div class="zonaOeste">
-    <div class="sensoresZonas">
-      <div class="primeiraLinha1">
-        <a href="dashindividual.html" class="sensorVerde" id="dez"><b>Sensor<br>10</b></a>
-        <a href="dashindividual.html" class="sensorAmarelo" id="onze"><b>Sensor<br>11</b></a>
-      </div>
-      <br/>
-      <div class="segundaLinha1">
-        <a href="dashindividual.html" class="sensorAmarelo" id="doze"><b>Sensor<br>12</b></a>
-      </div>
-      <br/>
-      <div class="terceiraLinha1">
-        <a href="dashindividual.html" class="sensorVerde" id="treze"><b>Sensor<br>13</b></a>
-        <a href="dashindividual.html" class="sensorVermelho" id="quatorze"><b>Sensor<br>14</b></a>
-      </div>
-    </div>
-  </div>
-</div>
-    <div class ="container3">
-      <div class ="zonaLeste">
-        <div class = "identificacaoZonaLeste"></div>
-        <div><b>Zona Leste</b></div>
-      </div>
-      
-      <div class="zonaCentral">
-        <div class="identificacaoZonaCentral"></div>
-        <div><b>Zona Central</b></div>
-      </div>
-        
-      <div class = "zonaOeste">
-        <div class = "identificacaoZonaOeste"></div>
-        <div><b>Zona Oeste</b></div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-  <div class="container4">
-      <canvas class = "grafico_umidade" id="myChart"></canvas>
+    <div class="container4">
+      <canvas class="grafico_umidade" id="myChart"></canvas>
       <canvas class="grafico_temperatura" id="myChartline"></canvas>
-  </div>
+    </div>
 
+    <div class="container5">
+      <div class="grafico">
+        <div class="graficoAlertasContent">
+          <canvas class="grafico_alertas" id="myChartdought"></canvas>
+        </div>
+      </div>
 
-  <div class="container5">
-    
-    <div class="grafico">
-      <div class="graficoAlertasContent">
-      <canvas class = "grafico_alertas" id="myChartdought"></canvas>
+      <div class="historico">
+        <div class="historico-header">Histórico de alertas</div>
+        <div class="historico-row title">
+          <span>Data e Hora</span>
+          <span>Sensor</span>
+          <span>Status</span>
+          <span>Tempo em alerta</span>
+        </div>
+
+        <div class="historico-row dados">
+          <span>17/10/25 13:00</span>
+          <span>Sensor 8</span>
+          <span>Moderado</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 12:00</span>
+          <span>Sensor 11</span>
+          <span>Moderado</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 12:00</span>
+          <span>Sensor 12</span>
+          <span>Moderado</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 11:00</span>
+          <span>Sensor 14</span>
+          <span>Crítico</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 11:00</span>
+          <span>Sensor 8</span>
+          <span>Moderado</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 11:00</span>
+          <span>Sensor 11</span>
+          <span>Moderado</span>
+          <span>1h15min</span>
+        </div>
+        <div class="historico-row dados">
+          <span>17/10/25 10:00</span>
+          <span>Sensor 14</span>
+          <span>Crítico</span>
+          <span>1h15min</span>
+        </div>
       </div>
     </div>
-    
-    <div class="historico">
-          <div class="historico-header">Histórico de alertas</div>
-          <div class="historico-row title">
-            <span>Data e Hora</span>
-            <span>Sensor</span>
-            <span>Status</span>
-            <span>Tempo em alerta</span>
-          </div>
-          
-          <div class="historico-row dados">
-            <span>17/10/25 16:30</span>
-            <span>Sensor 8</span>
-            <span>Moderado</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 16:30</span>
-            <span>Sensor 11</span>
-            <span>Moderado</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 16:30</span>
-            <span>Sensor 12</span>
-            <span>Moderado</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 16:30</span>
-            <span>Sensor 14</span>
-            <span>Crítico</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 17:30</span>
-            <span>Sensor 8</span>
-            <span>Moderado</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 17:30</span>
-            <span>Sensor 11</span>
-            <span>Moderado</span>
-            <span>1h15min</span>
-          </div>
-          <div class="historico-row dados">
-            <span>17/10/25 17:30</span>
-            <span>Sensor 14</span>
-            <span>Crítico</span>
-            <span>1h15min</span>
-          </div>
-    </div>
-
-  </div>
-
-</body>
+  </body>
 </html>
 
 <script>
-  const ctx = document.getElementById('myChart');
-  const ctxLine = document.getElementById('myChartline');
-  const ctxDought = document.getElementById('myChartdought');
+  const ctx = document.getElementById("myChart");
+  const ctxLine = document.getElementById("myChartline");
+  const ctxDought = document.getElementById("myChartdought");
   Chart.defaults.font.weight = 650;
-  
+
   new Chart(ctxLine, {
-   type: 'bar',
-     data: {
-      labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14'],
-      datasets: [{
-        label: 'Umidade atual dos Sensores (S = Sensores)',
-        data: [50, 50, 51, 53, 56, 57, 58, 60, 61, 62, 64, 64, 65, 70],
-        borderWidth: 1,
-        borderColor: '#bddeaf',
-        backgroundColor: 'blue',
-      }
-    ]
+    type: "bar",
+    data: {
+      labels: [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+      ],
+      datasets: [
+        {
+          label: "Umidade atual dos Sensores (S = Sensores)",
+          data: [50, 50, 51, 53, 56, 57, 58, 60, 61, 62, 64, 64, 65, 70],
+          borderWidth: 1,
+          borderColor: "#000",
+          backgroundColor: "blue",
+        },
+      ],
     },
     options: {
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true },
-          },
-    }
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true },
+      },
+    },
   });
 
   new Chart(ctx, {
-    type: 'bar',
+    type: "bar",
     data: {
-      labels: ['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'S11', 'S12', 'S13', 'S14'],
-      datasets: [{
-        label: 'Temperatura atual dos Sensores (S = Sensores)',
-        data: [16, 16, 16, 17, 17, 17, 17, 16,17, 18, 19, 20, 19, 23],
-        borderWidth: 1,
-        borderColor: '#bddeaf',
-        backgroundColor: 'purple',
-      }
-    ]
+      labels: [
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7",
+        "S8",
+        "S9",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+      ],
+      datasets: [
+        {
+          label: "Temperatura atual dos Sensores (S = Sensores)",
+          data: [16, 16, 16, 17, 17, 17, 17, 16, 17, 18, 19, 20, 19, 23],
+          borderWidth: 1,
+          borderColor: "#000",
+          backgroundColor: "purple",
+        },
+      ],
     },
     options: {
-          maintainAspectRatio: false,
-          scales: {
-            y: { beginAtZero: true },
-          },
-    }
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true },
+      },
+    },
   });
 
   const DATA_COUNT = 5;
-  const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+  const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 };
 
   new Chart(ctxDought, {
-    type: 'doughnut',
+    type: "doughnut",
     data: {
-  labels: [
-    'Zona Leste',
-    'Zona Central',
-    'Zona Oeste'
-  ],
-  datasets: [{
-    label: 'Quantidade de Alertas',
-    data: [10, 30, 100],
-    backgroundColor: [
-      '#bddeaf',
-      '#dbf2d1',
-      'rgb(248, 248, 248)'
-    ],
-    hoverOffset: 4
-  }]
-  },
+      labels: ["Zona Leste", "Zona Central", "Zona Oeste"],
+      datasets: [
+        {
+          label: "Quantidade de Alertas",
+          data: [10, 30, 100],
+          borderColor: "#a0a0a0",
+          backgroundColor: ["#bddeaf", "#dbf2d1", "rgb(248, 248, 248)"],
+          hoverOffset: 4,
+        },
+      ],
+    },
     options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "top",
+        },
+        title: {
+          display: true,
+          text: "Histórico de Alertas dos Sensores",
+        },
       },
-      title: {
-        display: true,
-        text: 'Histórico de Alertas dos Sensores'
-      }
-    }
-  },
-});
-
+    },
+  });
 </script>

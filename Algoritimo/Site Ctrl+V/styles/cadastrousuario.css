@@ -7,7 +7,7 @@ body, html {
     color: #fff;
 }
 
-/* ===== HEADER ===== */
+
 header {
     color: #fff;
     display: flex;
@@ -18,12 +18,12 @@ header {
     background-color: #4b1c6b;
     position: fixed;
     top: 0;
-    left: 260px; /* espaço da sidebar */
+    left: 260px;
     right: 0;
     z-index: 1000;
 }
 
-/* ===== SIDEBAR ===== */
+
 .sidebar {
     height: 100%;
     width: 260px;
@@ -45,16 +45,16 @@ header {
     color: #f1f1f1;
 }
 
-/* ===== MAIN ===== */
+
 #main {
-    margin-left: 260px; /* largura da sidebar */
+    margin-left: 260px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 90px; /* compensação visual */
+    padding-top: 90px; 
 }
 
-/* ===== LOGIN ===== */
+
 .login {
     display: flex;
     justify-content: center;
@@ -69,7 +69,6 @@ header {
     width: 100%;
 }
 
-/* ===== CARD LOGIN ===== */
 .card_card_login {
     display: flex;
     flex-direction: column;
@@ -89,7 +88,6 @@ header {
     text-align: center;
 }
 
-/* ===== FORMULÁRIO ===== */
 .formulario {
     display: flex;
     flex-direction: column;
