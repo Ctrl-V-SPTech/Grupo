@@ -61,10 +61,12 @@ nav ul a {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  padding: 0px 200px 0px 200px;
 }
 
 .box {
   width: 100%;
+  font-size: 18px;
 }
 
 .box h2 {
@@ -76,6 +78,7 @@ nav ul a {
   background-color: #291339;
   color: white;
   border-color: transparent;
+  font-size: 18px;
 }
 
 .box label {
@@ -95,12 +98,14 @@ nav ul a {
   border: 2px solid white;
   border-radius: 12px;
   padding: 5px;
-  
+  font-size: 18px;
 }
 
 
 .r {
   margin: 10px;
+  font-size: 18px;
+  padding: 0px 200px 0px 200px;
 }
 
 
