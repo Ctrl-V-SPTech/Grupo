@@ -24,6 +24,7 @@ body, html {
     font-size: 25px;
     color: #fff;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .sidebar a:hover {
@@ -107,8 +108,22 @@ body, html {
   border: 1px solid #000000 ;
 }
 
+.infoAlertas{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  color: #000;
+  border: 1px solid #000000 ;
+  margin-top: 20px;
+  height: 80px;
+  font-size: 24px;
+}
+
 .temp { background-color: #cccdcc; }
 .umi { background-color: #cccdcc; }
+.infoAlertas { background-color: #fff; }
 
 .metricas {
   width: 40px;
