@@ -74,20 +74,18 @@ fkSensor INT,
 );
 
 CREATE TABLE Alerta (
-idAlerta INT AUTO_INCREMENT,
-AlertaTemp VARCHAR(10),
-	CONSTRAINT chkStatusTemp
-    CHECK(statusTemp IN('CRÍTICO', 'MODERADO')),
-AlertaUmid VARCHAR(10),
-    CONSTRAINT chkStatusUmid
-    CHECK(statusUmid IN('CRÍTICO', 'MODERADO')),
-dtHrInicialAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
-dtHrFinalAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
-fkSensorMedida INT,
-	CONSTRAINT fkMSensorMedida
-		FOREIGN KEY (fkSensorMedida)
-			REFERENCES Sensor(idSensor),
-            PRIMARY KEY (idAlerta, fkSensorMedida)
+    idAlerta INT AUTO_INCREMENT,
+    AlertaTemp VARCHAR(10),
+    CONSTRAINT chkStatusTemp CHECK(AlertaTemp IN('CRÍTICO', 'MODERADO')),
+    AlertaUmid VARCHAR(10),
+    CONSTRAINT chkStatusUmid CHECK(AlertaUmid IN('CRÍTICO', 'MODERADO')),
+    dtHrInicialAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dtHrFinalAlerta DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fkSensorMedida INT,
+    CONSTRAINT fkMSensorMedida
+        FOREIGN KEY (fkSensorMedida)
+            REFERENCES Sensor(idSensor),
+    PRIMARY KEY (idAlerta, fkSensorMedida)
 );
     
 INSERT Endereco (logradouro, numero, bairro, cidade, estado, cep) VALUES
@@ -124,11 +122,6 @@ INSERT INTO Sensor (localizacaoSensor, fkEstufa) VALUES
 	('Zona Central', 3),
 	('Zona Oeste', 4);
     
-INSERT INTO Medida (medidaTemp, medidaUmid, fkSensor) VALUES
-    (22.5, 0.75, 1), 
-    (28.2, 0.82, 2),
-    (17.9, 0.55, 3); 
-  
 INSERT INTO Alerta (alertaTemp, alertaUmid, dtHrInicialAlerta, dtHrFinalAlerta, fkSensorMedida) VALUES
     ('CRÍTICO', NULL, '2025-11-06 08:00:00', '2025-11-06 9:30:00', 1),
     (NULL, 'CRÍTICO', '2025-11-06 09:15:00', '2025-11-06 10:45:00', 2),
