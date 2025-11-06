@@ -169,4 +169,3 @@ JOIN Medida m
     ON m.fkSensor = s.idSensor
 LEFT JOIN Alerta a
 	ON a.fkSensorMedida = s.idSensor;
-    
