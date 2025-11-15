@@ -148,6 +148,46 @@
       </div>
     </div>
 
+
+<div class="container6">
+    <div class="fasesrisco">
+      <h2>Período Atual</h2>
+      <select class="fases" id="fases" onchange="mudarFases()">
+        <option selected disabled value="#">Selecione uma opção</option>
+        <option value="dormencia">Dormência</option>
+        <option value="brotacao">Brotação</option>
+        <option value="floracao">Floração</option>
+        <option value="crescimento">Cresc. dos bagos</option>
+        <option value="maturacao">Maturação</option>
+        <option value="colheita">Colheita</option>
+      </select>
+    </div>
+
+    <div class="ideal-info">
+      <h2>Métricas ideais por fase do cultivo</h2>
+      <div class="fases2" id="fases2">
+        <div id="dormencia">
+          <b>Dormência</b><br />5°C - 15°C<br />50-70%
+        </div>
+        <div id="brotacao">
+          <b>Brotação</b><br />15°C - 25°C<br />60-80%
+        </div>
+        <div id="floracao">
+          <b>Floração</b><br />18°C - 25°C<br />50-70%
+        </div>
+        <div id="crescimento">
+          <b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%
+        </div>
+        <div id="maturacao">
+          <b>Maturação</b><br />20°C - 30°C<br />40-60%
+        </div>
+        <div id="colheita">
+          <b>Colheita</b><br />10°C - 20°C<br />80-90%
+        </div>
+      </div>
+    </div>
+    </div>
+
     <div class="container4">
       <canvas class="grafico_umidade" id="myChart"></canvas>
       <canvas class="grafico_temperatura" id="myChartline"></canvas>
