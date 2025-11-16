@@ -169,3 +169,48 @@ JOIN Medida m
     ON m.fkSensor = s.idSensor
 LEFT JOIN Alerta a
 	ON a.fkSensorMedida = s.idSensor;
+
+CREATE VIEW vw_alertas AS 
+	SELECT
+	e.nomeEmpresa AS 'Nome da Empresa',
+	r.nomeUsuario AS 'UsuárioAdm',  
+    u.nomeUsuario AS 'Usuário',
+    CONCAT('Email: ', r.email) AS 'Contato do Responsável',
+    es.nomeEstufa AS 'Nome da Estufa',
+    s.localizacaoSensor AS 'Local do Sensor',
+    m.medidaTemp AS 'Medida da Temperatura',
+    m.medidaUmid AS 'Medida da Umidade',
+    m.dataHora AS 'Data e Hora da Medida',
+    IFNULL(a.AlertaTemp, 'Ok') AS 'Status de Temperatura',
+    IFNULL(a.AlertaUmid, 'Ok') AS 'Status de Umidade',
+    DATE_FORMAT(SEC_TO_TIME(TIMESTAMPDIFF(SECOND, a.dtHrInicialAlerta, a.dtHrFinalAlerta)), '%H:%i') AS 'Tempo em Alerta',
+    CASE 
+		WHEN es.periodoDesenvolvimento = 'Brotação' AND m.medidaTemp < 15 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para a Brotação!'
+        WHEN es.periodoDesenvolvimento = 'Crescimento' AND m.medidaTemp < 20 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para o Crescimento dos Bagos!'
+        WHEN es.periodoDesenvolvimento = 'Dormência' AND m.medidaTemp < 5 OR m.medidaTemp > 15 THEN 'Temperatura Fora do ideal para o periodo de Dormência!'
+        WHEN es.periodoDesenvolvimento = 'Floração' AND m.medidaTemp < 18 OR m.medidaTemp > 25 THEN 'Temperatura Fora do ideal para a Floração!'
+        WHEN es.periodoDesenvolvimento = 'Maturação' AND m.medidaTemp < 20 OR m.medidaTemp > 30 THEN 'Temperatura Fora do ideal para a Maturação!'
+        WHEN es.periodoDesenvolvimento = 'Colheita' AND m.medidaTemp < 10 OR m.medidaTemp > 20 THEN 'Temperatura Fora do ideal para a Colheita!'
+        WHEN es.periodoDesenvolvimento = 'Brotação' AND m.medidaUmid < 0.60 OR m.medidaUmid > 0.80 THEN 'Umidade Fora do ideal para a Brotação!'
+        WHEN es.periodoDesenvolvimento = 'Crescimento' AND m.medidaUmid < 0.60 OR m.medidaUmid > 0.80 THEN 'Umidade Fora do ideal para o Crescimento dos Bagos!'
+        WHEN es.periodoDesenvolvimento = 'Dormência' AND m.medidaUmid < 0.50 OR m.medidaUmid > 0.70 THEN 'Umidade Fora do ideal para a Dormência!'
+        WHEN es.periodoDesenvolvimento = 'Floração' AND m.medidaUmid < 0.50 OR m.medidaUmid > 0.70 THEN 'Umidade Fora do ideal para a Floração!'
+        WHEN es.periodoDesenvolvimento = 'Maturação' AND m.medidaUmid < 0.40 OR m.medidaUmid > 0.60 THEN 'Umidade Fora do ideal para a Maturação!'
+        WHEN es.periodoDesenvolvimento = 'Colheita' AND m.medidaUmid < 0.80 OR m.medidaUmid > 0.90 THEN 'Umidade Fora do ideal para a Colheita!'
+        ELSE 'Dentro da Faixa Normal'
+    END AS 'Status da Medida'
+FROM Empresa e
+JOIN Usuario u 
+    ON u.fkEmpresa = e.idEmpresa
+JOIN Usuario r 
+    ON u.fkUsuarioResponsavel = r.idUsuario
+JOIN Estufa es 
+    ON es.fkEstufaEmpresa = e.idEmpresa
+JOIN Sensor s 
+    ON s.fkEstufa = es.idEstufa
+JOIN Medida m 
+    ON m.fkSensor = s.idSensor
+LEFT JOIN Alerta a
+	ON a.fkSensorMedida = s.idSensor;
+
+select * from vw_alertas;
