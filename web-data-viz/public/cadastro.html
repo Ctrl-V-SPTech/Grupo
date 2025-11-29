@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="css/cadastro.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+  </head>
+
+  <body>
+<header>
+  <div class="logo">
+    <a href="index.html">
+        <img src="assets/1.png" class="logo-header" />
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <a href="cadastro.html" id="ContatoH">Quero ser cliente</a>
+      <a href="simulador.html" id="SimuladorFinanceiroH">Simulador Financeiro</a>
+     <a href="login.html" class="login-btn" id="Login">Login</a>
+    </ul>
+  </nav>
+</header>
+    <div class="formulario-container">
+      <div class="card-form">
+        <h2><b>Formulário de cadastro:</b></h2>
+
+        <form>
+          <div class="linha">
+            <div class="campo">
+              <label>Nome da empresa:</label>
+              <input id="input_nomeEmpresa" type="text"/>
+            </div>
+            <div class="campo">
+              <label>CNPJ:</label>
+              <input id="input_cnpj"type="text"  />
+            </div>
+          </div>
+
+          <div class="linha">
+            <div class="campo">
+              <label>Nome do contato:</label>
+              <input id="input_contato"type="text"  />
+            </div>
+            <div class="campo">
+              <label>Telefone:</label>
+              <input id="input_telefone"type="text"  />
+            </div>
+            <div class="campo">
+              <label>Email:</label>
+              <input id="input_email"type="email"  />
+            </div>
+          </div>
+
+          <div class="linha">
+            <div class="campo">
+              <label>Cep:</label>
+              <input id="input_cep"type="text" />
+            </div>
+            <div class="campo endereco">
+              <label>Endereço:</label>
+              <input id="input_endereco" type="text" />
+            </div>
+          </div>
+
+          <div class="linha4">
+            <div class="campo">
+              <label>Cidade:</label>
+              <input id="input_cidade"type="text" />
+            </div>
+            <div class="campo">
+              <label>Número:</label>
+              <input id="input_numero"type="number" />
+            </div>
+              <div class="campo">
+              <label>Estado:</label>
+              <select class="estado" name="estado" id="">
+                <option selected disabled value="#">Selecione uma opção</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+              </select>
+            </div>
+          </div>
+          <button onclick="Cadastrar()">Cadastrar</button>
+        </form>
+      </div>
+    </div>

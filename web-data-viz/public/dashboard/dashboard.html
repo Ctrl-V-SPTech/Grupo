@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Dashboard Sensor</title>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/dashindividual.css">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div id="sidebar" class="sidebar">
+        <a href="">Usuário</a><br /><br /><br />
+        <a href="dashboardgeral.html">Estufas</a><br />
+        <a href="cadastrousuario.html">Cadastrar Usuario</a><br /><br /><br /><br />
+        <a onclick="redirecionar()">BobIA</a>
+        <a href="../">Sair</a>
+    </div>
+
+    <div id="main">
+        <div class="dashboard-grid">
+            <!-- Cards -->
+            <div class="sensor-card">
+                <div class="header">
+                    <div class="legend">
+                        <div class="item"><span class="dot ideal"></span> Ideal</div>
+                        <div class="item"><span class="dot moderado" title="Alerta moderado"></span> Moderado</div>
+                        <div class="item"><span class="dot critico" title="Alerta crítico"></span> Crítico</div>
+                    </div>
+                    <h4>
+                        Temperatura e umidade em tempo real:
+                        <span id="fase-atual" style="font-weight: normal; font-size: .9rem; margin-left: 8px;">
+                            <!-- Fase aparece aqui -->
+                        </span>
+                    </h4>
+                </div>
+                <div class="values">
+                    <div class="temp" id="temp">
+                        <img class="metricas" src="../imagens_uvas/temperature.png" alt="" />--°C
+                    </div>
+                    <div class="umi" id="umi">
+                        <img class="metricas" src="../imagens_uvas/humidity.png" alt="" />--%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráficos -->
+            <div class="monitoring-Chart">
+                <canvas id="monitoringChart"></canvas>
+            </div>
+            <div class="monitoring-Chart2">
+                <canvas id="monitoringChart2"></canvas>
+            </div>
+
+            <div class="qtdalertas">
+                <div class="qtdalertas-header">
+                    Quantidade e tempo alerta (últimos 7 dias)
+                </div>
+                <span id="qtdmoderado" class="qtdmoderado">
+                    Moderado: 0 <br />
+                    --
+                </span>
+                <span id="qtdcritico" class="qtdcritico">
+                    Crítico: 0 <br />
+                    --
+                </span>
+                <span id="qtdtotal" class="qtdtotal">
+                    Total: 0 <br />
+                    --
+                </span>
+            </div>
+
+            <div class="historico">
+                <div class="historico-header">Histórico de alertas</div>
+                <div class="historico-body" id="historico-body">
+                    <div class="historico-row title">
+                        <span>Data e Hora</span>
+                        <span>Mensagem</span>
+                        <span>Status</span>
+                        <span>Tempo em alerta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // ---------- Redirecionamento ----------
+    function redirecionar() {
+        window.location.href = "http://localhost:8080/";
+    }
+
+    // ---------- Constantes e variáveis ----------
+    const ID_ESTUFA = Number(sessionStorage.getItem("ID_ESTUFA")) || 1;
+    const ID_SENSOR = Number(sessionStorage.getItem("ID_SENSOR")) || 1;
+
+    let faseAtual = "Dormência";
+    const tempIdeal = 25;
+    const umidIdeal = 65;
+
+    let contadorModerado = 0;
+    let contadorCritico = 0;
+    let proximaAtualizacao;
+
+    const tempDiv = document.getElementById("temp");
+    const umidDiv = document.getElementById("umi");
+    const historicoBody = document.getElementById("historico-body");
+    const qtdModeradoSpan = document.getElementById("qtdmoderado");
+    const qtdCriticoSpan = document.getElementById("qtdcritico");
+    const qtdTotalSpan = document.getElementById("qtdtotal");
+    const spanFase = document.getElementById("fase-atual");
+
+    // ---------- Formatação de data ----------
+    function formatarDataHora(dataHora) {
+        const d = new Date(dataHora);
+        const dia = String(d.getDate()).padStart(2, "0");
+        const mes = String(d.getMonth() + 1).padStart(2, "0");
+        const ano = d.getFullYear();
+        const hora = String(d.getHours()).padStart(2, "0");
+        const min = String(d.getMinutes()).padStart(2, "0");
+        const seg = String(d.getSeconds()).padStart(2, "0");
+        return `${dia}/${mes}/${ano} ${hora}:${min}:${seg}`;
+    }
+
+    function obterDataHoraMySQL() {
+        const d = new Date();
+        const ano = d.getFullYear();
+        const mes = String(d.getMonth() + 1).padStart(2, "0");
+        const dia = String(d.getDate()).padStart(2, "0");
+        const hora = String(d.getHours()).padStart(2, "0");
+        const min = String(d.getMinutes()).padStart(2, "0");
+        const seg = String(d.getSeconds()).padStart(2, "0");
+        return `${ano}-${mes}-${dia} ${hora}:${min}:${seg}`;
+    }
+
+    // ---------- Chart.js ----------
+    const dadosTemp = { labels: [], datasets: [{ label: "Temperatura (°C)", data: [], borderColor: "purple", backgroundColor: "purple", tension: 0.2 }] };
+    const dadosUmid = { labels: [], datasets: [{ label: "Umidade (%)", data: [], borderColor: "blue", backgroundColor: "blue", tension: 0.2 }] };
+
+    const chartTemp = new Chart(document.getElementById("monitoringChart"), { type: "line", data: dadosTemp, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: false } } } });
+    const chartUmid = new Chart(document.getElementById("monitoringChart2"), { type: "line", data: dadosUmid, options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true } } } });
+
+    // ---------- Inicialização ----------
+    window.onload = async () => {
+        await obterFaseEstufa(ID_ESTUFA);
+        carregarHistoricoDoServidor();
+        obterDadosSensor(ID_ESTUFA, ID_SENSOR);
+
+        // Atualização periódica
+        setInterval(() => obterFaseEstufa(ID_ESTUFA), 20000);
+        setInterval(() => carregarHistoricoDoServidor(), 10000); // 10s
+    };
+
+    // ---------- Funções ----------
+    async function obterFaseEstufa(idEstufa) {
+        try {
+            const resposta = await fetch(`/estufas/${idEstufa}/fase-atual`, { cache: "no-store" });
+            if (!resposta.ok) throw new Error(`Erro ao buscar fase: ${resposta.status}`);
+            const dados = await resposta.json();
+            const registro = Array.isArray(dados) ? dados[0] : dados;
+            const faseApi = registro?.periodoDesenvolvimento;
+            if (faseApi) faseAtual = faseApi;
+            spanFase.textContent = faseAtual;
+        } catch (erro) { console.error("Erro ao obter fase da estufa:", erro); }
+    }
+
+    function obterFaixasPorFase(fase) {
+        switch (fase) {
+            case 'Brotação': return { tMin: 15, tMax: 25, uMin: 60, uMax: 80 };
+            case 'Crescimento': return { tMin: 20, tMax: 25, uMin: 60, uMax: 80 };
+            case 'Dormência': return { tMin: 5, tMax: 15, uMin: 50, uMax: 70 };
+            case 'Floração': return { tMin: 18, tMax: 25, uMin: 50, uMax: 70 };
+            case 'Maturação': return { tMin: 20, tMax: 30, uMin: 40, uMax: 60 };
+            case 'Colheita': return { tMin: 10, tMax: 20, uMin: 80, uMax: 90 };
+            default: return { tMin: 15, tMax: 25, uMin: 60, uMax: 80 };
+        }
+    }
+
+    function atualizarCards(temp, umid) {
+        tempDiv.innerHTML = `<img class="metricas" src="../imagens_uvas/temperature.png" alt="" />${Number(temp).toFixed(1)}°C`;
+        umidDiv.innerHTML = `<img class="metricas" src="../imagens_uvas/humidity.png" alt="" />${Number(umid).toFixed(1)}%`;
+
+        tempDiv.className = "temp"; umidDiv.className = "umi";
+
+        const diffTemp = Math.abs(temp - tempIdeal);
+        if (diffTemp > 2) tempDiv.classList.add("critico");
+        else if (diffTemp > 0) tempDiv.classList.add("moderado");
+        else tempDiv.classList.add("ideal");
+
+        const diffUmid = Math.abs(umid - umidIdeal);
+        if (diffUmid > 2) umidDiv.classList.add("critico");
+        else if (diffUmid > 0) umidDiv.classList.add("moderado");
+        else umidDiv.classList.add("ideal");
+    }
+
+    function atualizarQtdAlertas() {
+        qtdModeradoSpan.innerHTML = `Moderado: ${contadorModerado}<br>--`;
+        qtdCriticoSpan.innerHTML = `Crítico: ${contadorCritico}<br>--`;
+        qtdTotalSpan.innerHTML = `Total: ${contadorModerado + contadorCritico}<br>--`;
+    }
+
+    function limparHistoricoAlertas() {
+        historicoBody.querySelectorAll(".historico-row.dados").forEach(l => l.remove());
+    }
+
+    function atualizarHistoricoAlertas(mensagens, status, horario) {
+        const dataFormatada = formatarDataHora(horario);
+        mensagens.forEach(msg => {
+            const row = document.createElement("div");
+            const horarioComQuebra = dataFormatada.replace(/(.{10})/g, "$1<br>"); // quebra a cada 10 chars
+            row.className = "historico-row dados";
+            row.innerHTML = `<span>${horarioComQuebra}</span><span>${msg}</span><span>${status}</span><span>—</span>`;
+            historicoBody.appendChild(row);
+        });
+    }
+
+    function registrarAlertaNoServidor(alerta) {
+        alerta.dataHora = alerta.dataHora || obterDataHoraMySQL();
+        fetch("/alertas/registrar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(alerta)
+        })
+        .then(async res => {
+            const texto = await res.text();
+            if (!res.ok) throw new Error(`Falha ao registrar alerta: ${res.status} ${texto}`);
+            console.log("Alerta registrado com sucesso:", texto);
+        })
+        .catch(err => console.error(err));
+    }
+
+function verificarAlertasSensor(temp, umid, horario) {
+    temp = Number(temp);
+    umid = Number(umid);
+    if (isNaN(temp) || isNaN(umid)) return;
+
+    const faixas = obterFaixasPorFase(faseAtual);
+    let mensagens = [];
+    let statusTemp = null;
+    let statusUmid = null;
+
+    // --- Avaliação temperatura ---
+    const diffTemp = Math.abs(temp - (faixas.tMin + faixas.tMax) / 2);
+    if (temp < faixas.tMin || temp > faixas.tMax) {
+        statusTemp = "CRÍTICO";
+        mensagens.push(`Temperatura (${temp.toFixed(1)}°C) fora da faixa ideal (${faixas.tMin}°C - ${faixas.tMax}°C)`);
+        contadorCritico++;
+    } else if (diffTemp > 2) {
+        statusTemp = "MODERADO";
+        mensagens.push(`Temperatura (${temp.toFixed(1)}°C) próxima da faixa ideal`);
+        contadorModerado++;
+    }
+
+    // --- Avaliação umidade ---
+    const diffUmid = Math.abs(umid - (faixas.uMin + faixas.uMax) / 2);
+    if (umid < faixas.uMin || umid > faixas.uMax) {
+        statusUmid = "CRÍTICO";
+        mensagens.push(`Umidade (${umid.toFixed(1)}%) fora da faixa ideal (${faixas.uMin}% - ${faixas.uMax}%)`);
+        contadorCritico++;
+    } else if (diffUmid > 2) {
+        statusUmid = "MODERADO";
+        mensagens.push(`Umidade (${umid.toFixed(1)}%) próxima da faixa ideal`);
+        contadorModerado++;
+    }
+
+    // --- Atualiza cards visuais ---
+    atualizarCards(temp, umid);
+
+    // --- Se houver algum alerta ---
+    if (statusTemp || statusUmid) {
+        const mensagemFinal = mensagens.join(" | ") || "Alerta sem mensagem";
+
+        // --- Converte a hora para formato MySQL ---
+        let dataHoraAlerta = horario ? new Date(horario) : new Date();
+        if (isNaN(dataHoraAlerta.getTime())) dataHoraAlerta = new Date();
+
+        const ano = dataHoraAlerta.getFullYear();
+        const mes = String(dataHoraAlerta.getMonth() + 1).padStart(2, "0");
+        const dia = String(dataHoraAlerta.getDate()).padStart(2, "0");
+        const hora = String(dataHoraAlerta.getHours()).padStart(2, "0");
+        const min = String(dataHoraAlerta.getMinutes()).padStart(2, "0");
+        const seg = String(dataHoraAlerta.getSeconds()).padStart(2, "0");
+        const dataHoraMySQL = `${ano}-${mes}-${dia} ${hora}:${min}:${seg}`;
+
+        // --- Atualiza histórico e quantidade de alertas ---
+        atualizarHistoricoAlertas(mensagens, statusTemp || statusUmid, dataHoraMySQL);
+        atualizarQtdAlertas();
+
+        // --- Envia alerta para o servidor ---
+        registrarAlertaNoServidor({
+            alertaTemp: statusTemp,
+            alertaUmid: statusUmid,
+            fkSensorMedida: ID_SENSOR,
+            mensagem: mensagemFinal,
+            dataHora: dataHoraMySQL
+        });
+    }
+}
+
+function carregarHistoricoDoServidor() {
+    fetch(`/alertas/sensor/${ID_SENSOR}`, { cache: "no-store" })
+        .then(res => res.ok ? res.json() : Promise.reject("Erro ao buscar histórico"))
+        .then(lista => {
+            limparHistoricoAlertas();
+
+            // Resetar contadores
+            contadorModerado = 0;
+            contadorCritico = 0;
+
+            lista.reverse();
+            lista.forEach(item => {
+                const mensagens = item.mensagem ? [item.mensagem] : [];
+                const status = item.alertaTemp === "CRÍTICO" || item.alertaUmid === "CRÍTICO" ? "CRÍTICO" : "MODERADO";
+
+                // Atualiza contadores
+                if (status === "CRÍTICO") contadorCritico++;
+                else if (status === "MODERADO") contadorModerado++;
+
+                // Atualiza histórico
+                atualizarHistoricoAlertas(mensagens, status, item.dtHrInicialAlerta);
+            });
+
+            // Atualiza a div de quantidade de alertas
+            atualizarQtdAlertas();
+        })
+        .catch(err => console.error("Erro ao carregar histórico:", err));
+}
+
+    function obterDadosSensor(estufa, sensor) {
+        if (proximaAtualizacao) clearTimeout(proximaAtualizacao);
+
+        fetch(`/medidas/ultimas/${estufa}/${sensor}`, { cache: "no-store" })
+            .then(res => res.ok ? res.json() : Promise.reject("Erro API"))
+            .then(dados => {
+                if (!dados || dados.length === 0) return;
+                dados.reverse();
+                dadosTemp.labels.length = 0; dadosTemp.datasets[0].data.length = 0;
+                dadosUmid.labels.length = 0; dadosUmid.datasets[0].data.length = 0;
+                dados.forEach(r => {
+                    dadosTemp.labels.push(r.dataHora); dadosTemp.datasets[0].data.push(Number(r.medidaTemp));
+                    dadosUmid.labels.push(r.dataHora); dadosUmid.datasets[0].data.push(Number(r.medidaUmid));
+                });
+                chartTemp.update(); chartUmid.update();
+                const ultimo = dados[dados.length - 1];
+                atualizarCards(Number(ultimo.medidaTemp), Number(ultimo.medidaUmid));
+
+                proximaAtualizacao = setTimeout(() => atualizarSensorTempoReal(estufa, sensor), 2000);
+            })
+            .catch(erro => console.error("Erro na obtenção dos dados iniciais:", erro));
+    }
+
+    function atualizarSensorTempoReal(estufa, sensor) {
+        fetch(`/medidas/tempo-real/${estufa}/${sensor}`, { cache: "no-store" })
+            .then(res => res.ok ? res.json() : Promise.reject("Erro API tempo-real"))
+            .then(dados => {
+                if (!dados || dados.length === 0) { proximaAtualizacao = setTimeout(() => atualizarSensorTempoReal(estufa, sensor), 2000); return; }
+                const novo = dados[0];
+                const ultimaLabel = dadosTemp.labels[dadosTemp.labels.length - 1];
+                if (novo.dataHora !== ultimaLabel) {
+                    if (dadosTemp.labels.length >= 7) { dadosTemp.labels.shift(); dadosTemp.datasets[0].data.shift(); dadosUmid.labels.shift(); dadosUmid.datasets[0].data.shift(); }
+
+                    dadosTemp.labels.push(novo.dataHora); dadosTemp.datasets[0].data.push(Number(novo.medidaTemp));
+                    dadosUmid.labels.push(novo.dataHora); dadosUmid.datasets[0].data.push(Number(novo.medidaUmid));
+
+                    chartTemp.update(); chartUmid.update();
+                    atualizarCards(Number(novo.medidaTemp), Number(novo.medidaUmid));
+                    verificarAlertasSensor(Number(novo.medidaTemp), Number(novo.medidaUmid), novo.dataHora);
+                }
+
+                proximaAtualizacao = setTimeout(() => atualizarSensorTempoReal(estufa, sensor), 2000);
+            })
+            .catch(erro => { console.error("Erro tempo real:", erro); proximaAtualizacao = setTimeout(() => atualizarSensorTempoReal(estufa, sensor), 2000); });
+    }
+</script>
+
+</body>
+
+</html>

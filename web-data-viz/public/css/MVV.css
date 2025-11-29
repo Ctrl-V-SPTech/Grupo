@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+}
+
+.logo img {
+    display: flex;
+    height: 200px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    }
+
+nav ul a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.login-btn {
+    background: #fff;
+    color: #4b1c6b;
+    padding: 6px 16px;
+    width: 150px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#ContatoH:hover,
+#SimuladorFinanceiroH:hover,
+#Login:hover {
+  transform: scale(1.1);
+}
+
+.missao,
+.visao,
+.valores {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+
+}
+
+.img-missao,
+.img-visao,
+.img-valores {
+    display: flex;
+    border-radius: 20px;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+span {
+    display: flex;
+    color: #4b1c6b;
+    font-weight: 700;
+    font-size: 55px; 
+    padding-left: 45px;
+    padding-top: 25px;
+
+}
+
+.texto_card {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding: 45px;
+    font-size: 22px;
+    color: #000;
+    text-align: justify;
+}
+
+hr {
+    border: 2px solid #4b1c6b;
+    width: 95%;
+    border-radius: 5px;
+}

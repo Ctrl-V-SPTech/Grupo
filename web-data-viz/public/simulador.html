@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/simulador.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/1.png" class="logo-header" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <a href="cadastro.html" id="ContatoH">Quero ser cliente</a>
+          <a href="simulador.html" id="SimuladorFinanceiroH"
+            >Simulador Financeiro</a
+          >
+          <a href="login.html" class="login-btn" id="Login">Login</a>
+        </ul>
+      </nav>
+    </header>
+    <div class="simulador">
+      <div class="container">
+        <div class="boxes">
+          <div class="box">
+            <h2>Calculadora Uva Thompson Seedless</h2>
+            <label for="input_estufa">Tamanho da estufa (m<sup>2</sup>)</label> <br />
+            <input type="text" id="input_estufa" placeholder="ex: 1000" /> <br />
+            <br />
+            <label for="input_produtividade">
+              Produção total em kg </label>
+            <br />
+            <input id="input_produtividade">
+            <br />
+            <br />
+            <label for="select_poda">Mês que deseja realizar a colheita</label>
+            <br />
+            <select id="select_poda">
+              <option>Janeiro</option>
+              <option>Fevereiro</option>
+              <option>Março</option>
+              <option>Abril</option>
+              <option>Maio</option>
+              <option>Julho</option>
+              <option>Agosto</option>
+              <option>Setembro</option>
+              <option>Outubro</option>
+              <option>Novembro</option>
+              <option>Dezembro</option>
+            </select>
+            <br />
+            <br />
+            <label for="select_simulacao">Escolha o cenário da simulação</label>
+            <br />
+            <select id="select_simulacao">
+              <option>Com monitoramento</option>
+              <option>Normal</option>
+              <option>Pessimista</option>
+            </select>
+            <br />
+            <br />
+            <button onclick="calcular()">Calcular Financeiro</button> <br />
+            <br />
+          </div>
+          <div class="box">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r" id="div_resultado"></div>
+  </body>
+</html>
+
+<script>
+  function calcular() {
+    var estufa = Number(input_estufa.value);
+    var quantidadeuva = Number(input_produtividade.value);
+    var mes = select_poda.value;
+    var cenario = select_simulacao.value;
+    var porcentagemperda = 0;
+    var valornacional = 0;
+    var valorexportacao = 0;
+    var mensagemvenda = 0;
+
+    if (cenario == "Com monitoramento") {
+      porcentagemperda = 0.1;
+    } else if (cenario == "Normal") {
+      porcentagemperda = 0.2;
+    } else {
+      porcentagemperda = 0.5;
+    }
+
+    if (mes == "Janeiro") {
+      valornacional = 16.54;
+      valorexportacao = 17.36;
+    } else if (mes == "Fevereiro") {
+      valornacional = 16.62;
+      valorexportacao = 19.8;
+    } else if (mes == "Março") {
+      valornacional = 17.08;
+      valorexportacao = 21.17;
+    } else if (mes == "Abril") {
+      valornacional = 17.1;
+      valorexportacao = 16.97;
+    } else if (mes == "Maio") {
+      valornacional = 16.68;
+      valorexportacao = 16.97;
+    } else if (mes == "Junho") {
+      valornacional = 16.66;
+      valorexportacao = 16.32;
+    } else if (mes == "Julho") {
+      valornacional = 16.19;
+      valorexportacao = 13.81;
+    } else if (mes == "Agosto") {
+      valornacional = 16.07;
+      valorexportacao = 15.5;
+    } else if (mes == "Setembro") {
+      valornacional = 15.27;
+      valorexportacao = 18.95;
+    } else if (mes == "Outubro") {
+      valornacional = 16.48;
+      valorexportacao = 18.22;
+    } else if (mes == "Novembro") {
+      valornacional = 16.39;
+      valorexportacao = 16.64;
+    } else if (mes == "Dezembro") {
+      valornacional = 17.99;
+      valorexportacao = 15.59;
+    }
+
+    var porcentagemlucro = 0;
+    var valortotal = 0;
+    if (valornacional > valorexportacao) {
+      porcentagemlucro =
+        ((valornacional - valorexportacao) / valorexportacao) * 100;
+
+      mensagemvenda = `<p> No mês de ${mes} é mais lucrativo vender nacional, porque a uva é mais cara nacionalmente </p>
+       <p> Valor nacional: R$ ${valornacional} </p>
+       <p> Valor exportação: R$ ${valorexportacao} </p> 
+       <p> Porcentagem de lucro: ${porcentagemlucro.toFixed(2)}% </p>`;
+      valortotal = quantidadeuva * valornacional;
+    } else {
+      porcentagemlucro =
+        ((valorexportacao - valornacional) / valornacional) * 100;
+
+      mensagemvenda = `<p> No mês de ${mes} é mais lucrativo exportar, porque a uva é mais cara internacionalmente </p>
+       <p> Valor nacional: R$ ${valornacional} </p> 
+       <p> Valor exportação: R$ ${valorexportacao} </p>
+       <p> Porcentagem de lucro: ${porcentagemlucro.toFixed(2)}% </p> `;
+      valortotal = quantidadeuva * valorexportacao;
+    }
+
+    var produtoperdido = quantidadeuva * porcentagemperda;
+    var produtorestante = quantidadeuva - produtoperdido;
+    var valorperdido = valortotal * porcentagemperda;
+    var valorliquido = valortotal - valorperdido;
+
+    div_resultado.innerHTML = `
+            <hr>
+            <h2>Resultados:</h2>
+            <p>Produto Total: <b>${quantidadeuva.toFixed(2)}</b> kg</p>
+            <p>Produto perdido: <b>${produtoperdido.toFixed(2)}</b> kg</p>
+            <p>Produto Restante (Líquido): <b>${produtorestante.toFixed(
+              2
+            )}</b> kg</p>
+            <br>
+            <h2>Valor Perdido (R$): <b style="color: red;">R$ ${valorperdido.toFixed(
+              2
+            )}</b></h2>
+            <h2>Valor Total (Líquido): <b style="color: green;">R$ ${valorliquido.toFixed(
+              2
+            )}</b></h2>
+            <hr>
+        ` + mensagemvenda;
+  }
+
+  const ctx = document.getElementById("myChart");
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: [
+        "Jan",
+        "Fev",
+        "Mar",
+        "Abr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Ago",
+        "Set",
+        "Out",
+        "Nov",
+        "Dez",
+      ],
+      datasets: [
+        {
+          label: "Nacional",
+          data: [
+            16.54, 16.62, 17.08, 17.1, 16.68, 16.66, 16.19, 16.07, 15.27, 16.48,
+            16.39, 17.99,
+          ],
+          borderWidth: 1,
+          borderColor: "gray",
+          backgroundColor: "gray",
+        },
+        {
+          label: "Exportação",
+          data: [
+            17.36, 19.8, 21.17, 16.97, 16.97, 16.32, 13.81, 15.4, 18.95, 18.22,
+            16.64, 15.59,
+          ],
+          borderWidth: 1,
+          borderColor: "#4b1c6b",
+          backgroundColor: "#4b1c6b",
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: "rgba(255, 255, 255, 0.3)",
+            borderColor: "black",
+          },
+        },
+        x: {
+          grid: {
+            color: "rgba(0, 0, 0, 0.2)",
+            borderColor: "black",
+          },
+        },
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: "Valor da uva por mês",
+          font: {
+            size: 18,
+          },
+        },
+      },
+    },
+  });
+</script>

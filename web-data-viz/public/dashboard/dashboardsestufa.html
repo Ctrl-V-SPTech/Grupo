@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Estufa</title>
+  <link rel="stylesheet" href="../css/dashboardsestufa.css" />
+  <link rel="icon" href="../public/assets/icon/Logo.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <a href="">Usuário</a><br /><br /><br />
+        <a href="dashboardgeral.html">Estufas</a><br />
+        <a href="cadastrousuario.html">Cadastrar Usuario</a><br /><br /><br /><br />
+        <a href="index.html">BobIA</a>
+        <a href="../">Sair</a>
+    </div>
+
+  <div class="containerpai">
+    <div class="mapaEstufa">
+      <div class="mapaEstufaContent">
+        <div class="container1">
+          <img src="../imagens_uvas/estufa.png" class="img-estufa" />
+          <div class="titulo">Sensores dentro da Estufa</div>
+          <div class="status">
+            <div class="statusTitulo">Status dos Alarmes</div>
+            <br />
+            <div class="statusVerde">
+              <div class="identificacaoStatusVerde"></div>
+              <div><b>Ideal</b></div>
+            </div>
+            <div class="statusAmarelo">
+              <div class="identificacaoStatusAmarelo"></div>
+              <div><b>Moderado</b></div>
+            </div>
+            <div class="statusVermelho">
+              <div class="identificacaoStatusVermelho"></div>
+              <div><b>Crítico</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container2">
+          <!-- ZONA LESTE -->
+          <div class="zonaLeste">
+            <div class="sensoresZonas">
+              <div class="primeiraLinha1">
+                <a href="#" class="sensorVerde" id="um" onclick="abrirSensor(1)"><b>Sensor<br />1</b></a>
+                <a href="#" class="sensorVerde" id="dois" onclick="abrirSensor(2)"><b>Sensor<br />2</b></a>
+              </div>
+              <br />
+              <div class="segundaLinha1">
+                <a href="#" class="sensorVerde" id="tres" onclick="abrirSensor(3)"><b>Sensor<br />3</b></a>
+              </div>
+              <br />
+              <div class="terceiraLinha1">
+                <a href="#" class="sensorVerde" id="quatro" onclick="abrirSensor(4)"><b>Sensor<br />4</b></a>
+                <a href="#" class="sensorVerde" id="cinco" onclick="abrirSensor(5)"><b>Sensor<br />5</b></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ZONA CENTRAL -->
+          <div class="zonaCentral">
+            <div class="sensoresZonas">
+              <div class="primeiraLinha2">
+                <a href="#" class="sensorVerde" id="seis" onclick="abrirSensor(6)"><b>Sensor<br />6</b></a>
+              </div>
+              <br />
+              <div class="segundaLinha2">
+                <a href="#" class="sensorVerde" id="sete" onclick="abrirSensor(7)"><b>Sensor<br />7</b></a>
+                <a href="#" class="sensorVerde" id="oito" onclick="abrirSensor(8)"><b>Sensor<br />8</b></a>
+              </div>
+              <br />
+              <div class="terceiraLinha2">
+                <a href="#" class="sensorVerde" id="nove" onclick="abrirSensor(9)"><b>Sensor<br />9</b></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ZONA OESTE -->
+          <div class="zonaOeste">
+            <div class="sensoresZonas">
+              <div class="primeiraLinha1">
+                <a href="#" class="sensorVerde" id="dez" onclick="abrirSensor(10)"><b>Sensor<br />10</b></a>
+                <a href="#" class="sensorVerde" id="onze" onclick="abrirSensor(11)"><b>Sensor<br />11</b></a>
+              </div>
+              <br />
+              <div class="segundaLinha1">
+                <a href="#" class="sensorVerde" id="doze" onclick="abrirSensor(12)"><b>Sensor<br />12</b></a>
+              </div>
+              <br />
+              <div class="terceiraLinha1">
+                <a href="#" class="sensorVerde" id="treze" onclick="abrirSensor(13)"><b>Sensor<br />13</b></a>
+                <a href="#" class="sensorVerde" id="quatorze" onclick="abrirSensor(14)"><b>Sensor<br />14</b></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container3">
+          <div class="zonaLeste">
+            <div class="identificacaoZonaLeste"></div>
+            <div><b>Zona Leste</b></div>
+          </div>
+          <div class="zonaCentral">
+            <div class="identificacaoZonaCentral"></div>
+            <div><b>Zona Central</b></div>
+          </div>
+          <div class="zonaOeste">
+            <div class="identificacaoZonaOeste"></div>
+            <div><b>Zona Oeste</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container6">
+    <div class="fasesrisco">
+      <h2>Período Atual</h2>
+      <div id="faseAtual" class="faseAtual">Dormência</div>
+    </div>
+
+    <div class="ideal-info">
+      <h2>Métricas ideais por fase do cultivo</h2>
+      <div class="fases2" id="fases2">
+        <div id="dormencia"><b>Dormência</b><br />5°C - 15°C<br />50-70%</div>
+        <div id="brotacao"><b>Brotação</b><br />15°C - 25°C<br />60-80%</div>
+        <div id="floracao"><b>Floração</b><br />18°C - 25°C<br />50-70%</div>
+        <div id="crescimento"><b>Cresc. dos Bagos</b><br />20°C - 25°C<br />60-80%</div>
+        <div id="maturacao"><b>Maturação</b><br />20°C - 30°C<br />40-60%</div>
+        <div id="colheita"><b>Colheita</b><br />10°C - 20°C<br />80-90%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container4">
+    <canvas class="grafico_umidade" id="myChart"></canvas>
+    <canvas class="grafico_temperatura" id="myChartline"></canvas>
+  </div>
+
+  <div class="container5">
+    <div class="grafico">
+      <div class="graficoAlertasContent">
+        <canvas class="grafico_alertas" id="myChartdought"></canvas>
+      </div>
+    </div>
+
+    <div class="historico">
+      <div class="historico-header">Histórico de alertas</div>
+      <div class="historico-row title">
+        <span>Data e Hora</span>
+        <span>Sensor</span>
+        <span>Status</span>
+        <span>Tempo em alerta</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+        function redirecionar() {
+        window.location.href = "http://localhost:8080/"
+        }
+
+const idEstufa = Number(sessionStorage.getItem("ID_ESTUFA")) || 1;
+
+// Mapas
+const mapaSensores = {1:"um",2:"dois",3:"tres",4:"quatro",5:"cinco",6:"seis",7:"sete",8:"oito",9:"nove",10:"dez",11:"onze",12:"doze",13:"treze",14:"quatorze"};
+const mapaFases = {"Dormência":"dormencia","Brotação":"brotacao","Floração":"floracao","Crescimento":"crescimento","Maturação":"maturacao","Colheita":"colheita"};
+
+// Configuração gráficos
+const ctxUmidade = document.getElementById("myChart");
+const ctxTemperatura = document.getElementById("myChartline");
+const ctxDought = document.getElementById("myChartdought");
+Chart.defaults.font.weight = 650;
+
+const graficoUmidade = new Chart(ctxUmidade, {
+  type: "bar",
+  data: { labels: [], datasets: [{ label: "Umidade (S = Sensores)", data: [], backgroundColor: "purple" }] },
+  options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+});
+
+const graficoTemperatura = new Chart(ctxTemperatura, {
+  type: "bar",
+  data: { labels: [], datasets: [{ label: "Temperatura (S = Sensores)", data: [], backgroundColor: "purple" }] },
+  options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+});
+
+new Chart(ctxDought, {
+  type: "doughnut",
+  data: { labels:["Zona Leste","Zona Central","Zona Oeste"], datasets:[{data:[10,30,100], backgroundColor:["#dbf2d1","#63a047","#4e6113"]}] },
+  options:{ responsive:true, plugins:{ legend:{position:"top"}, title:{display:true,text:"Histórico de Alertas dos Sensores"}}}
+});
+
+// Atualiza fase atual
+function atualizarFaseAtual() {
+  fetch(`/estufas/${idEstufa}/faseAtual`, { cache:"no-store" })
+    .then(res => res.json())
+    .then(dados => {
+      if(!dados || !dados.periodoDesenvolvimento) return;
+      document.getElementById("faseAtual").textContent = dados.periodoDesenvolvimento;
+      Object.values(mapaFases).forEach(id => {
+        const div = document.getElementById(id);
+        if(div) div.style.display="none";
+      });
+      const divAtual = document.getElementById(mapaFases[dados.periodoDesenvolvimento]);
+      if(divAtual) divAtual.style.display="block";
+    })
+    .catch(erro => console.error("Erro ao atualizar fase da uva:", erro));
+}
+
+// Atualiza gráficos e status sensores
+function atualizarGraficosEstufa() {
+  const totalSensores = 14;
+  const sensoresIds = Array.from({length: totalSensores}, (_, i) => i+1);
+
+  // Medidas atuais
+  fetch(`/medidas/estufa/${idEstufa}/atuais`, { cache:"no-store" })
+    .then(res => res.json())
+    .then(dados => {
+      if(!Array.isArray(dados)) return;
+
+      graficoUmidade.data.labels = sensoresIds.map(id => `S${id}`);
+      graficoTemperatura.data.labels = sensoresIds.map(id => `S${id}`);
+
+      graficoUmidade.data.datasets[0].data = sensoresIds.map(id => {
+        const sensor = dados.find(d => d.fkSensor === id) || {};
+        return Number(sensor.medidaUmid) || 0;
+      });
+
+      graficoTemperatura.data.datasets[0].data = sensoresIds.map(id => {
+        const sensor = dados.find(d => d.fkSensor === id) || {};
+        return Number(sensor.medidaTemp) || 0;
+      });
+
+      graficoUmidade.update();
+      graficoTemperatura.update();
+    })
+    .catch(erro => console.error("Erro ao atualizar gráficos:", erro));
+
+  // Status sensores
+  fetch(`/sensores/estufa/${idEstufa}`, { cache:"no-store" })
+    .then(res => res.json())
+    .then(dadosSensores => {
+      if(!Array.isArray(dadosSensores)) return;
+      sensoresIds.forEach(id => {
+        const div = document.getElementById(mapaSensores[id]);
+        if(div) {
+          const sensor = dadosSensores.find(s=>s.idSensor===id);
+          if(!sensor){ div.className="sensorVerde"; return; }
+          if(sensor.alertaTemp==='CRÍTICO'||sensor.alertaUmid==='CRÍTICO') div.className="sensorVermelho";
+          else if(sensor.alertaTemp==='MODERADO'||sensor.alertaUmid==='MODERADO') div.className="sensorAmarelo";
+          else div.className="sensorVerde";
+        }
+      });
+    })
+    .catch(erro => console.error("Erro ao atualizar status dos sensores:", erro));
+}
+
+// Abrir dashboard do sensor
+function abrirSensor(idSensor){
+  sessionStorage.setItem("ID_SENSOR", idSensor);
+  sessionStorage.setItem("ID_ESTUFA", idEstufa);
+  window.location.href="dashboard.html";
+}
+
+// Inicialização
+window.onload = () => {
+  atualizarFaseAtual();
+  atualizarGraficosEstufa();
+  setInterval(() => {
+    atualizarFaseAtual();
+    atualizarGraficosEstufa();
+  }, 5000);
+};
+</script>
+</body>
+</html>

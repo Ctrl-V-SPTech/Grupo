@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+}
+
+.logo img {
+  display: flex;
+  height: 200px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+nav ul a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.login-btn {
+  background: #fff;
+  color: #4b1c6b;
+  padding: 6px 16px;
+  width: 150px;
+  border-radius: 20px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#ContatoH:hover,
+#DashboardsH:hover,
+#SimuladorFinanceiroH:hover,
+#Login:hover {
+  transform: scale(1.1);
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px
+}
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card_card_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+  border-radius: 30px;
+  padding: 30px 40px;
+  width: 380px;
+  color: white;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+
+.Login-titulo {
+  font-size: 40px; 
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 20px; 
+}
+
+.campo,
+.campo2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+
+.input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.labelInput {
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid white;
+  font-size: 18px;
+  color: #4f6d3c;
+  padding-right: 45px;
+}
+
+#olhosenha {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+#olhosenha:hover {
+  opacity: 1;
+}
+
+
+.botao {
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid linear-gradient(90deg, #264e0e 0%, #70b048 100%);
+  background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.botao:hover {
+  background-color: #95bc5f;
+  transform: scale(1.03);
+}
+
+
+.textoAuxiliar {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.Esqueceu {
+  font-size: 16px;
+  color: white;
+  margin: 0;
+}
+
+.Cadastro {
+  font-size: 18px; 
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Cadastro a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Cadastro a:hover {
+  text-decoration: underline;
+}

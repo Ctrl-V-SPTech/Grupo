@@ -1,0 +1,189 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ecebeb;
+    color: #fff;
+}
+
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 40px;
+    background-color: #4b1c6b;
+}
+
+.sidebar {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+    padding-top: 60px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 8px 8px 8px 32px;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+
+.containerpai {
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    color: black;
+    transform: scale(0.75);
+    transform-origin: right;
+    gap: 30px;
+  text-decoration: none;
+
+}
+
+.titulo {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 40px;
+  text-decoration: none;
+  
+}
+
+.estufas{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+  text-decoration: none;
+
+  
+}
+
+.estufas .primeiraLinha,
+.estufas .segundaLinha{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.estufas .estufa1,
+.estufas .estufa2,
+.estufas .estufa3,
+.estufas .estufa4,
+.estufas .estufa5,
+.estufas .estufa6{
+  width: 450px;
+  height: 300px;
+  background-color:#3e1f69;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  text-decoration: none;
+}
+
+.estufas .tituloEstufa{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+  padding: 0px 0px 0px 55px;  
+  align-items: center;
+}
+
+.estufas .tituloEstufa .img-estufa{
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+.estufas .metricasEstufa{
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.estufas .metricasEstufa .img-sensores,
+.estufas .metricasEstufa .img-alertas{
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  justify-items: center;
+}
+
+.estufas .qtdSensores,
+.estufas .qtdAlertas{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background-color: white;
+  border-radius: 5px;
+  width: 180px;
+  height: 180px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: black;
+}
+
+.estufas .qtdAlertasCritico{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background-color: rgb(255, 125, 125);
+  border-radius: 5px;
+  width: 180px;
+  height: 180px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: black;
+}
+
+.estufas .tituloSensores,
+.estufas .tituloAlertas{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  size: 25px;
+  font-size: 22px;
+}
+
+.estufas .numeroAlertas,
+.estufas .numeroSensores{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 22px;
+}
+
+
+#um:hover,
+#dois:hover,
+#tres:hover,
+#quatro:hover,
+#cinco:hover,
+#seis:hover {
+ outline: 4px solid #7ed957;
+}
+

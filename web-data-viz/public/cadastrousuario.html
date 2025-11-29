@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Usuário</title>
+    <link rel="stylesheet" href="css/cadastrousuario.css" />
+    <link rel="icon" href="../public/assets/icon/Logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  </head>
+  <body>
+   
+  <div id="sidebar" class="sidebar">
+      <a href="">Usuário</a><br><br><br>
+      <a href="dashboardgeral.html">Estufas</a><br>
+      <a href="cadastrousuario.html">Cadastrar Usuario</a><br><br><br><br>
+      <a href="index.html">Sair</a>
+    </div>
+
+<div id="main">
+  <div class="login">
+    <div class="container1">
+      <div class="card_card_login">
+        <h2 class="Login-titulo">Cadastrar Usuário</h2>
+        <div class="formulario">
+
+          <div class="campo">
+            <label class="labelInput" for="user_cadastro">Usuário</label>
+            <div class="input-container">
+            <input type="text" id="user_cadastro" placeholder="Usuario">
+          </div>
+          </div>
+
+<div class="campo2">
+  <label class="labelInput" for="pass_cadastro">Senha</label>
+
+  <div class="input-container">
+    <input type="password" id="pass_cadastro"  placeholder="Senha" oninput="validarSenha()">
+    <img id="olhosenha" src="../imagens_uvas/olhofechado.svg" onclick="mostrarsenhaCadastro()" alt="mostrar senha">
+  </div>
+
+  <div id="textoValidacao"></div>
+</div>
+
+          <button onclick="cadastrarUsuario()" class="botao" id="entrar">Cadastrar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+    function mostrarsenhaCadastro() {
+        var senha = pass_cadastro
+        var olho = olhosenha
+        if (senha.type == 'password') {
+            senha.type = 'text'
+            olho.src = '../imagens_uvas/olhofechado.svg'
+        } else {
+            senha.type == 'text'
+            senha.type = 'password'
+            olho.src = '../imagens_uvas/olhoaberto.svg'
+        }
+    }
+
+  var temMaiuscula = false;
+  var temMinuscula = false;
+  var temNumero = false;
+  var temSimbolo = false;
+  var tamanhoOk = false;     
+
+
+  function validarSenha() {
+    var senhaCadastro = pass_cadastro.value;
+    var texto = "";
+    var faltando = [];
+
+    incluiMaiuscula(senhaCadastro);
+    incluiMinuscula(senhaCadastro);
+    incluiNumero(senhaCadastro);
+    incluiSimbolo(senhaCadastro);
+    tamanhoOk = senhaCadastro.length >= 8;
+
+    if (senhaCadastro == "") {
+      textoValidacao.textContent = "";
+    } else {
+      if (!tamanhoOk) faltando.push("mínimo 8 caracteres");
+      if (!temMaiuscula) faltando.push("uma letra maiúscula");
+      if (!temMinuscula) faltando.push("uma letra minúscula");
+      if (!temNumero) faltando.push("um número");
+      if (!temSimbolo) faltando.push("um símbolo");
+
+      if (faltando.length == 0) {
+        texto = "✅ Senha forte!";
+      } else {
+        texto = `Falta: ${faltando}`;
+      }
+
+      textoValidacao.textContent = texto;
+    }
+  }
+
+  function incluiMaiuscula(senhaCadastro) {
+    var letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    temMaiuscula = false;
+    for (var i = 0; i < letras.length; i++) {
+      if (senhaCadastro.includes(letras[i])) {
+        temMaiuscula = true;
+      }
+    }
+  }
+
+  function incluiMinuscula(senhaCadastro) {
+    var letras = "abcdefghijklmnopqrstuvwxyz";
+    temMinuscula = false;
+    for (var i = 0; i < letras.length; i++) {
+      if (senhaCadastro.includes(letras[i])) {
+        temMinuscula = true;
+      }
+    }
+  }
+
+  function incluiNumero(senhaCadastro) {
+    var numeros = "0123456789";
+    temNumero = false;
+    for (var i = 0; i < numeros.length; i++) {
+      if (senhaCadastro.includes(numeros[i])) {
+        temNumero = true;
+      }
+    }
+  }
+
+  function incluiSimbolo(senhaCadastro) {
+    var simbolos = "!@#$%^&*()-_=+{}[]|:;,.<>?/";
+    temSimbolo = false;
+    for (var i = 0; i < simbolos.length; i++) {
+      if (senhaCadastro.includes(simbolos[i])) {
+        temSimbolo = true;
+      }
+    }
+  }
+
+
+  function cadastrarUsuario() {
+    var usuario = user_cadastro.value.trim();
+    var senha = pass_cadastro.value.trim();
+
+    if (usuario == "" || senha == "") {
+      alert("Preencha todos os campos!");
+    } else if (temMaiuscula && temMinuscula && temNumero && temSimbolo && tamanhoOk) {
+      alert("✅ Usuário cadastrado com sucesso!");
+      user_cadastro.value = "";
+      pass_cadastro.value = "";
+      textoValidacao.textContent = "";
+      userCadastroVolta();
+      senhaCadastroVolta();
+    } else {
+      alert("❌ A senha ainda não atende todos os requisitos.");
+    }
+  }
+</script>
+</html>

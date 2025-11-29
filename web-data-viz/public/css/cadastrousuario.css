@@ -1,0 +1,194 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ecebeb;
+    color: #fff;
+}
+
+
+header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 40px;
+    background-color: #4b1c6b;
+    position: fixed;
+    top: 0;
+    left: 260px;
+    right: 0;
+    z-index: 1000;
+}
+
+
+.sidebar {
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    top: 0;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+    padding-top: 60px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 8px 8px 8px 32px;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+
+#main {
+    margin-left: 260px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 90px; 
+}
+
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.card_card_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(90deg, #291339 0%, #3e1f69 100%);
+    border-radius: 30px;
+    padding: 20px 30px;
+    width: 380px; 
+    height: 450px; 
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.2);
+}
+
+.Login-titulo {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.campo,
+.campo2 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.labelInput {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid white;
+    font-size: 18px;
+    color: #4f6d3c;
+    padding-right: 45px;
+}
+
+#olhosenha {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+#olhosenha:hover {
+    opacity: 1;
+}
+
+.botao {
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #264e0e 0%, #70b048 100%);
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    margin-top: 20px; 
+    cursor: pointer;
+    border: none;
+}
+
+.botao:hover {
+    background-color: #95bc5f;
+}
+
+.textoAuxiliar {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.Esqueceu {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+}
+
+.Cadastro {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.Cadastro a {
+    color: white;
+    text-decoration: none;
+}
+
+.Cadastro a:hover {
+    text-decoration: underline;
+}
+
+#textoValidacao {
+    color: white;
+    font-size: 18px;
+    height: 20px; 
+    margin-top: 5px;
+    text-align: center;
+}
+
+
