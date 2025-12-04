@@ -150,89 +150,392 @@
 
     <div class="historico">
       <div class="historico-header">Histórico de alertas</div>
-      <div class="historico-row title">
-        <span>Data e Hora</span>
-        <span>Sensor</span>
-        <span>Status</span>
-        <span>Tempo em alerta</span>
+      <div class="historico-body" id="historico-body">
+        <div class="historico-row title">
+          <span>Data e Hora</span>
+          <span>Sensor</span>
+          <span>Status</span>
+          <span>Tempo em alerta</span>
+        </div>
       </div>
     </div>
   </div>
 
 <script>
+// ========== VARIÁVEIS GLOBAIS ==========
+const ID_ESTUFA = Number(sessionStorage.getItem("ID_ESTUFA")) || 1;
+const TOTAL_SENSORES = 14;
+const SENSORES_IDS = Array.from({length: TOTAL_SENSORES}, (_, i) => i+1);
 
-        function redirecionar() {
-        window.location.href = "http://localhost:8080/"
-        }
+let faseAtual = "Dormência";
 
-const idEstufa = Number(sessionStorage.getItem("ID_ESTUFA")) || 1;
+// ========== MAPAS ==========
+const mapaSensores = {
+  1:"um", 2:"dois", 3:"tres", 4:"quatro", 5:"cinco", 6:"seis", 7:"sete",
+  8:"oito", 9:"nove", 10:"dez", 11:"onze", 12:"doze", 13:"treze", 14:"quatorze"
+};
 
-// Mapas
-const mapaSensores = {1:"um",2:"dois",3:"tres",4:"quatro",5:"cinco",6:"seis",7:"sete",8:"oito",9:"nove",10:"dez",11:"onze",12:"doze",13:"treze",14:"quatorze"};
-const mapaFases = {"Dormência":"dormencia","Brotação":"brotacao","Floração":"floracao","Crescimento":"crescimento","Maturação":"maturacao","Colheita":"colheita"};
+const mapaFases = {
+  "Dormência":"dormencia", "Brotação":"brotacao", "Floração":"floracao",
+  "Crescimento":"crescimento", "Maturação":"maturacao", "Colheita":"colheita"
+};
 
-// Configuração gráficos
+const mapaZonas = {
+  1:"Leste", 2:"Leste", 3:"Leste", 4:"Leste", 5:"Leste",
+  6:"Central", 7:"Central", 8:"Central", 9:"Central",
+  10:"Oeste", 11:"Oeste", 12:"Oeste", 13:"Oeste", 14:"Oeste"
+};
+
+// ========== FUNÇÕES UTILITÁRIAS ==========
+function redirecionar() {
+  window.location.href = "http://localhost:8080/";
+}
+
+const formatadorBR = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  timeZone: 'America/Sao_Paulo'
+});
+
+function formatarDataHora(dataHora) {
+  const d = new Date(dataHora);
+  if (isNaN(d.getTime())) {
+    console.error("Data inválida recebida:", dataHora);
+    return "Data inválida";
+  }
+  return formatadorBR.format(d);
+}
+
+function obterFaixasPorFase(fase) {
+  const faixas = {
+    'Brotação': { tMin: 15, tMax: 25, uMin: 60, uMax: 80 },
+    'Crescimento': { tMin: 20, tMax: 25, uMin: 60, uMax: 80 },
+    'Dormência': { tMin: 5, tMax: 15, uMin: 50, uMax: 70 },
+    'Floração': { tMin: 18, tMax: 25, uMin: 50, uMax: 70 },
+    'Maturação': { tMin: 20, tMax: 30, uMin: 40, uMax: 60 },
+    'Colheita': { tMin: 10, tMax: 20, uMin: 80, uMax: 90 }
+  };
+  return faixas[fase] || faixas['Dormência'];
+}
+
+function classificarValor(valor, min, max) {
+  if (valor < min || valor > max) {
+    return "CRÍTICO";
+  }
+  
+  const centro = (min + max) / 2;
+  const faixa = max - min;
+  const margemModerado = faixa * 0.25;
+  const distanciaDoCentro = Math.abs(valor - centro);
+  
+  if (distanciaDoCentro > margemModerado) {
+    return "MODERADO";
+  }
+  
+  return "IDEAL";
+}
+
+// ========== INICIALIZAÇÃO DOS GRÁFICOS ==========
+Chart.defaults.font.weight = 650;
+
 const ctxUmidade = document.getElementById("myChart");
 const ctxTemperatura = document.getElementById("myChartline");
 const ctxDought = document.getElementById("myChartdought");
-Chart.defaults.font.weight = 650;
 
 const graficoUmidade = new Chart(ctxUmidade, {
   type: "bar",
-  data: { labels: [], datasets: [{ label: "Umidade (S = Sensores)", data: [], backgroundColor: "purple" }] },
-  options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+  data: { 
+    labels: [], 
+    datasets: [{ 
+      label: "Umidade (S = Sensores)", 
+      data: [], 
+      backgroundColor: "purple" 
+    }] 
+  },
+  options: { 
+    maintainAspectRatio: false, 
+    scales: { y: { beginAtZero: true } } 
+  }
 });
 
 const graficoTemperatura = new Chart(ctxTemperatura, {
   type: "bar",
-  data: { labels: [], datasets: [{ label: "Temperatura (S = Sensores)", data: [], backgroundColor: "purple" }] },
-  options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+  data: { 
+    labels: [], 
+    datasets: [{ 
+      label: "Temperatura (S = Sensores)", 
+      data: [], 
+      backgroundColor: "purple" 
+    }] 
+  },
+  options: { 
+    maintainAspectRatio: false, 
+    scales: { y: { beginAtZero: true } } 
+  }
 });
 
-new Chart(ctxDought, {
+const graficoDoughnut = new Chart(ctxDought, {
   type: "doughnut",
-  data: { labels:["Zona Leste","Zona Central","Zona Oeste"], datasets:[{data:[10,30,100], backgroundColor:["#dbf2d1","#63a047","#4e6113"]}] },
-  options:{ responsive:true, plugins:{ legend:{position:"top"}, title:{display:true,text:"Histórico de Alertas dos Sensores"}}}
+  data: { 
+    labels:["Zona Leste","Zona Central","Zona Oeste"], 
+    datasets:[{
+      data:[0, 0, 0], 
+      backgroundColor:["#dbf2d1","#63a047","#4e6113"]
+    }] 
+  },
+  options:{
+    responsive:true, 
+    plugins:{ 
+      legend:{position:"top"}, 
+      title:{display:true, text:"Alertas por Zona"}
+    }
+  }
 });
 
-// Atualiza fase atual
+// ========== FUNÇÕES DE INTERFACE ==========
+function limparHistoricoAlertas() {
+  const historicoBody = document.getElementById("historico-body");
+  historicoBody.querySelectorAll(".historico-row.dados").forEach(l => l.remove());
+}
+
+function adicionarLinhaHistorico(dataHora, sensor, status) {
+  const dataFormatada = formatarDataHora(dataHora);
+  const horarioComQuebra = dataFormatada.replace(/(.{10})/g, "$1<br>");
+  
+  const row = document.createElement("div");
+  row.className = "historico-row dados";
+  row.innerHTML = `
+    <span>${horarioComQuebra}</span>
+    <span>Sensor ${sensor}</span>
+    <span>${status}</span>
+    <span>—</span>
+  `;
+  
+  document.getElementById("historico-body").appendChild(row);
+}
+
+// ========== FUNÇÕES DE FASE DA ESTUFA ==========
 function atualizarFaseAtual() {
-  fetch(`/estufas/${idEstufa}/faseAtual`, { cache:"no-store" })
+  fetch(`/estufas/${ID_ESTUFA}/fase-atual`, { cache:"no-store" })
     .then(res => res.json())
     .then(dados => {
-      if(!dados || !dados.periodoDesenvolvimento) return;
-      document.getElementById("faseAtual").textContent = dados.periodoDesenvolvimento;
+      const registro = Array.isArray(dados) ? dados[0] : dados;
+      if(!registro || !registro.periodoDesenvolvimento) return;
+      
+      faseAtual = registro.periodoDesenvolvimento;
+      document.getElementById("faseAtual").textContent = faseAtual;
+      
       Object.values(mapaFases).forEach(id => {
         const div = document.getElementById(id);
         if(div) div.style.display="none";
       });
-      const divAtual = document.getElementById(mapaFases[dados.periodoDesenvolvimento]);
+      
+      const divAtual = document.getElementById(mapaFases[faseAtual]);
       if(divAtual) divAtual.style.display="block";
+      
+      console.log("Fase atual atualizada:", faseAtual);
     })
-    .catch(erro => console.error("Erro ao atualizar fase da uva:", erro));
+    .catch(erro => console.error("Erro ao atualizar fase da estufa:", erro));
 }
 
-// Atualiza gráficos e status sensores
-function atualizarGraficosEstufa() {
-  const totalSensores = 14;
-  const sensoresIds = Array.from({length: totalSensores}, (_, i) => i+1);
+// ========== FUNÇÕES DE ALERTAS ==========
+function verificarAlertasSensores(medidasAtuais) {
+  if(!Array.isArray(medidasAtuais) || medidasAtuais.length === 0) {
+    console.log("⚠️ Nenhuma medida disponível para verificar alertas");
+    return;
+  }
 
-  // Medidas atuais
-  fetch(`/medidas/estufa/${idEstufa}/atuais`, { cache:"no-store" })
+  console.log(`🔍 Verificando alertas de ${medidasAtuais.length} sensores`);
+  
+  const faixas = obterFaixasPorFase(faseAtual);
+  
+  medidasAtuais.forEach((medida, index) => {
+    const temp = Number(medida.medidaTemp);
+    const umid = Number(medida.medidaUmid);
+    const idSensor = medida.idSensor;
+    
+    if (!idSensor) {
+      console.error("❌ ID do sensor não encontrado na medida:", medida);
+      return;
+    }
+    
+    if (isNaN(temp) || isNaN(umid)) {
+      console.warn(`⚠️ Sensor ${idSensor}: Dados inválidos - Temp=${temp}, Umid=${umid}`);
+      return;
+    }
+
+    const statusTemp = classificarValor(temp, faixas.tMin, faixas.tMax);
+    const statusUmid = classificarValor(umid, faixas.uMin, faixas.uMax);
+    
+    console.log(`✓ Sensor ${idSensor}: Temp=${temp}°C (${statusTemp}), Umid=${umid}% (${statusUmid})`);
+
+    if (statusTemp !== "IDEAL") {
+      let mensagemTemp = "";
+      
+      if (statusTemp === "CRÍTICO") {
+        mensagemTemp = `[${faseAtual}] Sensor ${idSensor}: Temperatura (${temp.toFixed(1)}°C) fora da faixa ideal (${faixas.tMin}°C - ${faixas.tMax}°C)`;
+      } else if (statusTemp === "MODERADO") {
+        mensagemTemp = `[${faseAtual}] Sensor ${idSensor}: Temperatura (${temp.toFixed(1)}°C) próxima da faixa ideal`;
+      }
+
+      registrarAlertaNoServidor({
+        alertaTemp: statusTemp,
+        alertaUmid: null,
+        fkSensorMedida: idSensor,
+        mensagem: mensagemTemp
+      });
+    }
+
+    if (statusUmid !== "IDEAL") {
+      let mensagemUmid = "";
+      
+      if (statusUmid === "CRÍTICO") {
+        mensagemUmid = `[${faseAtual}] Sensor ${idSensor}: Umidade (${umid.toFixed(1)}%) fora da faixa ideal (${faixas.uMin}% - ${faixas.uMax}%)`;
+      } else if (statusUmid === "MODERADO") {
+        mensagemUmid = `[${faseAtual}] Sensor ${idSensor}: Umidade (${umid.toFixed(1)}%) próxima da faixa ideal`;
+      }
+
+      registrarAlertaNoServidor({
+        alertaTemp: null,
+        alertaUmid: statusUmid,
+        fkSensorMedida: idSensor,
+        mensagem: mensagemUmid
+      });
+    }
+  });
+
+  console.log(`✅ Verificação concluída para ${medidasAtuais.length} sensores`);
+  
+  setTimeout(() => carregarHistoricoDoServidor(), 1000);
+}
+
+function registrarAlertaNoServidor(alerta) {
+  console.log("📤 ENVIANDO:", JSON.stringify(alerta, null, 2));
+  
+  fetch("/alertas/registrar", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(alerta)
+  })
+  .then(function (res) {
+    if (res.ok) {
+      res.text().then(texto => console.log("✓ Alerta registrado:", texto));
+    } else {
+      res.text().then(texto => console.error(`✗ Falha: ${res.status} ${texto}`));
+    }
+  })
+  .catch(err => console.error("✗ Erro:", err));
+}
+
+function carregarHistoricoDoServidor() {
+  fetch(`/alertas/estufa/${ID_ESTUFA}`, { cache: "no-store" })
+    .then(res => res.json())
+    .then(lista => {
+      if(!Array.isArray(lista) || lista.length === 0) return;
+      
+      limparHistoricoAlertas();
+
+      let alertasLeste = 0, alertasCentral = 0, alertasOeste = 0;
+
+      lista.reverse().slice(0, 20).forEach(item => {
+        const alertaTemp = item.AlertaTemp || item.alertaTemp;
+        const alertaUmid = item.AlertaUmid || item.alertaUmid;
+        const idSensor = item.fkSensorMedida;
+        
+        let status = "MODERADO";
+        
+        if (alertaTemp) {
+          const tempStr = String(alertaTemp).toUpperCase().trim();
+          if (tempStr === "CRÍTICO" || tempStr === "CRITICO") {
+            status = "CRÍTICO";
+          }
+        }
+        
+        if (alertaUmid) {
+          const umidStr = String(alertaUmid).toUpperCase().trim();
+          if (umidStr === "CRÍTICO" || umidStr === "CRITICO") {
+            status = "CRÍTICO";
+          }
+        }
+
+        const zona = mapaZonas[idSensor];
+        if (zona === "Leste") alertasLeste++;
+        else if (zona === "Central") alertasCentral++;
+        else if (zona === "Oeste") alertasOeste++;
+
+        adicionarLinhaHistorico(item.dtHrInicialAlerta, idSensor, status);
+      });
+
+      graficoDoughnut.data.datasets[0].data = [alertasLeste, alertasCentral, alertasOeste];
+      graficoDoughnut.update();
+    })
+    .catch(err => console.error("Erro ao carregar histórico:", err));
+}
+
+// ========== FUNÇÕES DE ATUALIZAÇÃO DOS SENSORES ==========
+function atualizarStatusSensores() {
+  fetch(`/medidas/estufa/${ID_ESTUFA}/atuais`, { cache:"no-store" })
+    .then(res => res.json())
+    .then(medidasAtuais => {
+      if(!Array.isArray(medidasAtuais)) return;
+
+      const faixas = obterFaixasPorFase(faseAtual);
+
+      SENSORES_IDS.forEach(id => {
+        const div = document.getElementById(mapaSensores[id]);
+        if(!div) return;
+
+        const medida = medidasAtuais.find(m => m.idSensor === id);
+        if(!medida) {
+          div.className = "sensorVerde";
+          return;
+        }
+
+        const temp = Number(medida.medidaTemp);
+        const umid = Number(medida.medidaUmid);
+        
+        if (isNaN(temp) || isNaN(umid)) {
+          div.className = "sensorVerde";
+          return;
+        }
+
+        const statusTemp = classificarValor(temp, faixas.tMin, faixas.tMax);
+        const statusUmid = classificarValor(umid, faixas.uMin, faixas.uMax);
+
+        if (statusTemp === "CRÍTICO" || statusUmid === "CRÍTICO") {
+          div.className = "sensorVermelho";
+        } else if (statusTemp === "MODERADO" || statusUmid === "MODERADO") {
+          div.className = "sensorAmarelo";
+        } else {
+          div.className = "sensorVerde";
+        }
+      });
+
+      verificarAlertasSensores(medidasAtuais);
+    })
+    .catch(erro => console.error("Erro ao atualizar status dos sensores:", erro));
+}
+
+function atualizarGraficosEstufa() {
+  fetch(`/medidas/estufa/${ID_ESTUFA}/atuais`, { cache:"no-store" })
     .then(res => res.json())
     .then(dados => {
       if(!Array.isArray(dados)) return;
 
-      graficoUmidade.data.labels = sensoresIds.map(id => `S${id}`);
-      graficoTemperatura.data.labels = sensoresIds.map(id => `S${id}`);
+      graficoUmidade.data.labels = SENSORES_IDS.map(id => `S${id}`);
+      graficoTemperatura.data.labels = SENSORES_IDS.map(id => `S${id}`);
 
-      graficoUmidade.data.datasets[0].data = sensoresIds.map(id => {
-        const sensor = dados.find(d => d.fkSensor === id) || {};
+      graficoUmidade.data.datasets[0].data = SENSORES_IDS.map(id => {
+        const sensor = dados.find(d => d.idSensor === id) || {};
         return Number(sensor.medidaUmid) || 0;
       });
 
-      graficoTemperatura.data.datasets[0].data = sensoresIds.map(id => {
-        const sensor = dados.find(d => d.fkSensor === id) || {};
+      graficoTemperatura.data.datasets[0].data = SENSORES_IDS.map(id => {
+        const sensor = dados.find(d => d.idSensor === id) || {};
         return Number(sensor.medidaTemp) || 0;
       });
 
@@ -240,41 +543,32 @@ function atualizarGraficosEstufa() {
       graficoTemperatura.update();
     })
     .catch(erro => console.error("Erro ao atualizar gráficos:", erro));
-
-  // Status sensores
-  fetch(`/sensores/estufa/${idEstufa}`, { cache:"no-store" })
-    .then(res => res.json())
-    .then(dadosSensores => {
-      if(!Array.isArray(dadosSensores)) return;
-      sensoresIds.forEach(id => {
-        const div = document.getElementById(mapaSensores[id]);
-        if(div) {
-          const sensor = dadosSensores.find(s=>s.idSensor===id);
-          if(!sensor){ div.className="sensorVerde"; return; }
-          if(sensor.alertaTemp==='CRÍTICO'||sensor.alertaUmid==='CRÍTICO') div.className="sensorVermelho";
-          else if(sensor.alertaTemp==='MODERADO'||sensor.alertaUmid==='MODERADO') div.className="sensorAmarelo";
-          else div.className="sensorVerde";
-        }
-      });
-    })
-    .catch(erro => console.error("Erro ao atualizar status dos sensores:", erro));
 }
 
-// Abrir dashboard do sensor
-function abrirSensor(idSensor){
+// ========== NAVEGAÇÃO ==========
+function abrirSensor(idSensor) {
+  console.log(`🔹 Abrindo sensor ${idSensor}`);
+
   sessionStorage.setItem("ID_SENSOR", idSensor);
-  sessionStorage.setItem("ID_ESTUFA", idEstufa);
-  window.location.href="dashboard.html";
+  sessionStorage.setItem("ID_ESTUFA", ID_ESTUFA);
+
+  window.location.href = `dashboard.html?estufa=${ID_ESTUFA}&sensor=${idSensor}`;
 }
 
-// Inicialização
+// ========== INICIALIZAÇÃO ==========
 window.onload = () => {
   atualizarFaseAtual();
   atualizarGraficosEstufa();
+  atualizarStatusSensores();
+  carregarHistoricoDoServidor();
+
   setInterval(() => {
     atualizarFaseAtual();
     atualizarGraficosEstufa();
+    atualizarStatusSensores();
   }, 5000);
+  
+  setInterval(() => carregarHistoricoDoServidor(), 10000);
 };
 </script>
 </body>

@@ -19,4 +19,5 @@ router.get("/estufa/:idEstufa/atuais", function (req, res) {
   medidaController.listarMedidasAtuaisPorEstufa(req, res);
 });
 
+
 module.exports = router;
