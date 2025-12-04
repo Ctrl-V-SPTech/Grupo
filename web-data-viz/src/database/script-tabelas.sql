@@ -124,11 +124,20 @@ INSERT INTO Estufa (nomeEstufa, periodoDesenvolvimento,fkEstufaEmpresa) VALUES
 	('Estufa Leste', 'Dormência', 4);
     
 INSERT INTO Sensor (localizacaoSensor, fkEstufa) VALUES
+	('Zona Leste', 1),
+    ('Zona Leste', 1),
+    ('Zona Leste', 1),
+    ('Zona Leste', 1),
+    ('Zona Leste', 1),
 	('Zona Central', 1),
-	('Zona Leste', 2),
-	('Zona Central', 3),
-	('Zona Oeste', 4);
-    
+    ('Zona Central', 1),
+    ('Zona Central', 1),
+    ('Zona Central', 1),
+	('Zona Oeste', 1),
+    ('Zona Oeste', 1),
+    ('Zona Oeste', 1),
+    ('Zona Oeste', 1),
+    ('Zona Oeste', 1);
 
 SELECT * FROM estufa WHERE fkEmpresa = 1;
 
