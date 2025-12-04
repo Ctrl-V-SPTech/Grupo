@@ -31,7 +31,14 @@
           </div>
           </div>
 
-<div class="campo2">
+             <div class="campo2">
+            <label class="labelInput" for="input_email">Email</label>
+            <div class="input-container">
+            <input type="text" id="input_email" placeholder="email">
+          </div>
+          </div>
+
+<div class="campo3">
   <label class="labelInput" for="pass_cadastro">Senha</label>
 
   <div class="input-container">
@@ -143,21 +150,62 @@
 
 
   function cadastrarUsuario() {
-    var usuario = user_cadastro.value.trim();
-    var senha = pass_cadastro.value.trim();
+    var usuario = user_cadastro.value
+    var email = input_email.value
+    var senha = pass_cadastro.value
+    var fkResponsavel = sessionStorage.ID_USUARIO
+    var fkEmpresa = sessionStorage.FK_EMPRESA
 
     if (usuario == "" || senha == "") {
       alert("Preencha todos os campos!");
     } else if (temMaiuscula && temMinuscula && temNumero && temSimbolo && tamanhoOk) {
       alert("✅ Usuário cadastrado com sucesso!");
-      user_cadastro.value = "";
-      pass_cadastro.value = "";
-      textoValidacao.textContent = "";
-      userCadastroVolta();
-      senhaCadastroVolta();
+      
+      fetch("/usuarios/cadastrarUsuario", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+  
+        usuarioServer: usuario,
+        emailServer: email,
+        senhaServer: senha,
+        fkResponsavelServer: fkResponsavel,
+        fkEmpresaServer: fkEmpresa
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+        
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      
+      });
+
+    return false;
+
     } else {
       alert("❌ A senha ainda não atende todos os requisitos.");
     }
   }
+
+
 </script>
 </html>

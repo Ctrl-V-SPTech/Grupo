@@ -146,10 +146,11 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.FK_EMPRESA = json.fkEmpresa;
                     sessionStorage.ESTUFAS = JSON.stringify(json.estufas)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboardsestufa.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
