@@ -141,20 +141,6 @@ INSERT INTO Sensor (localizacaoSensor, fkEstufa) VALUES
 
 SELECT * FROM estufa WHERE fkEmpresa = 1;
 
-CREATE EVENT inserir_medidas_automaticamente
-ON SCHEDULE EVERY 5 SECOND
-STARTS CURRENT_TIMESTAMP
-DO
-INSERT INTO Medida (
-    medidaTemp,
-    medidaUmid,
-    fkSensor
-) VALUES (
-    20 + (RAND() * 10),  
-    40 + (RAND() * 40), 
-    1                  
-);
-
 
 drop EVENT inserir_medidas_automaticamente;
 
@@ -166,7 +152,18 @@ INSERT INTO Medida (medidaTemp, medidaUmid, fkSensor)
 VALUES
     (20 + (RAND() * 10), 40 + (RAND() * 40), 1),
     (20 + (RAND() * 10), 40 + (RAND() * 40), 2),
-    (20 + (RAND() * 10), 40 + (RAND() * 40), 3);
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 3),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 4),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 5),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 6),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 7),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 8),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 9),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 10),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 11),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 12),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 13),
+    (20 + (RAND() * 10), 40 + (RAND() * 40), 14);
 
     DELIMITER $$
 
