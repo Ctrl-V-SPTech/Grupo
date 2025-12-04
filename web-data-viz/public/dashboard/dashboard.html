@@ -92,8 +92,8 @@
     // ========== VARIÁVEIS GLOBAIS ==========
     // Suporta tanto sessionStorage quanto URL (?sensor=2)
     const urlParams = new URLSearchParams(window.location.search);
-    const ID_ESTUFA = Number(urlParams.get('estufa') || sessionStorage.getItem("ID_ESTUFA")) || 1;
-    const ID_SENSOR = Number(urlParams.get('sensor') || sessionStorage.getItem("ID_SENSOR")) || 1;
+    const ID_ESTUFA = sessionStorage.getItem("ID_ESTUFA") || 1;
+    const ID_SENSOR = sessionStorage.getItem("ID_SENSOR") || 1;
     
     console.log(`📍 Abrindo Dashboard - Estufa: ${ID_ESTUFA}, Sensor: ${ID_SENSOR}`);
 
