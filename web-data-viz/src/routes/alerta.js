@@ -18,4 +18,9 @@ router.get("/sensor/:idSensor", function (req, res) {
     alertaController.listarPorSensor(req, res);
 });
 
+router.get("/estufa/:idEstufa", function (req, res) {
+    alertaController.listarPorEstufa(req, res);
+});
+
+
 module.exports = router;

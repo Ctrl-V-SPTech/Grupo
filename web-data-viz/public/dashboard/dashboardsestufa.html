@@ -561,11 +561,13 @@ window.onload = () => {
   atualizarGraficosEstufa();
   atualizarStatusSensores();
   carregarHistoricoDoServidor();
+  adicionarLinhaHistorico()
 
   setInterval(() => {
     atualizarFaseAtual();
     atualizarGraficosEstufa();
     atualizarStatusSensores();
+     adicionarLinhaHistorico()
   }, 5000);
   
   setInterval(() => carregarHistoricoDoServidor(), 10000);

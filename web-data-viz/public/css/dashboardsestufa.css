@@ -443,6 +443,7 @@ header {
   width: 1200px;
   height: 320px;
   margin-left: 30px;
+   overflow: hidden;
 }
 
 .historico-header {
@@ -450,6 +451,13 @@ header {
   color: white;
   padding: 10px;
   border-bottom: 3px solid black;
+}
+
+.historico-body {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #fff;
+  color: #000;
 }
 
 .historico-row {

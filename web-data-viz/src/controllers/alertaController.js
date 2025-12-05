@@ -21,7 +21,20 @@ function listarPorSensor(req, res) {
         });
 }
 
+function listarPorEstufa(req, res) {
+    var idEstufa = req.params.idEstufa;
+
+    alertaModel.listarPorEstufa(idEstufa)
+        .then(resultado => res.json(resultado))
+        .catch(erro => {
+            console.error("Erro ao listar alertas por estufa:", erro);
+            res.status(500).json({ erro: erro.message });
+        });
+}
+
+
 module.exports = {
     registrar,
-    listarPorSensor
+    listarPorSensor,
+    listarPorEstufa
 };

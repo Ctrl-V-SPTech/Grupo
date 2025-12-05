@@ -50,8 +50,25 @@ function listarPorSensor(idSensor) {
     return database.executar(instrucaoSql);
 }
 
+function listarPorEstufa(idEstufa) {
+    const instrucaoSql = `
+        SELECT *
+        FROM Alerta 
+        JOIN Sensor  ON Alerta.fkSensorMedida = Sensor.idSensor
+        WHERE Sensor.fkEstufa = ${idEstufa}
+        ORDER BY Alerta.dtHrInicialAlerta DESC
+        LIMIT 50;
+    `;
+    
+    console.log("Executando SQL:\n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
 module.exports = {
     registrar,
     listar,
-    listarPorSensor
+    listarPorSensor,
+    listarPorEstufa
 };
