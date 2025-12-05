@@ -97,7 +97,7 @@
     const ID_ESTUFA = sessionStorage.getItem("ID_ESTUFA") || 1;
     const ID_SENSOR = sessionStorage.getItem("ID_SENSOR") || 1;
     
-    console.log(`📍 Abrindo Dashboard - Estufa: ${ID_ESTUFA}, Sensor: ${ID_SENSOR}`);
+    console.log(`Abrindo Dashboard - Estufa: ${ID_ESTUFA}, Sensor: ${ID_SENSOR}`);
 
     let faseAtual = "Dormência";
     let proximaAtualizacao;
@@ -352,7 +352,7 @@ if (fkResponsavel != "null") {
     }
 
     function registrarAlertaNoServidor(alerta) {
-        console.log("=== ENVIANDO ALERTA ===");
+        console.log(" ENVIANDO ALERTA ");
         console.log(JSON.stringify(alerta, null, 2));
         
         fetch("/alertas/registrar", {
@@ -362,9 +362,9 @@ if (fkResponsavel != "null") {
         })
         .then(function (res) {
             if (res.ok) {
-                res.text().then(texto => console.log("✓ Alerta registrado:", texto));
+                res.text().then(texto => console.log(" Alerta registrado:", texto));
             } else {
-                res.text().then(texto => console.error(`✗ Falha: ${res.status} ${texto}`));
+                res.text().then(texto => console.error(` Falha: ${res.status} ${texto}`));
             }
         })
         .catch(err => console.error("✗ Erro:", err));
@@ -429,7 +429,7 @@ fetch(`/medidas/ultimas/${idEstufa}/${idSensor}`, { cache: 'no-store' })
 
         if (response.status === 204) {
             console.warn("Nenhuma medida encontrada para este sensor.");
-            return []; // ✅ evita o erro de JSON
+            return []; 
         }
 
         if (response.ok) {

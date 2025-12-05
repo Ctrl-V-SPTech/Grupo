@@ -354,11 +354,11 @@ function atualizarFaseAtual() {
 // ========== FUNÇÕES DE ALERTAS ==========
 function verificarAlertasSensores(medidasAtuais) {
   if(!Array.isArray(medidasAtuais) || medidasAtuais.length === 0) {
-    console.log("⚠️ Nenhuma medida disponível para verificar alertas");
+    console.log(" Nenhuma medida disponível para verificar alertas");
     return;
   }
 
-  console.log(`🔍 Verificando alertas de ${medidasAtuais.length} sensores`);
+  console.log(`Verificando alertas de ${medidasAtuais.length} sensores`);
   
   const faixas = obterFaixasPorFase(faseAtual);
   
@@ -368,19 +368,19 @@ function verificarAlertasSensores(medidasAtuais) {
     const idSensor = medida.idSensor;
     
     if (!idSensor) {
-      console.error("❌ ID do sensor não encontrado na medida:", medida);
+      console.error(" ID do sensor não encontrado na medida:", medida);
       return;
     }
     
     if (isNaN(temp) || isNaN(umid)) {
-      console.warn(`⚠️ Sensor ${idSensor}: Dados inválidos - Temp=${temp}, Umid=${umid}`);
+      console.warn(` Sensor ${idSensor}: Dados inválidos - Temp=${temp}, Umid=${umid}`);
       return;
     }
 
     const statusTemp = classificarValor(temp, faixas.tMin, faixas.tMax);
     const statusUmid = classificarValor(umid, faixas.uMin, faixas.uMax);
     
-    console.log(`✓ Sensor ${idSensor}: Temp=${temp}°C (${statusTemp}), Umid=${umid}% (${statusUmid})`);
+    console.log(` Sensor ${idSensor}: Temp=${temp}°C (${statusTemp}), Umid=${umid}% (${statusUmid})`);
 
     if (statusTemp !== "IDEAL") {
       let mensagemTemp = "";
@@ -417,13 +417,13 @@ function verificarAlertasSensores(medidasAtuais) {
     }
   });
 
-  console.log(`✅ Verificação concluída para ${medidasAtuais.length} sensores`);
+  console.log(`Verificação concluída para ${medidasAtuais.length} sensores`);
   
   setTimeout(() => carregarHistoricoDoServidor(), 1000);
 }
 
 function registrarAlertaNoServidor(alerta) {
-  console.log("📤 ENVIANDO:", JSON.stringify(alerta, null, 2));
+  console.log("ENVIANDO:", JSON.stringify(alerta, null, 2));
   
   fetch("/alertas/registrar", {
     method: "POST",
@@ -432,12 +432,12 @@ function registrarAlertaNoServidor(alerta) {
   })
   .then(function (res) {
     if (res.ok) {
-      res.text().then(texto => console.log("✓ Alerta registrado:", texto));
+      res.text().then(texto => console.log("Alerta registrado:", texto));
     } else {
-      res.text().then(texto => console.error(`✗ Falha: ${res.status} ${texto}`));
+      res.text().then(texto => console.error(` Falha: ${res.status} ${texto}`));
     }
   })
-  .catch(err => console.error("✗ Erro:", err));
+  .catch(err => console.error("Erro:", err));
 }
 
 function carregarHistoricoDoServidor() {
@@ -556,7 +556,7 @@ function atualizarGraficosEstufa() {
 
 // ========== NAVEGAÇÃO ==========
 function abrirSensor(idSensor) {
-  console.log(`🔹 Abrindo sensor ${idSensor}`);
+  console.log(` Abrindo sensor ${idSensor}`);
 
   sessionStorage.setItem("ID_SENSOR", idSensor);
   sessionStorage.setItem("ID_ESTUFA", ID_ESTUFA);
