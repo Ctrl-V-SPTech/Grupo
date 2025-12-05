@@ -41,10 +41,10 @@
                 </div>
                 <div class="values">
                     <div class="temp" id="temp">
-                        <img class="metricas" src="../imagens_uvas/temperature.png" alt="" />--°C
+                        <img class="metricas" src="../assets/temperature.png" alt="" />--°C
                     </div>
                     <div class="umi" id="umi">
-                        <img class="metricas" src="../imagens_uvas/humidity.png" alt="" />--%
+                        <img class="metricas" src="../assets/humidity.png" alt="" />--%
                     </div>
                 </div>
             </div>
@@ -229,8 +229,8 @@ if (fkResponsavel != "null") {
         const tempDiv = document.getElementById("temp");
         const umidDiv = document.getElementById("umi");
 
-        tempDiv.innerHTML = `<img class="metricas" src="../imagens_uvas/temperature.png" alt="" />${Number(temp).toFixed(1)}°C`;
-        umidDiv.innerHTML = `<img class="metricas" src="../imagens_uvas/humidity.png" alt="" />${Number(umid).toFixed(1)}%`;
+        tempDiv.innerHTML = `<img class="metricas" src="../assets/temperature.png" alt="" />${Number(temp).toFixed(1)}°C`;
+        umidDiv.innerHTML = `<img class="metricas" src="../assets/humidity.png" alt="" />${Number(umid).toFixed(1)}%`;
 
         tempDiv.className = "temp";
         umidDiv.className = "umi";
