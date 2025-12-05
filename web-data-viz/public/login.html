@@ -147,10 +147,18 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.idUsuario;
                     sessionStorage.FK_EMPRESA = json.fkEmpresa;
+                    sessionStorage.FK_RESPONSAVEL = json.fkUsuarioResponsavel;
                     sessionStorage.ESTUFAS = JSON.stringify(json.estufas)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/dashboardsestufa.html";
+                        if (json.fkEmpresa == null) {
+                            window.location = "./dashboard/index.html";  
+                        } else if (json.fkUsuarioResponsavel == null) {
+                            window.location = "./dashboard/dashboardsestufa.html";
+                        } else {
+                            window.location = "./dashboard/dashboardsestufa.html";
+                        }
+
                     }, 1000); // apenas para exibir o loading
 
                 });

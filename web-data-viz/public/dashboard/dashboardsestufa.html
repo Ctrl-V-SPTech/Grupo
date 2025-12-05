@@ -11,9 +11,9 @@
 <body>
     <div id="sidebar" class="sidebar">
         <a href="">Usuário</a><br /><br /><br />
-        <a href="dashboardgeral.html">Estufas</a><br />
-        <a href="../cadastrousuario.html">Cadastrar Usuario</a><br /><br /><br /><br />
-        <a href="index.html">BobIA</a>
+        <a href="dashboardgeral.html" id="navestufa">Estufas</a><br />
+        <a href="../cadastrousuario.html" id="navcadastro">Cadastrar Usuario</a><br /><br /><br /><br />
+        <a href="index.html" id="navbobia">BobIA</a>
         <a href="../">Sair</a>
     </div>
 
@@ -185,6 +185,15 @@ const mapaZonas = {
   6:"Central", 7:"Central", 8:"Central", 9:"Central",
   10:"Oeste", 11:"Oeste", 12:"Oeste", 13:"Oeste", 14:"Oeste"
 };
+
+const fkResponsavel = sessionStorage.FK_RESPONSAVEL;
+const fkEmpresa = sessionStorage.FK_EMPRESA
+
+if (fkResponsavel != "null") {
+    document.getElementById("navcadastro").style.display = "none";
+    document.getElementById("navbobia").style.display = "none";
+} 
+
 
 // ========== FUNÇÕES UTILITÁRIAS ==========
 function redirecionar() {

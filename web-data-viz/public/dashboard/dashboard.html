@@ -15,9 +15,9 @@
 <body>
     <div id="sidebar" class="sidebar">
         <a href="">Usuário</a><br /><br /><br />
-        <a href="dashboardgeral.html">Estufas</a><br />
-        <a href="cadastrousuario.html">Cadastrar Usuario</a><br /><br /><br /><br />
-        <a onclick="redirecionar()">BobIA</a>
+        <a href="dashboardgeral.html" id="navestufa">Estufas</a><br />
+        <a href="../cadastrousuario.html" id="navcadastro">Cadastrar Usuario</a><br /><br /><br /><br />
+        <a href="index.html" id="navbobia">BobIA</a>
         <a href="../">Sair</a>
     </div>
 
@@ -89,6 +89,8 @@
     </div>
 
 <script>
+
+    
     // ========== VARIÁVEIS GLOBAIS ==========
     // Suporta tanto sessionStorage quanto URL (?sensor=2)
     const urlParams = new URLSearchParams(window.location.search);
@@ -99,6 +101,15 @@
 
     let faseAtual = "Dormência";
     let proximaAtualizacao;
+
+    const fkResponsavel = sessionStorage.FK_RESPONSAVEL;
+const fkEmpresa = sessionStorage.FK_EMPRESA
+
+if (fkResponsavel != "null") {
+    document.getElementById("navcadastro").style.display = "none";
+    document.getElementById("navbobia").style.display = "none";
+} 
+
 
     // ========== FUNÇÕES UTILITÁRIAS ==========
     function redirecionar() {

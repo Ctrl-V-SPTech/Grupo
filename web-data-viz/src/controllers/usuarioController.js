@@ -29,11 +29,21 @@ function autenticar(req, res) {
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
                                         fkEmpresa: resultadoAutenticar[0].idEmpresa,
+                                        fkUsuarioResponsavel: resultadoAutenticar[0].fkUsuarioResponsavel,
                                         estufas: resultadoEstufas
                                     });
-                                } else {
-                                    res.status(200).json({ estufas: [] });
-                                }
+                               } else {
+                                  res.status(200).json({
+                                      idUsuario: resultadoAutenticar[0].idUsuario,
+                                      email: resultadoAutenticar[0].email,
+                                      nome: resultadoAutenticar[0].nome,
+                                      senha: resultadoAutenticar[0].senha,
+                                      fkEmpresa: resultadoAutenticar[0].idEmpresa,
+                                      fkUsuarioResponsavel: resultadoAutenticar[0].fkUsuarioResponsavel,
+                                      estufas: []
+                                  });
+                                   }
+
                             })
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
