@@ -208,6 +208,12 @@ if (fkEmpresa != "null") {
    document.getElementById("navbobia").style.display = "none";
 }
 
+if (fkResponsavel == "null" && fkEmpresa == "null") {
+ document.getElementById("navcadastro").style.display = "none";
+ document.getElementById("navestufa").style.display = "none";
+}
+
+
 
   function abrirEstufa(idEstufa) {
     // guarda o id da estufa (1,2,3,...) pra próxima página

@@ -115,6 +115,11 @@ if (fkEmpresa != "null") {
    document.getElementById("navbobia").style.display = "none";
 }
 
+if (fkResponsavel == "null" && fkEmpresa == "null") {
+ document.getElementById("navcadastro").style.display = "none";
+ document.getElementById("navestufa").style.display = "none";
+}
+
 
     // ========== FUNÇÕES UTILITÁRIAS ==========
     function redirecionar() {
